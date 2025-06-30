@@ -45,6 +45,64 @@
   margin-bottom: 2rem;
   color: white; /* changed from #444 */
 }
+    .hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* black outline effect */
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin-bottom: 2rem;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* subtle outline */
+}
+
+/* Button styling improvements */
+.btn-primary {
+  background: var(--accent);
+  color: var(--white);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #3a8bd1;
+  transform: translateY(-2px);
+}
+    .myth-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.myth-card {
+  background: #f5f7fb;
+  border-left: 6px solid var(--accent);
+  padding: 1.2rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.myth-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.myth-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.myth-card p {
+  margin: 0;
+  color: #555;
+}
     /*---------------- SECTION ----------------*/
     section{padding:4rem 1rem;max-width:1050px;margin:auto}
     .section-heading{text-align:center;margin-bottom:2.5rem;font-size:2rem;color:var(--brand)}
@@ -114,7 +172,7 @@
     <h1>Data Analytics Isn’t Just for Big Business Anymore</h1>
     <p>From spreadsheets to strategy — I build tools to help small teams see what’s really going on.</p>
     <div>
-      <a href="#packages" class="btn btn-outline">See Packages</a>
+      <a href="#packages" class="btn btn-primary">Browse Packages</a>
     </div>
   </section>
 
@@ -138,14 +196,32 @@
 
   <!-- MYTHS -->
   <section id="myths">
-    <h2 class="section-heading">Data Myths — Busted</h2>
-    <div class="grid two-col">
-      <div class="card"><strong>Myth:</strong> Analytics is only for big companies.<br><strong>Truth:</strong> If you record sales or appointments, you have usable data.</div>
-      <div class="card"><strong>Myth:</strong> Our data’s too messy.<br><strong>Truth:</strong> Cleaning it is part of the job and often uncovers quick wins.</div>
-      <div class="card"><strong>Myth:</strong> I’m “not a numbers person.”<br><strong>Truth:</strong> I translate numbers into plain advice.</div>
-      <div class="card"><strong>Myth:</strong> It’s too expensive.<br><strong>Truth:</strong> Starter package is £100 — one insight can pay for itself.</div>
+  <h2 class="section-heading">Data Myths — Busted</h2>
+  <div class="myth-grid">
+
+    <div class="myth-card">
+      <h4>🧱 Myth: “Analytics is only for big companies.”</h4>
+      <p><strong>Truth:</strong> If you track sales, stock, or appointments — you’ve got usable data.</p>
     </div>
-  </section>
+
+    <div class="myth-card">
+      <h4>🪣 Myth: “Our data is too messy.”</h4>
+      <p><strong>Truth:</strong> Cleaning messy data is part of the job — it’s often where insights begin.</p>
+    </div>
+
+    <div class="myth-card">
+      <h4>🧠 Myth: “I’m not a numbers person.”</h4>
+      <p><strong>Truth:</strong> That’s my job — I turn data into clear advice without jargon.</p>
+    </div>
+
+    <div class="myth-card">
+      <h4>💸 Myth: “It’s too expensive.”</h4>
+      <p><strong>Truth:</strong> Starter packages begin at £100 — many pay for themselves fast.</p>
+    </div>
+
+    <!-- Add more as needed -->
+  </div>
+</section>
 
  <!-- CASE STUDIES -->
 <section id="cases">
