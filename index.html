@@ -20,11 +20,31 @@
     .logo img{height:40px;width:40px}
     nav a{margin-left:1.4rem;color:var(--brand);text-decoration:none;font-weight:600;transition:.2s}
     nav a:hover{color:var(--accent)}
-    /*---------------- HERO ----------------*/
-    .hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;background:linear-gradient(135deg,var(--light) 0%,#e8f0fe 100%)}
-    .hero h1{font-size:3rem;font-weight:700;color:var(--brand);margin-bottom:1rem}
-    .hero p{font-size:1.25rem;max-width:700px;margin-bottom:2rem;color:#444}
-    .btn{display:inline-block;padding:.8rem 1.6rem;border-radius:6px;font-weight:600;text-decoration:none;margin:.3rem}.btn-primary{background:var(--accent);color:var(--white)}.btn-primary:hover{background:#3a8bd1}.btn-outline{border:2px solid var(--accent);color:var(--accent)}.btn-outline:hover{background:var(--accent);color:var(--white)}
+/*---------------- HERO ----------------*/
+.hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--light) 0%, #e8f0fe 100%);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white; /* changed from var(--brand) */
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin-bottom: 2rem;
+  color: white; /* changed from #444 */
+}
     /*---------------- SECTION ----------------*/
     section{padding:4rem 1rem;max-width:1050px;margin:auto}
     .section-heading{text-align:center;margin-bottom:2.5rem;font-size:2rem;color:var(--brand)}
@@ -127,27 +147,44 @@
     </div>
   </section>
 
-  <!-- CASE STUDIES -->
-  <section id="cases">
-    <h2 class="section-heading">Case Studies</h2>
-    <div class="grid">
-      <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
-        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzFiYWEyMzMtNzY1OC00MTQxLWE0MWEtOTQzMTczNWI5MTFmIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
-        <div style="flex:1 1 40%">
-          <h3>Food-Bank Demand Dashboard</h3>
-          <p>Helped volunteers forecast parcel demand and avoid shortages.</p>
-        </div>
-      </div>
-      <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
-        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
-        <div style="flex:1 1 40%">
-          <h3>Chemical Inventory Tracker</h3>
-          <p>Reduced stock checks by 60% and passed safety audit hassle-free.</p>
-        </div>
+ <!-- CASE STUDIES -->
+<section id="cases">
+  <h2 class="section-heading">Case Studies</h2>
+  <div class="grid">
+    <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzFiYWEyMzMtNzY1OC00MTQxLWE0MWEtOTQzMTczNWI5MTFmIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
+      <div style="flex:1 1 40%">
+        <h3>Food‑Bank Demand Dashboard</h3>
+        <p>Helped volunteers forecast parcel demand and avoid shortages.</p>
       </div>
     </div>
-  </section>
 
+    <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
+      <div style="flex:1 1 40%">
+        <h3>Chemical Inventory Tracker</h3>
+        <p>Reduced stock checks by 60% and passed safety audit hassle‑free.</p>
+      </div>
+    </div>
+
+    <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTAyY2ZhZjktOGYzNi00ZDU4LTg0NDgtZmM2ZDY5MzM4ZDY5IiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
+      <div style="flex:1 1 40%">
+        <h3>Energy Forecasting Model</h3>
+        <p>Predicted daily UK electricity demand with 90% accuracy.</p>
+      </div>
+    </div>
+
+    <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiOGY5ODUwOTUtYzdiOS00YjUwLTkzOTgtMDE1Y2QxZTI2MzA0IiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
+      <div style="flex:1 1 40%">
+        <h3>NHS Outpatient Activity Analysis</h3>
+        <p>Revealed performance gaps and guided planning with 9 years of data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+  
   <!-- PACKAGES -->
   <section id="packages">
     <h2 class="section-heading">Project Packages</h2>
