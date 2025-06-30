@@ -103,6 +103,37 @@
   margin: 0;
   color: #555;
 }
+    .help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.help-card {
+  background: #fdfefe;
+  border-left: 6px solid var(--brand);
+  padding: 1.2rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.help-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.help-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.help-card p {
+  margin: 0;
+  color: #555;
+}
     /*---------------- SECTION ----------------*/
     section{padding:4rem 1rem;max-width:1050px;margin:auto}
     .section-heading{text-align:center;margin-bottom:2.5rem;font-size:2rem;color:var(--brand)}
@@ -182,17 +213,42 @@
     <p style="max-width:720px;margin:auto;text-align:center">Small teams deserve the same insight big companies pay thousands for. I founded Elemental Insights to help local shops, charities and community projects turn everyday data into clear dashboards, smart decisions and practical plans.</p>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <h2 class="section-heading">How Can Data Analysis Help Your Small Business?</h2>
-    <div class="grid two-col">
-      <div class="card"><h3>Not sure what’s profitable?</h3><p>Simple dashboards that reveal top-selling products and hidden money-losers.</p></div>
-      <div class="card"><h3>Stock headaches?</h3><p>Alerts and forecasts so you reorder on time and free up cash.</p></div>
-      <div class="card"><h3>Wasted marketing spend?</h3><p>Track which channels actually bring customers — cut the rest.</p></div>
-      <div class="card"><h3>Seasonal surprises?</h3><p>Forecast busy periods to plan staff and stock before the rush.</p></div>
-      <div class="card"><h3>Spreadsheet slog?</h3><p>Automate weekly reports so you get hours back every month.</p></div>
+ <section id="help">
+  <h2 class="section-heading">How Can Data Help Your Business?</h2>
+  <div class="help-grid">
+
+    <div class="help-card">
+      <h4>📈 See What’s Making Money</h4>
+      <p>Spot your most profitable products and cut the ones losing money.</p>
     </div>
-  </section>
+
+    <div class="help-card">
+      <h4>📦 Fix Stock Headaches</h4>
+      <p>Track what’s running low or sitting unsold — and restock smarter.</p>
+    </div>
+
+    <div class="help-card">
+      <h4>📣 Stop Wasting Marketing Budget</h4>
+      <p>Find out which ads or social posts bring customers — and which don’t.</p>
+    </div>
+
+    <div class="help-card">
+      <h4>📅 Plan for Busy Periods</h4>
+      <p>Use past data to predict spikes around holidays or seasonal demand.</p>
+    </div>
+
+    <div class="help-card">
+      <h4>⏱ Save Time Every Week</h4>
+      <p>Automate weekly reports and dashboards so you’re not stuck in spreadsheets.</p>
+    </div>
+
+    <div class="help-card">
+      <h4>📊 Impress Funders & Partners</h4>
+      <p>Turn messy numbers into clean reports and dashboards for stakeholders.</p>
+    </div>
+
+  </div>
+</section>
 
   <!-- MYTHS -->
   <section id="myths">
