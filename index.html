@@ -1,302 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elemental Insights</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --brand:#0a2540;
-      --accent:#4f9ee5;
-      --light:#f8f9fb;
-      --white:#ffffff;
+      --brand: #0a2540;
+      --accent: #4f9ee5;
+      --light: #f8f9fb;
+      --white: #ffffff;
+      --hover-accent: #3a8bd1;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Inter',sans-serif;background:var(--light);color:#333;line-height:1.7}
-    /*---------------- NAV ----------------*/
-    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:var(--white);box-shadow:0 2px 6px rgba(0,0,0,.05);position:sticky;top:0;z-index:999}
-    .logo{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.4rem;color:var(--brand)}
-    .logo img{height:40px;width:40px}
-    nav a{margin-left:1.4rem;color:var(--brand);text-decoration:none;font-weight:600;transition:.2s}
-    nav a:hover{color:var(--accent)}
-/*---------------- HERO ----------------*/
-.hero {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--light) 0%, #e8f0fe 100%);
-}
 
-.hero h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  color: white; /* changed from var(--brand) */
-  margin-bottom: 1rem;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.hero p {
-  font-size: 1.25rem;
-  max-width: 700px;
-  margin-bottom: 2rem;
-  color: white; /* changed from #444 */
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: #333;
+      line-height: 1.7;
+    }
+
+    /* NAVIGATION */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--white);
+      box-shadow: 0 2px 6px rgba(0,0,0,.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--brand);
+    }
+
+    .logo img {
+      height: 40px;
+      width: 40px;
+    }
+
+    nav a {
+      margin-left: 1.4rem;
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 40px;
+      background: linear-gradient(135deg, var(--light) 0%, #e8f0fe 100%);
+      background-image: url('Assets/Hero');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
     .hero h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* black outline effect */
-}
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
 
-.hero p {
-  font-size: 1.25rem;
-  max-width: 700px;
-  margin-bottom: 2rem;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* subtle outline */
-}
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin-bottom: 2rem;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    }
 
-/* Button styling improvements */
-.btn-primary {
-  background: var(--accent);
-  color: var(--white);
-  transition: background 0.3s ease, transform 0.2s ease;
-}
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      min-width: 180px;
+      text-align: center;
+    }
 
-.btn-primary:hover {
-  background: #3a8bd1;
-  transform: translateY(-2px);
-}
-    .myth-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(79, 158, 229, 0.3);
+    }
 
-.myth-card {
-  background: #f5f7fb;
-  border-left: 6px solid var(--accent);
-  padding: 1.2rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .btn-primary:hover {
+      background: var(--hover-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(79, 158, 229, 0.4);
+    }
 
-.myth-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
+    .btn-secondary {
+      background: transparent;
+      color: var(--brand);
+      border: 2px solid var(--brand);
+    }
 
-.myth-card h4 {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-  color: #333;
-}
+    .btn-secondary:hover {
+      background: var(--brand);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
 
-.myth-card p {
-  margin: 0;
-  color: #555;
-}
+    /* SECTIONS */
+    section {
+      padding: 4rem 1rem;
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 2rem;
+      color: var(--brand);
+    }
+
+    /* GRIDS */
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .two-col {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.06);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* HELP SECTION */
     .help-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
 
-.help-card {
-  background: #fdfefe;
-  border-left: 6px solid var(--brand);
-  padding: 1.2rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .help-card {
+      background: #fdfefe;
+      border-left: 6px solid var(--brand);
+      padding: 1.2rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-.help-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
+    .help-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
 
-.help-card h4 {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-  color: #333;
-}
+    .help-card h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      color: #333;
+    }
 
-.help-card p {
-  margin: 0;
-  color: #555;
-}
+    .help-card p {
+      margin: 0;
+      color: #555;
+    }
 
+    /* MYTHS SECTION */
+    .myth-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .myth-card {
+      background: #f5f7fb;
+      border-left: 6px solid var(--accent);
+      padding: 1.2rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .myth-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .myth-card h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .myth-card p {
+      margin: 0;
+      color: #555;
+    }
+
+    /* CAROUSEL */
     .carousel-container {
-  position: relative;
-  overflow: hidden;
-  margin-top: 2rem;
-}
+      position: relative;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.4s ease;
-}
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
 
-.carousel-card {
-  min-width: 100%;
-  box-sizing: border-box;
-  padding: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: center;
-}
+    .carousel-card {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+    }
 
-.carousel-card iframe {
-  flex: 1 1 55%;
-  height: 360px;
-  border: none;
-}
+    .carousel-card iframe {
+      flex: 1 1 55%;
+      height: 360px;
+      border: none;
+      border-radius: 8px;
+    }
 
-.carousel-content {
-  flex: 1 1 40%;
-}
+    .carousel-content {
+      flex: 1 1 40%;
+    }
 
-.carousel-content h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
+    .carousel-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--brand);
+    }
 
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--accent);
-  color: white;
-  border: none;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  z-index: 10;
-}
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--accent);
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      padding: 12px 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      z-index: 10;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(79, 158, 229, 0.3);
+    }
 
-.carousel-btn.prev {
-  left: 10px;
-}
+    .carousel-btn.prev {
+      left: 10px;
+    }
 
-.carousel-btn.next {
-  right: 10px;
-}
+    .carousel-btn.next {
+      right: 10px;
+    }
 
-.carousel-btn:hover {
-  background: #3a8bd1;
-}
-    /*---------------- SECTION ----------------*/
-    section{padding:4rem 1rem;max-width:1050px;margin:auto}
-    .section-heading{text-align:center;margin-bottom:2.5rem;font-size:2rem;color:var(--brand)}
-    /*---------------- CARDS ----------------*/
-    .grid{display:grid;gap:1.5rem}.two-col{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-    .card{background:var(--white);padding:1.8rem;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .2s}.card:hover{transform:translateY(-5px)}
-    /*---------------- TABLES ----------------*/
-    table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:1.5rem}
-    th,td{padding:.8rem 1rem;border:1px solid #d7e2ef;text-align:left}
-    th{background:var(--brand);color:var(--white)}
-    td.center{text-align:center}
-    /*---------------- CONTACT ----------------*/
-    form{display:flex;flex-direction:column;gap:1rem;max-width:600px;margin:auto}
-    input,textarea{padding:.9rem;border:1px solid #ccd7e6;border-radius:6px;font-family:inherit;font-size:1rem}
-    footer{background:var(--brand);color:var(--white);text-align:center;padding:2rem 1rem;font-size:.85rem;margin-top:4rem}
- .hero {
-  background-image: url('Assets/Hero'); /* Replace with your actual image path */
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 120px 40px;
-  text-align: center;
-}
-  .logo {
-  height: 40px;
-}
-    .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: white;
-  border-bottom: 1px solid #ddd;
-}
-.nav-left img.logo {
-  height: 40px;
-}
-.nav-right a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-.nav-right a:hover {
-  color: #0077cc;
-}
+    .carousel-btn:hover {
+      background: var(--hover-accent);
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 6px 16px rgba(79, 158, 229, 0.4);
+    }
+
+    /* TABLES */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    th, td {
+      padding: 0.8rem 1rem;
+      border: 1px solid #d7e2ef;
+      text-align: left;
+    }
+
+    th {
+      background: var(--brand);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    td.center {
+      text-align: center;
+    }
+
+    /* FORMS */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    input, textarea {
+      padding: 12px 16px;
+      border: 2px solid #ccd7e6;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--brand);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      margin-top: 4rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .btn {
+        min-width: 150px;
+        padding: 14px 24px;
+      }
+
+      .carousel-card {
+        flex-direction: column;
+      }
+
+      .carousel-card iframe {
+        width: 100%;
+        height: 280px;
+      }
+    }
   </style>
 </head>
- /* javascript for case study carousel */
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const track = document.querySelector(".carousel-track");
-    const slides = Array.from(track.children);
-    const nextBtn = document.querySelector(".carousel-btn.next");
-    const prevBtn = document.querySelector(".carousel-btn.prev");
 
-    let currentSlide = 0;
-
-    function updateSlide(position) {
-      const slideWidth = slides[0].getBoundingClientRect().width;
-      track.style.transform = `translateX(-${position * slideWidth}px)`;
-    }
-
-    nextBtn.addEventListener("click", () => {
-      currentSlide = (currentSlide + 1) % slides.length;
-      updateSlide(currentSlide);
-    });
-
-    prevBtn.addEventListener("click", () => {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      updateSlide(currentSlide);
-    });
-
-    // Optional: resize fix
-    window.addEventListener("resize", () => updateSlide(currentSlide));
-  });
-</script>
-
-  
 <body>
-  <!-- NAV -->
-<header class="navbar">
-  <div class="nav-left">
-    <img src="Assets/logo.png" alt="Elemental Insights Logo" class="logo">
-  </div>
-  <nav class="nav-right">
-    <a href="#about">About</a>
-    <a href="#what-i-do">How I Help</a>
-    <a href="#myths">Myths</a>
-    <a href="#case-studies">Case Studies</a>
-    <a href="#packages">Packages</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <!-- NAVIGATION -->
+  <header>
+    <div class="logo">
+      <img src="Assets/logo.png" alt="Elemental Insights Logo">
+      <span>Elemental Insights</span>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#help">How I Help</a>
+      <a href="#myths">Myths</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <h1>Data Analytics Isn’t Just for Big Business Anymore</h1>
-    <p>From spreadsheets to strategy — I build tools to help small teams see what’s really going on.</p>
-    <div>
+    <h1>Data Analytics Isn't Just for Big Business Anymore</h1>
+    <p>From spreadsheets to strategy — I build tools to help small teams see what's really going on.</p>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
       <a href="#packages" class="btn btn-primary">Browse Packages</a>
+      <a href="#contact" class="btn btn-secondary">Get Started</a>
     </div>
   </section>
 
@@ -306,112 +430,108 @@
     <p style="max-width:720px;margin:auto;text-align:center">Small teams deserve the same insight big companies pay thousands for. I founded Elemental Insights to help local shops, charities and community projects turn everyday data into clear dashboards, smart decisions and practical plans.</p>
   </section>
 
- <section id="help">
-  <h2 class="section-heading">How Can Data Help Your Business?</h2>
-  <div class="help-grid">
+  <!-- HOW I HELP -->
+  <section id="help">
+    <h2 class="section-heading">How Can Data Help Your Business?</h2>
+    <div class="help-grid">
+      <div class="help-card">
+        <h4>📈 See What's Making Money</h4>
+        <p>Spot your most profitable products and cut the ones losing money.</p>
+      </div>
 
-    <div class="help-card">
-      <h4>📈 See What’s Making Money</h4>
-      <p>Spot your most profitable products and cut the ones losing money.</p>
+      <div class="help-card">
+        <h4>📦 Fix Stock Headaches</h4>
+        <p>Track what's running low or sitting unsold — and restock smarter.</p>
+      </div>
+
+      <div class="help-card">
+        <h4>📣 Stop Wasting Marketing Budget</h4>
+        <p>Find out which ads or social posts bring customers — and which don't.</p>
+      </div>
+
+      <div class="help-card">
+        <h4>📅 Plan for Busy Periods</h4>
+        <p>Use past data to predict spikes around holidays or seasonal demand.</p>
+      </div>
+
+      <div class="help-card">
+        <h4>⏱ Save Time Every Week</h4>
+        <p>Automate weekly reports and dashboards so you're not stuck in spreadsheets.</p>
+      </div>
+
+      <div class="help-card">
+        <h4>📊 Impress Funders & Partners</h4>
+        <p>Turn messy numbers into clean reports and dashboards for stakeholders.</p>
+      </div>
     </div>
-
-    <div class="help-card">
-      <h4>📦 Fix Stock Headaches</h4>
-      <p>Track what’s running low or sitting unsold — and restock smarter.</p>
-    </div>
-
-    <div class="help-card">
-      <h4>📣 Stop Wasting Marketing Budget</h4>
-      <p>Find out which ads or social posts bring customers — and which don’t.</p>
-    </div>
-
-    <div class="help-card">
-      <h4>📅 Plan for Busy Periods</h4>
-      <p>Use past data to predict spikes around holidays or seasonal demand.</p>
-    </div>
-
-    <div class="help-card">
-      <h4>⏱ Save Time Every Week</h4>
-      <p>Automate weekly reports and dashboards so you’re not stuck in spreadsheets.</p>
-    </div>
-
-    <div class="help-card">
-      <h4>📊 Impress Funders & Partners</h4>
-      <p>Turn messy numbers into clean reports and dashboards for stakeholders.</p>
-    </div>
-
-  </div>
-</section>
+  </section>
 
   <!-- MYTHS -->
   <section id="myths">
-  <h2 class="section-heading">Data Myths — Busted</h2>
-  <div class="myth-grid">
+    <h2 class="section-heading">Data Myths — Busted</h2>
+    <div class="myth-grid">
+      <div class="myth-card">
+        <h4>🧱 Myth: "Analytics is only for big companies."</h4>
+        <p><strong>Truth:</strong> If you track sales, stock, or appointments — you've got usable data.</p>
+      </div>
 
-    <div class="myth-card">
-      <h4>🧱 Myth: “Analytics is only for big companies.”</h4>
-      <p><strong>Truth:</strong> If you track sales, stock, or appointments — you’ve got usable data.</p>
+      <div class="myth-card">
+        <h4>🪣 Myth: "Our data is too messy."</h4>
+        <p><strong>Truth:</strong> Cleaning messy data is part of the job — it's often where insights begin.</p>
+      </div>
+
+      <div class="myth-card">
+        <h4>🧠 Myth: "I'm not a numbers person."</h4>
+        <p><strong>Truth:</strong> That's my job — I turn data into clear advice without jargon.</p>
+      </div>
+
+      <div class="myth-card">
+        <h4>💸 Myth: "It's too expensive."</h4>
+        <p><strong>Truth:</strong> Starter packages begin at £100 — many pay for themselves fast.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="myth-card">
-      <h4>🪣 Myth: “Our data is too messy.”</h4>
-      <p><strong>Truth:</strong> Cleaning messy data is part of the job — it’s often where insights begin.</p>
-    </div>
+  <!-- CASE STUDIES -->
+  <section id="cases">
+    <h2 class="section-heading">Case Studies</h2>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <!-- Case Study 1 -->
+        <div class="carousel-card">
+          <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzFiYWEyMzMtNzY1OC00MTQxLWE0MWEtOTQzMTczNWI5MTFmIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0"></iframe>
+          <div class="carousel-content">
+            <h3>Food Bank Demand Dashboard</h3>
+            <p>Helped volunteers forecast parcel demand and avoid shortages.</p>
+          </div>
+        </div>
 
-    <div class="myth-card">
-      <h4>🧠 Myth: “I’m not a numbers person.”</h4>
-      <p><strong>Truth:</strong> That’s my job — I turn data into clear advice without jargon.</p>
-    </div>
-
-    <div class="myth-card">
-      <h4>💸 Myth: “It’s too expensive.”</h4>
-      <p><strong>Truth:</strong> Starter packages begin at £100 — many pay for themselves fast.</p>
-    </div>
-
-    <!-- Add more as needed -->
-  </div>
-</section>
-
- <!-- CASE STUDIES -->
-<section id="cases">
-  <h2 class="section-heading">Case Studies</h2>
-
-  <div class="carousel-container">
-    <div class="carousel-track">
-
-      <!-- Case Study 1 -->
-      <div class="carousel-card">
-        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzFiYWEyMzMtNzY1OC00MTQxLWE0MWEtOTQzMTczNWI5MTFmIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0"></iframe>
-        <div class="carousel-content">
-          <h3>Food Bank Demand Dashboard</h3>
-          <p>Helped volunteers forecast parcel demand and avoid shortages.</p>
+        <!-- Case Study 2 -->
+        <div class="carousel-card">
+          <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0"></iframe>
+          <div class="carousel-content">
+            <h3>Chemical Inventory Tracker</h3>
+            <p>Reduced stock checks by 60% and passed safety audit hassle‑free.</p>
+          </div>
         </div>
       </div>
 
-      <!-- Case Study 2 -->
-      <div class="carousel-card">
-        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0"></iframe>
-        <div class="carousel-content">
-          <h3>Chemical Inventory Tracker</h3>
-          <p>Reduced stock checks by 60% and passed safety audit hassle‑free.</p>
-        </div>
-      </div>
-
-      <!-- Add more slides here as needed -->
-
+      <!-- Navigation -->
+      <button class="carousel-btn prev">&#8592;</button>
+      <button class="carousel-btn next">&#8594;</button>
     </div>
-
-    <!-- Navigation -->
-    <button class="carousel-btn prev">&#8592;</button>
-    <button class="carousel-btn next">&#8594;</button>
-  </div>
-</section>
+  </section>
   
   <!-- PACKAGES -->
   <section id="packages">
-    <h2 class="section-heading">Project Packages</h2>
+    <h2 class="section-heading">Package Packages</h2>
     <table>
-      <tr><th>Feature / Deliverable</th><th class="center">Starter £100</th><th class="center">Standard £250</th><th class="center">Premium £400</th></tr>
+      <tr>
+        <th>Feature / Deliverable</th>
+        <th class="center">Starter £100</th>
+        <th class="center">Standard £250</th>
+        <th class="center">Premium £400</th>
+      </tr>
       <tr><td>Custom Dashboard</td><td class="center">✅</td><td class="center">✅</td><td class="center">✅</td></tr>
       <tr><td>Insight Summary (PDF)</td><td class="center">✅</td><td class="center">✅</td><td class="center">✅</td></tr>
       <tr><td>Interactive Filters</td><td class="center">—</td><td class="center">✅</td><td class="center">✅</td></tr>
@@ -421,22 +541,55 @@
       <tr><td>Multiple Data Sources</td><td class="center">—</td><td class="center">—</td><td class="center">✅</td></tr>
       <tr><td>Walk-through Call</td><td class="center">30 min</td><td class="center">1 hr</td><td class="center">1 hr + 3-mo check-ins</td></tr>
     </table>
+    
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="#contact" class="btn btn-primary">Choose Your Package</a>
+    </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
     <h2 class="section-heading">Get in Touch</h2>
     <form action="https://formspree.io/f/mnqepjwp" method="POST">
-      <input type="text" name="name" placeholder="Your name" required />
-      <input type="email" name="email" placeholder="Your email" required />
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
       <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-      <button type="submit" class="btn btn-primary" style="margin-top:.5rem">Send Message</button>
+      <button type="submit" class="btn btn-primary">Send Message</button>
     </form>
-    <p style="text-align:center;margin-top:1rem">Prefer email? <a href="mailto:tom@elementalinsights.co.uk">tom@elementalinsights.co.uk</a></p>
+    <p style="text-align:center;margin-top:1rem">Prefer email? <a href="mailto:tom@elementalinsights.co.uk" style="color: var(--accent);">tom@elementalinsights.co.uk</a></p>
   </section>
 
   <footer>
     © 2025 Elemental Insights | Built with Power BI & Formspree
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const track = document.querySelector(".carousel-track");
+      const slides = Array.from(track.children);
+      const nextBtn = document.querySelector(".carousel-btn.next");
+      const prevBtn = document.querySelector(".carousel-btn.prev");
+
+      let currentSlide = 0;
+
+      function updateSlide(position) {
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${position * slideWidth}px)`;
+      }
+
+      nextBtn.addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlide(currentSlide);
+      });
+
+      prevBtn.addEventListener("click", () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        updateSlide(currentSlide);
+      });
+
+      // Resize fix
+      window.addEventListener("resize", () => updateSlide(currentSlide));
+    });
+  </script>
 </body>
 </html>
