@@ -134,6 +134,68 @@
   margin: 0;
   color: #555;
 }
+
+    .carousel-container {
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carousel-card {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.carousel-card iframe {
+  flex: 1 1 55%;
+  height: 360px;
+  border: none;
+}
+
+.carousel-content {
+  flex: 1 1 40%;
+}
+
+.carousel-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background: #3a8bd1;
+}
     /*---------------- SECTION ----------------*/
     section{padding:4rem 1rem;max-width:1050px;margin:auto}
     .section-heading{text-align:center;margin-bottom:2.5rem;font-size:2rem;color:var(--brand)}
@@ -182,6 +244,32 @@
 }
   </style>
 </head>
+ /* javascript for case study carousel */
+  <script>
+  const track = document.querySelector(".carousel-track");
+  const slides = Array.from(track.children);
+  const nextBtn = document.querySelector(".carousel-btn.next");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+
+  let currentSlide = 0;
+
+  function updateSlide(position) {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${position * slideWidth}px)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlide(currentSlide);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlide(currentSlide);
+  });
+</script>
+
+  
 <body>
   <!-- NAV -->
 <header class="navbar">
@@ -282,38 +370,35 @@
  <!-- CASE STUDIES -->
 <section id="cases">
   <h2 class="section-heading">Case Studies</h2>
-  <div class="grid">
-    <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzFiYWEyMzMtNzY1OC00MTQxLWE0MWEtOTQzMTczNWI5MTFmIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
-      <div style="flex:1 1 40%">
-        <h3>Food‑Bank Demand Dashboard</h3>
-        <p>Helped volunteers forecast parcel demand and avoid shortages.</p>
+
+  <div class="carousel-container">
+    <div class="carousel-track">
+
+      <!-- Case Study 1 -->
+      <div class="carousel-card">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzFiYWEyMzMtNzY1OC00MTQxLWE0MWEtOTQzMTczNWI5MTFmIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0"></iframe>
+        <div class="carousel-content">
+          <h3>Food Bank Demand Dashboard</h3>
+          <p>Helped volunteers forecast parcel demand and avoid shortages.</p>
+        </div>
       </div>
+
+      <!-- Case Study 2 -->
+      <div class="carousel-card">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0"></iframe>
+        <div class="carousel-content">
+          <h3>Chemical Inventory Tracker</h3>
+          <p>Reduced stock checks by 60% and passed safety audit hassle‑free.</p>
+        </div>
+      </div>
+
+      <!-- Add more slides here as needed -->
+
     </div>
 
-    <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
-      <div style="flex:1 1 40%">
-        <h3>Chemical Inventory Tracker</h3>
-        <p>Reduced stock checks by 60% and passed safety audit hassle‑free.</p>
-      </div>
-    </div>
-
-    <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTAyY2ZhZjktOGYzNi00ZDU4LTg0NDgtZmM2ZDY5MzM4ZDY5IiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
-      <div style="flex:1 1 40%">
-        <h3>Energy Forecasting Model</h3>
-        <p>Predicted daily UK electricity demand with 90% accuracy.</p>
-      </div>
-    </div>
-
-    <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiOGY5ODUwOTUtYzdiOS00YjUwLTkzOTgtMDE1Y2QxZTI2MzA0IiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
-      <div style="flex:1 1 40%">
-        <h3>NHS Outpatient Activity Analysis</h3>
-        <p>Revealed performance gaps and guided planning with 9 years of data.</p>
-      </div>
-    </div>
+    <!-- Navigation -->
+    <button class="carousel-btn prev">&#8592;</button>
+    <button class="carousel-btn next">&#8594;</button>
   </div>
 </section>
   
