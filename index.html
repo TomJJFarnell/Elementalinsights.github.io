@@ -8,122 +8,125 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --brand: #1e1e1e;
-      --accent: #198754;
-      --light: #f8f9fa;
+      --brand: #0a2540;
+      --accent: #4f9ee5;
+      --light-bg: #f0f4f8;
+      --dark-text: #1a1a1a;
+      --white: #ffffff;
     }
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: var(--light);
-      color: #222;
-      line-height: 1.7;
+      background: var(--light-bg);
+      color: var(--dark-text);
     }
     header {
-      height: 100vh;
-      background: linear-gradient(to right, #f8f9fa, #e9ecef);
+      height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background: var(--brand);
+      color: white;
       text-align: center;
       padding: 2rem;
     }
     header h1 {
       font-size: 3rem;
       margin: 0;
-      color: var(--brand);
+      animation: fadeIn 1.5s ease;
     }
     header p {
-      font-size: 1.3rem;
-      color: #444;
-      max-width: 600px;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      opacity: 0.85;
     }
     nav {
       position: fixed;
       top: 0;
       right: 0;
       background: white;
-      padding: 1rem 2rem;
-      display: flex;
-      gap: 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      z-index: 10;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      z-index: 999;
     }
     nav a {
-      text-decoration: none;
+      margin-left: 1rem;
       color: var(--brand);
+      text-decoration: none;
       font-weight: 600;
     }
     nav a:hover {
-      color: var(--accent);
+      text-decoration: underline;
     }
     main {
       max-width: 1000px;
       margin: auto;
-      padding: 4rem 1rem;
+      padding: 2rem 1rem;
     }
     section {
-      margin-bottom: 5rem;
+      margin-bottom: 4rem;
     }
     h2 {
       color: var(--brand);
       margin-top: 0;
     }
     p {
-      line-height: 1.7;
+      line-height: 1.6;
+    }
+    .dashboard {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      margin-top: 1rem;
     }
     iframe {
       width: 100%;
       height: 600px;
       border: none;
-      margin-top: 1rem;
       border-radius: 6px;
-      background: white;
     }
-    .button, form button {
+    a.button, form button {
       display: inline-block;
       background: var(--accent);
       color: white;
-      padding: 0.7rem 1.5rem;
-      text-decoration: none;
+      padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 4px;
-      cursor: pointer;
+      text-decoration: none;
       font-weight: 600;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, background 0.3s;
     }
-    .button:hover, form button:hover {
-      background: #146c43;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-family: 'Inter', sans-serif;
+    a.button:hover, form button:hover {
+      background: #3787cc;
+      transform: scale(1.05);
     }
     footer {
       background: var(--brand);
       color: white;
       text-align: center;
       padding: 2rem 1rem;
+      margin-top: 4rem;
       font-size: 0.9rem;
     }
-    .card {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
+
   <nav>
     <a href="#about">About</a>
     <a href="#projects">Dashboards</a>
@@ -133,80 +136,78 @@
 
   <header>
     <h1>Elemental Insights</h1>
-    <p>Freelance data consultancy helping small teams transform their data into meaningful action.</p>
+    <p>Turning data into action</p>
   </header>
-  
+
   <main>
 
-    <!-- About -->
     <section id="about">
-  <h2>Helping Small Organisations Use Their Data</h2>
-  <p>Elemental Insights is an independent data consultancy run by Tom Farnell — a data analyst with a background in chemistry and a passion for making data work for real people.</p>
-  
-  <p>Whether you're running a shop, charity, food project, or local business, I can help you turn spreadsheets, invoices, and scattered data into interactive dashboards and detailed insight reports you can actually use — to track what's working, what's not, and what to plan next.</p>
+      <h2>Helping Small Organisations Use Their Data</h2>
+      <p>Elemental Insights is an independent data consultancy run by Tom Farnell — a data analyst with a background in chemistry and a passion for making data work for real people.</p>
+      <p>Whether you're running a shop, charity, food project, or local business, I can help you turn spreadsheets, invoices, and scattered data into interactive dashboards and detailed insight reports you can actually use — to track what's working, what's not, and what to plan next.</p>
+      <p><strong>Looking for your first dashboard or help making sense of data? I'm currently offering pro bono (free) work for selected small organisations.</strong></p>
+      <a class="button" href="#contact">Get in Touch</a>
+    </section>
 
-  <p><strong>Looking for your first dashboard or help making sense of data? I'm currently offering pro bono (free) work for selected small organisations.</strong></p>
-  
-  <a class="button" href="#contact">Get in Touch</a>
-</section>
+    <section id="projects">
+      <h2>Recent Dashboards</h2>
+      <p>Here are some real dashboards I've built to solve problems for local organisations — each with measurable results.</p>
 
-   <section id="projects">
-  <h2>Recent Dashboards</h2>
-  <p>Here are some real dashboards I've built to solve problems for local organisations — each with measurable results.</p>
+      <div class="dashboard">
+        <h3>Community Food Bank – Demand & Forecasting</h3>
+        <p><strong>Client:</strong> London-based food hub supporting over 100 families per month.</p>
+        <p><strong>Challenge:</strong> The team was tracking food parcel numbers and donations in spreadsheets, but couldn’t easily see trends or plan ahead.</p>
+        <p><strong>Solution:</strong> I created a dynamic dashboard that shows parcel demand by month, household size, and source of donations. It also includes a simple forecast of demand peaks (e.g. winter holidays).</p>
+        <p><strong>Outcome:</strong> Helped volunteers plan restocks more efficiently, avoid mid-month shortages, and improve reporting to their grant funder.</p>
+        <iframe title="Food Bank Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiYzFiYWEyMzMtNzY1OC00MTQxLWE0MWEtOTQzMTczNWI5MTFmIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9"></iframe>
+      </div>
 
-     
-  <!-- 1. Food Bank Dashboard -->
-  <h3>1. Community Food Bank – Demand & Forecasting</h3>
-  <p><strong>Client:</strong> London-based food hub supporting over 100 families per month.</p>
-  <p><strong>Challenge:</strong> The team was tracking food parcel numbers and donations in spreadsheets, but couldn’t easily see trends or plan ahead.</p>
-  <p><strong>Solution:</strong> I created a dynamic dashboard that shows parcel demand by month, household size, and source of donations. It also includes a simple forecast of demand peaks (e.g. winter holidays).</p>
-  <p><strong>Outcome:</strong> Helped volunteers plan restocks more efficiently, avoid mid-month shortages, and improve reporting to their grant funder.</p>
-  
+      <div class="dashboard">
+        <h3>School Science Department – Chemical Safety Inventory</h3>
+        <p><strong>Client:</strong> Secondary school science department with over 800 chemical items in stock.</p>
+        <p><strong>Challenge:</strong> Manual inventory updates were time-consuming, and there was no visibility on expired or hazardous stock levels.</p>
+        <p><strong>Solution:</strong> Built an interactive inventory dashboard showing current stock by hazard class, expiry status, and storage location. Added GHS pictograms and search filtering.</p>
+        <p><strong>Outcome:</strong> Reduced inventory management time by over 60% and helped the department pass their annual safety audit with no flagged issues.</p>
+        <iframe title="Chemical Inventory Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9"></iframe>
+      </div>
 
-  <!-- 2. Chemical Inventory Dashboard -->
-  <h3>2. School Science Department – Chemical Safety Inventory</h3>
-  <p><strong>Client:</strong> Secondary school science department with over 800 chemical items in stock.</p>
-  <p><strong>Challenge:</strong> Manual inventory updates were time-consuming, and there was no visibility on expired or hazardous stock levels.</p>
-  <p><strong>Solution:</strong> Built an interactive inventory dashboard showing current stock by hazard class, expiry status, and storage location. Added GHS pictograms and search filtering.</p>
-  <p><strong>Outcome:</strong> Reduced inventory management time by over 60% and helped the department pass their annual safety audit with no flagged issues.</p>
-  <iframe title="Chemical Inventroy Dashboard" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0" allowFullScreen="true"></iframe>
+      <div class="dashboard">
+        <h3>Online Retail – Sales & Funnel Performance</h3>
+        <p><strong>Client:</strong> Small e-commerce shop selling educational print books on Amazon and Shopify.</p>
+        <p><strong>Challenge:</strong> Sales data was split across multiple platforms, and there was no clear view of which product categories or time periods performed best.</p>
+        <p><strong>Solution:</strong> Merged sales data into a unified dashboard showing top-performing products, seasonal trends, and ROI by marketplace.</p>
+        <p><strong>Outcome:</strong> Helped the owner focus ad spend on high-margin titles and plan stock orders ahead of seasonal spikes, increasing Q4 profit by 18%.</p>
+        <iframe title="Online Retail Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiOWM5ODkyMDItYjhjNS00YmI1LWFiNjItMjNjZmNkZTdlNzk4IiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9"></iframe>
+      </div>
 
-  <!-- 3. Online Retail Dashboard -->
-  <h3>3. Online Retail – Sales & Funnel Performance</h3>
-  <p><strong>Client:</strong> Small e-commerce shop selling educational print books on Amazon and Shopify.</p>
-  <p><strong>Challenge:</strong> Sales data was split across multiple platforms, and there was no clear view of which product categories or time periods performed best.</p>
-  <p><strong>Solution:</strong> Merged sales data into a unified dashboard showing top-performing products, seasonal trends, and ROI by marketplace.</p>
-  <p><strong>Outcome:</strong> Helped the owner focus ad spend on high-margin titles and plan stock orders ahead of seasonal spikes, increasing Q4 profit by 18%.</p>
-  <iframe title="Online Retail Dashboard" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiOWM5ODkyMDItYjhjNS00YmI1LWFiNjItMjNjZmNkZTdlNzk4IiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0" allowFullScreen="true"></iframe>
+      <div class="dashboard">
+        <h3>NHS Forecasting – Outpatient Attendances & DNA Rates</h3>
+        <p><strong>Client:</strong> Public health project using NHS open data from 2011–2020.</p>
+        <p><strong>Challenge:</strong> NHS Trusts needed a simple way to visualise hospital-level attendance, missed appointments (DNAs), and referrals over time.</p>
+        <p><strong>Solution:</strong> Built an interactive Power BI report with filters by hospital, department, and year — showing trends, heatmaps, and forecasted demand.</p>
+        <p><strong>Outcome:</strong> Enabled better scheduling policy research, and highlighted where GP referrals dropped during COVID lockdowns.</p>
+        <iframe title="NHS Dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiODM5N2M0YjAtMGM2OC00ZjNiLWFmZWQtNjMwNWRiNDU4NmQ2IiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9&pageName=ae2436a5a5f9a34b9fca"></iframe>
+      </div>
+    </section>
 
-  <!-- 4. NHS Outpatient Dashboard -->
-  <h3>4. NHS Forecasting – Outpatient Attendances & DNA Rates</h3>
-  <p><strong>Client:</strong> Public health project using NHS open data from 2011–2020.</p>
-  <p><strong>Challenge:</strong> NHS Trusts needed a simple way to visualise hospital-level attendance, missed appointments (DNAs), and referrals over time.</p>
-  <p><strong>Solution:</strong> Built an interactive Power BI report with filters by hospital, department, and year — showing trends, heatmaps, and forecasted demand.</p>
-  <p><strong>Outcome:</strong> Enabled better scheduling policy research, and highlighted where GP referrals dropped during COVID lockdowns.</p>
- <iframe title="NHS Admissions Dashboard" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiODM5N2M0YjAtMGM2OC00ZjNiLWFmZWQtNjMwNWRiNDU4NmQ2IiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0" allowFullScreen="true"></iframe>
-</section>
-
-     <section id="contact">
+    <section id="contact">
       <h2>Let’s Talk</h2>
-      <p>If you run a small business or charity and want to make the most of the data it generates – I’d love to help. Especially if you've never worked with a data analyst before.</p>
-
+      <p>If you run a small business or charity and want to make the most of the data it generates — I’d love to help. Especially if you've never worked with a data analyst before.</p>
       <p>Want to track your sales, stock, or impact but not sure where to start? I’m offering free, no-strings-attached data dashboards to a handful of small teams.</p>
-
-      <form action="https://formspree.io/f/mblywkbe" method="POST">
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email address" required />
+        <input type="email" name="email" placeholder="Your email" required />
         <textarea name="message" rows="6" placeholder="Tell me about your project or ask a question..." required></textarea>
-        <button type="submit">Send Message</button>
+        <button type="submit">Send</button>
       </form>
-
       <p>Or email me directly: <a href="mailto:tom@elementalinsights.co.uk">tom@elementalinsights.co.uk</a></p>
     </section>
+
   </main>
-  
+
   <footer>
     &copy; 2025 Elemental Insights &nbsp;|&nbsp; Built with Power BI, GitHub Pages, and Formspree
   </footer>
+
 </body>
 </html>
