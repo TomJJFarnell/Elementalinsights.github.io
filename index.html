@@ -1,178 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elemental Insights</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    .hover-zoom:hover {
-      transform: scale(1.03);
-      transition: transform 0.3s ease;
+    :root {
+      --brand:#0a2540;
+      --accent:#4f9ee5;
+      --light:#f8f9fb;
+      --white:#ffffff;
     }
-    .hero-section {
-  position: relative;
-  background-image: url('Assets/Hero'); 
-  background-size: cover;
-  background-position: center;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.5); /* dark overlay for contrast */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-content {
-  text-align: center;
-  padding: 2rem;
-  max-width: 800px;
-}
-
-.hero-buttons {
-  margin-top: 2rem;
-}
-
-.cta-btn, .cta-btn-outline {
-  padding: 12px 24px;
-  font-weight: bold;
-  border-radius: 6px;
-  text-decoration: none;
-  margin: 0 10px;
-  transition: 0.3s;
-}
-
-.cta-btn {
-  background-color: #0078d4;
-  color: white;
-}
-
-.cta-btn-outline {
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
-}
-
-.cta-btn:hover, .cta-btn-outline:hover {
-  opacity: 0.85;
-}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:var(--light);color:#333;line-height:1.7}
+    /*---------------- NAV ----------------*/
+    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:var(--white);box-shadow:0 2px 6px rgba(0,0,0,.05);position:sticky;top:0;z-index:999}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.4rem;color:var(--brand)}
+    .logo img{height:40px;width:40px}
+    nav a{margin-left:1.4rem;color:var(--brand);text-decoration:none;font-weight:600;transition:.2s}
+    nav a:hover{color:var(--accent)}
+    /*---------------- HERO ----------------*/
+    .hero{min-height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;background:linear-gradient(135deg,var(--light) 0%,#e8f0fe 100%)}
+    .hero h1{font-size:3rem;font-weight:700;color:var(--brand);margin-bottom:1rem}
+    .hero p{font-size:1.25rem;max-width:700px;margin-bottom:2rem;color:#444}
+    .btn{display:inline-block;padding:.8rem 1.6rem;border-radius:6px;font-weight:600;text-decoration:none;margin:.3rem}.btn-primary{background:var(--accent);color:var(--white)}.btn-primary:hover{background:#3a8bd1}.btn-outline{border:2px solid var(--accent);color:var(--accent)}.btn-outline:hover{background:var(--accent);color:var(--white)}
+    /*---------------- SECTION ----------------*/
+    section{padding:4rem 1rem;max-width:1050px;margin:auto}
+    .section-heading{text-align:center;margin-bottom:2.5rem;font-size:2rem;color:var(--brand)}
+    /*---------------- CARDS ----------------*/
+    .grid{display:grid;gap:1.5rem}.two-col{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:var(--white);padding:1.8rem;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.06);transition:transform .2s}.card:hover{transform:translateY(-5px)}
+    /*---------------- TABLES ----------------*/
+    table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:1.5rem}
+    th,td{padding:.8rem 1rem;border:1px solid #d7e2ef;text-align:left}
+    th{background:var(--brand);color:var(--white)}
+    td.center{text-align:center}
+    /*---------------- CONTACT ----------------*/
+    form{display:flex;flex-direction:column;gap:1rem;max-width:600px;margin:auto}
+    input,textarea{padding:.9rem;border:1px solid #ccd7e6;border-radius:6px;font-family:inherit;font-size:1rem}
+    footer{background:var(--brand);color:var(--white);text-align:center;padding:2rem 1rem;font-size:.85rem;margin-top:4rem}
   </style>
 </head>
-
-<body class="bg-blue-50 text-gray-900">
-  <header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold text-blue-900">Elemental Insights</h1>
-    </div>
+<body>
+  <!-- NAV -->
+  <header>
+    <div class="logo"><img src="assets/logo.png" alt="Elemental Insights logo">Elemental Insights</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#myths">Myths</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
- <!-- Hero Section with Background Image -->
-<section class="hero-section">
-  <div class="hero-overlay">
-    <div class="hero-content">
-      <h1>Data Analytics Isn’t Just for Big Business Anymore</h1>
-      <p>Generate insights from the data you already have — no jargon, no new software.</p>
-      <div class="hero-buttons">
-        <a href="#contact" class="cta-btn">Get Your Free Project</a>
-        <a href="#packages" class="cta-btn-outline">See Packages</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- Why I Started -->
-  <section class="max-w-4xl mx-auto px-4 py-12">
-    <h3 class="text-2xl font-semibold mb-4">Why I Started This</h3>
-    <p>Small teams deserve the same insight big companies pay thousands for. Many shops, charities and local projects already track sales, stock or donations, but don’t have time to make sense of it. I launched Elemental Insights to turn that everyday data into clear dashboards, smart decisions and practical plans.</p>
-  </section>
-
-  <!-- Who I Work With -->
-  <section class="bg-white py-12">
-    <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-2xl font-semibold mb-6">Who I Work With</h3>
-      <div class="text-lg">Schools • Charities • Start-ups • Local Shops • Independent Researchers</div>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <h1>Data Analytics Isn’t Just for Big Business Anymore</h1>
+    <p>From spreadsheets to strategy — I build tools to help small teams see what’s really going on.</p>
+    <div>
+      <a href="#packages" class="btn btn-outline">See Packages</a>
     </div>
   </section>
 
-  <!-- What I Do -->
-  <section class="py-12 px-6">
-    <h3 class="text-2xl font-semibold text-center mb-6">What I Do ― in Plain English</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-      <div class="bg-white p-6 rounded shadow hover-zoom">
-        <h4 class="font-semibold mb-2">Not sure what’s profitable</h4>
-        <p>Simple dashboards that show top-selling products and hidden money-losers</p>
-      </div>
-      <div class="bg-white p-6 rounded shadow hover-zoom">
-        <h4 class="font-semibold mb-2">Stock headaches</h4>
-        <p>Alerts and forecasts so you reorder on time and free up cash</p>
-      </div>
-      <div class="bg-white p-6 rounded shadow hover-zoom">
-        <h4 class="font-semibold mb-2">Wasted marketing spend</h4>
-        <p>Track which channels actually bring customers</p>
-      </div>
-      <div class="bg-white p-6 rounded shadow hover-zoom">
-        <h4 class="font-semibold mb-2">Seasonal surprises</h4>
-        <p>Forecast busy periods to plan staffing and stock</p>
-      </div>
-      <div class="bg-white p-6 rounded shadow hover-zoom">
-        <h4 class="font-semibold mb-2">Manual spreadsheet slog</h4>
-        <p>Automate weekly reports so you get hours back</p>
-      </div>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-heading">About</h2>
+    <p style="max-width:720px;margin:auto;text-align:center">Small teams deserve the same insight big companies pay thousands for. I founded Elemental Insights to help local shops, charities and community projects turn everyday data into clear dashboards, smart decisions and practical plans.</p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 class="section-heading">How Can Data Analysis Help Your Small Business?</h2>
+    <div class="grid two-col">
+      <div class="card"><h3>Not sure what’s profitable?</h3><p>Simple dashboards that reveal top-selling products and hidden money-losers.</p></div>
+      <div class="card"><h3>Stock headaches?</h3><p>Alerts and forecasts so you reorder on time and free up cash.</p></div>
+      <div class="card"><h3>Wasted marketing spend?</h3><p>Track which channels actually bring customers — cut the rest.</p></div>
+      <div class="card"><h3>Seasonal surprises?</h3><p>Forecast busy periods to plan staff and stock before the rush.</p></div>
+      <div class="card"><h3>Spreadsheet slog?</h3><p>Automate weekly reports so you get hours back every month.</p></div>
     </div>
   </section>
 
-  <!-- Myths -->
-  <section class="bg-blue-100 py-12 px-6">
-    <h3 class="text-2xl font-semibold text-center mb-6">Data Myths — Busted</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-      <div class="bg-white p-6 rounded shadow">Analytics is only for big companies → <strong>False.</strong> If you record sales, stock or appointments, you have usable data.</div>
-      <div class="bg-white p-6 rounded shadow">Our data’s too messy → <strong>Cleaning it is part of the job.</strong></div>
-      <div class="bg-white p-6 rounded shadow">I’m “not a numbers person” → <strong>That’s why you hire me.</strong></div>
-      <div class="bg-white p-6 rounded shadow">It’s too expensive → <strong>Starter package is £100;</strong> one insight can pay for itself.</div>
+  <!-- MYTHS -->
+  <section id="myths">
+    <h2 class="section-heading">Data Myths — Busted</h2>
+    <div class="grid two-col">
+      <div class="card"><strong>Myth:</strong> Analytics is only for big companies.<br><strong>Truth:</strong> If you record sales or appointments, you have usable data.</div>
+      <div class="card"><strong>Myth:</strong> Our data’s too messy.<br><strong>Truth:</strong> Cleaning it is part of the job and often uncovers quick wins.</div>
+      <div class="card"><strong>Myth:</strong> I’m “not a numbers person.”<br><strong>Truth:</strong> I translate numbers into plain advice.</div>
+      <div class="card"><strong>Myth:</strong> It’s too expensive.<br><strong>Truth:</strong> Starter package is £100 — one insight can pay for itself.</div>
     </div>
   </section>
 
-  <!-- Case Studies -->
-  <section class="py-12 px-6">
-    <h3 class="text-2xl font-semibold text-center mb-6">Case Studies / Results</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-      <div class="bg-white p-4 shadow rounded">
-        <iframe class="w-full h-64 rounded" src="https://app.powerbi.com/view?r=eyJrIjoiY2FiYjY3ZGUtYzQyMC00YjAwLWIyN2EtZDI3Zjc0MmY1OWQzIiwidCI6IjkyN2MyYmFjLTI4ZmMtNDkxMi04Mjc5LTUwNzIxYTY2MTVlMiIsImMiOjh9"></iframe>
-        <p class="mt-2">Chemical Inventory Dashboard: Passed audit by visualising stock levels and hazard classes clearly.</p>
+  <!-- CASE STUDIES -->
+  <section id="cases">
+    <h2 class="section-heading">Case Studies</h2>
+    <div class="grid">
+      <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzFiYWEyMzMtNzY1OC00MTQxLWE0MWEtOTQzMTczNWI5MTFmIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
+        <div style="flex:1 1 40%">
+          <h3>Food-Bank Demand Dashboard</h3>
+          <p>Helped volunteers forecast parcel demand and avoid shortages.</p>
+        </div>
       </div>
-      <div class="bg-white p-4 shadow rounded">
-        <iframe class="w-full h-64 rounded" src="https://app.powerbi.com/view?r=eyJrIjoiYTg3ZDRiNDctODdlMC00ZTkxLTkxNzgtNDIxZDk2ZDAxYjRkIiwidCI6IjkyN2MyYmFjLTI4ZmMtNDkxMi04Mjc5LTUwNzIxYTY2MTVlMiIsImMiOjh9"></iframe>
-        <p class="mt-2">Retail Sales Dashboard: Highlighted best-selling products and helped optimise pricing strategy.</p>
-      </div>
-      <div class="bg-white p-4 shadow rounded">
-        <iframe class="w-full h-64 rounded" src="https://app.powerbi.com/view?r=eyJrIjoiMGM4NGQ4ZjctMzM0YS00MzRlLWExZWYtYzc5NzA5OTkyMjU4IiwidCI6IjkyN2MyYmFjLTI4ZmMtNDkxMi04Mjc5LTUwNzIxYTY2MTVlMiIsImMiOjh9"></iframe>
-        <p class="mt-2">NHS Patient Attendance: Identified DNA rate trends to support policy changes and staffing levels.</p>
+      <div class="card" style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" style="flex:1 1 55%;height:360px;border:none"></iframe>
+        <div style="flex:1 1 40%">
+          <h3>Chemical Inventory Tracker</h3>
+          <p>Reduced stock checks by 60% and passed safety audit hassle-free.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="bg-blue-100 py-12 px-6">
-    <div class="max-w-3xl mx-auto text-center">
-      <h3 class="text-2xl font-semibold mb-4">Get in Touch</h3>
-      <p class="mb-6">🆓 Currently offering free starter projects for a limited number of small teams.</p>
-      <form action="https://formspree.io/f/mnqepjwp" method="POST" class="space-y-4">
-        <input type="text" name="name" placeholder="Name" class="w-full px-4 py-2 border rounded">
-        <input type="email" name="email" placeholder="Email" class="w-full px-4 py-2 border rounded">
-        <textarea name="message" placeholder="Tell me what you need help with..." rows="4" class="w-full px-4 py-2 border rounded"></textarea>
-        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Get My Free Project</button>
-      </form>
-      <p class="mt-4">Or email me directly: <a href="mailto:tom@elementalinsights.co.uk" class="text-blue-700 underline">tom@elementalinsights.co.uk</a></p>
-    </div>
+  <!-- PACKAGES -->
+  <section id="packages">
+    <h2 class="section-heading">Project Packages</h2>
+    <table>
+      <tr><th>Feature / Deliverable</th><th class="center">Starter £100</th><th class="center">Standard £250</th><th class="center">Premium £400</th></tr>
+      <tr><td>Custom Dashboard</td><td class="center">✅</td><td class="center">✅</td><td class="center">✅</td></tr>
+      <tr><td>Insight Summary (PDF)</td><td class="center">✅</td><td class="center">✅</td><td class="center">✅</td></tr>
+      <tr><td>Interactive Filters</td><td class="center">—</td><td class="center">✅</td><td class="center">✅</td></tr>
+      <tr><td>Spreadsheet Clean-up</td><td class="center">—</td><td class="center">✅</td><td class="center">✅</td></tr>
+      <tr><td>Forecasting Tool</td><td class="center">—</td><td class="center">—</td><td class="center">✅</td></tr>
+      <tr><td>Grant / Pitch Visuals</td><td class="center">—</td><td class="center">—</td><td class="center">✅</td></tr>
+      <tr><td>Multiple Data Sources</td><td class="center">—</td><td class="center">—</td><td class="center">✅</td></tr>
+      <tr><td>Walk-through Call</td><td class="center">30 min</td><td class="center">1 hr</td><td class="center">1 hr + 3-mo check-ins</td></tr>
+    </table>
   </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-heading">Get in Touch</h2>
+    <form action="https://formspree.io/f/mnqepjwp" method="POST">
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+      <button type="submit" class="btn btn-primary" style="margin-top:.5rem">Send Message</button>
+    </form>
+    <p style="text-align:center;margin-top:1rem">Prefer email? <a href="mailto:tom@elementalinsights.co.uk">tom@elementalinsights.co.uk</a></p>
+  </section>
+
+  <footer>
+    © 2025 Elemental Insights | Built with Power BI & Formspree
+  </footer>
 </body>
 </html>
