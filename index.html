@@ -50,8 +50,8 @@
     }
 
     .logo img {
-      height: 70px;
-      width: 190px;
+      height: 80px;
+      width: 160px;
     }
 
     nav a {
@@ -346,18 +346,23 @@
       margin: auto;
     }
 
-    input, textarea {
+    input, textarea, select {
       padding: 12px 16px;
       border: 2px solid #ccd7e6;
       border-radius: 8px;
       font-family: inherit;
       font-size: 1rem;
       transition: border-color 0.3s ease;
+      background: white;
     }
 
-    input:focus, textarea:focus {
+    input:focus, textarea:focus, select:focus {
       outline: none;
       border-color: var(--accent);
+    }
+
+    select {
+      cursor: pointer;
     }
 
     /* FOOTER */
@@ -553,7 +558,7 @@
     </table>
     
     <div style="text-align: center; margin-top: 2rem;">
-      <a href="#contact" class="btn btn-primary">Choose Your Package</a>
+      <a href="#contact" class="btn btn-primary" onclick="selectPackage('growth-tracker')">Choose Your Package</a>
     </div>
   </section>
 
@@ -563,6 +568,13 @@
     <form action="https://formspree.io/f/mnqepjwp" method="POST">
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
+      <select name="package" id="package-select" required>
+        <option value="">Select a package...</option>
+        <option value="quick-wins">Quick Wins - £100</option>
+        <option value="insight-builder">Insight Builder - £250</option>
+        <option value="growth-tracker">Growth Tracker - £400</option>
+        <option value="consultation">Just want to chat first</option>
+      </select>
       <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
       <button type="submit" class="btn btn-primary">Send Message</button>
     </form>
@@ -599,6 +611,45 @@
 
       // Resize fix
       window.addEventListener("resize", () => updateSlide(currentSlide));
+    });
+
+    // Package selection function
+    function selectPackage(packageType) {
+      // Wait for page to scroll to contact section
+      setTimeout(() => {
+        const packageSelect = document.getElementById('package-select');
+        if (packageSelect) {
+          packageSelect.value = packageType;
+          packageSelect.focus();
+        }
+      }, 500);
+    }
+
+    // Add click handlers to individual package table cells
+    document.addEventListener("DOMContentLoaded", function() {
+      // You can add individual package selection buttons if needed
+      const table = document.querySelector('table');
+      if (table) {
+        // Add click handlers to package columns
+        const headers = table.querySelectorAll('th');
+        headers.forEach((header, index) => {
+          if (index > 0) { // Skip first column (Deliverable)
+            header.style.cursor = 'pointer';
+            header.addEventListener('click', () => {
+              let packageType = '';
+              switch(index) {
+                case 1: packageType = 'quick-wins'; break;
+                case 2: packageType = 'insight-builder'; break;
+                case 3: packageType = 'growth-tracker'; break;
+              }
+              if (packageType) {
+                window.location.href = '#contact';
+                selectPackage(packageType);
+              }
+            });
+          }
+        });
+      }
     });
   </script>
 </body>
