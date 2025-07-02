@@ -323,87 +323,187 @@
 
     /* CAROUSEL */
     .carousel-container {
-      position: relative;
-      overflow: hidden;
-      margin-top: 3rem;
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-    }
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
 
-    .carousel-track {
-      display: flex;
-      transition: transform 0.4s ease;
-    }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 300%; /* 3 slides = 300% */
+        }
 
-    .carousel-card {
-      min-width: 100%;
-      box-sizing: border-box;
-      padding: 2rem;
-      background: var(--card-bg);
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
+        .carousel-card {
+            flex: 0 0 33.333%;
+            background: var(--white);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            min-height: 600px;
+        }
 
-    .carousel-content {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
+        .carousel-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
 
-    .carousel-content h3 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--secondary);
-      font-weight: 700;
-    }
+        .carousel-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
 
-    .carousel-content p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
+        .section-image {
+            margin: 1rem 0;
+            text-align: center;
+        }
 
-    .carousel-card iframe {
-      width: 100%;
-      height: 700px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
+        .section-image img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(49, 130, 206, 0.2);
-      color: white;
-      border: none;
-      font-size: 0.9rem;
-      padding: 6px 10px;
-      cursor: pointer;
-      border-radius: 4px;
-      z-index: 10;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      opacity: 0.4;
-      font-weight: bold;
-    }
+        .results-container {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            flex-grow: 1;
+        }
 
-    .carousel-btn.prev {
-      left: 15px;
-    }
+        .results-container h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
 
-    .carousel-btn.next {
-      right: 15px;
-    }
+        .results-container ul {
+            list-style: none;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
 
-    .carousel-btn:hover {
-      background: rgba(49, 130, 206, 0.4);
-      opacity: 0.8;
-      transform: translateY(-50%) scale(1.1);
-    }
+        .results-container li {
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 20px;
+        }
+
+        .carousel-btn.next {
+            right: 20px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .pause-play-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 25px;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .pause-play-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .carousel-card {
+                padding: 1.5rem;
+                min-height: 500px;
+            }
+
+            .carousel-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .carousel-content p {
+                font-size: 1rem;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .carousel-btn.prev {
+                left: 10px;
+            }
+
+            .carousel-btn.next {
+                right: 10px;
+            }
+        }
 
     /* TABLES */
     .table-container {
@@ -684,103 +784,276 @@
   </section>
 
   <!-- CASE STUDIES -->
-  <section id="cases">
-    <h2 class="section-heading">Real Results for Real Businesses</h2>
-    <div class="section-image">
-      <img src="Assets/dashboard_on_ipad.jpg" alt="Professional dashboard showing business success metrics">
-    </div>
-    <div class="carousel-container">
-      <div class="carousel-track">
-        <!-- Case Study 1 -->
-        <div class="carousel-card">
-          <div class="carousel-content">
-            <h3>Local Café Chain</h3>
-            <p>Three locations struggling with inventory waste and unclear profit margins across different menu items and times of day.</p>
-          </div>
-          <div class="section-image">
-            <img src="Assets/multi_screen_dashboard.jpg" alt="Multi-screen dashboard showing cafe analytics">
-          </div>
-          <div style="background: var(--background); padding: 2rem; border-radius: 12px; margin-top: 1rem;">
-            <h4 style="color: var(--secondary); margin-bottom: 1rem;">Results After 2 Weeks:</h4>
-            <ul style="color: var(--text-muted); line-height: 1.8;">
-              <li>🎯 Identified that pastries had 40% higher profit margins than sandwiches</li>
-              <li>📊 Discovered Tuesday-Thursday lunch rush was being understaffed</li>
-              <li>💰 Reduced food waste by 25% through better demand forecasting</li>
-              <li>📈 Increased overall profit margins by 18% in first month</li>
-              <li>⏰ Automated daily reports, saving 5 hours/week of manual work</li>
-            </ul>
-          </div>
+    <section id="cases">
+        <h2 class="section-heading">Real Results for Real Businesses</h2>
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Case Study 1 -->
+                <div class="carousel-card">
+                    <div class="carousel-content">
+                        <h3>Local Café Chain</h3>
+                        <p>Three locations struggling with inventory waste and unclear profit margins across different menu items and times of day.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="Assets/multi_screen_dashboard.jpg" alt="Multi-screen dashboard showing cafe analytics">
+                    </div>
+                    <div class="results-container">
+                        <h4>Results After 2 Weeks:</h4>
+                        <ul>
+                            <li>🎯 Identified that pastries had 40% higher profit margins than sandwiches</li>
+                            <li>📊 Discovered Tuesday-Thursday lunch rush was being understaffed</li>
+                            <li>💰 Reduced food waste by 25% through better demand forecasting</li>
+                            <li>📈 Increased overall profit margins by 18% in first month</li>
+                            <li>⏰ Automated daily reports, saving 5 hours/week of manual work</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="carousel-card">
+                    <div class="carousel-content">
+                        <h3>Community Food Bank</h3>
+                        <p>Needed to demonstrate impact to funders and optimize volunteer scheduling during peak donation periods.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="Assets/printed_analytics.jpg" alt="Printed analytics reports for community organization">
+                    </div>
+                    <div class="results-container">
+                        <h4>Results After 1 Week:</h4>
+                        <ul>
+                            <li>📋 Created compelling impact dashboard showing 2,000+ families served</li>
+                            <li>📅 Identified donation patterns: 60% higher volumes after payday weekends</li>
+                            <li>👥 Optimized volunteer shifts, reducing wait times by 35%</li>
+                            <li>💰 Secured additional £15,000 funding using professional impact reports</li>
+                            <li>🏆 Dashboard now used as template by regional food bank network</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="carousel-card">
+                    <div class="carousel-content">
+                        <h3>Independent Bookstore</h3>
+                        <p>Online and in-store sales tracking was manual and inconsistent. Needed to understand which events and promotions actually drove revenue.</p>
+                    </div>
+                    <div class="section-image">
+                        <img src="Assets/dashboard_on_screen.jpg" alt="Bookstore analytics dashboard">
+                    </div>
+                    <div class="results-container">
+                        <h4>Results After 3 Weeks:</h4>
+                        <ul>
+                            <li>📚 Discovered author events generated 3x ROI compared to general promotions</li>
+                            <li>🌐 Integrated online and offline sales into single dashboard</li>
+                            <li>📊 Identified best-selling genres by season and customer demographic</li>
+                            <li>📈 Increased event attendance by 45% through data-driven promotion timing</li>
+                            <li>💡 Now confidently plans inventory 3 months ahead based on trends</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-btn prev" onclick="prevSlide()">&lt;</button>
+            <button class="carousel-btn next" onclick="nextSlide()">&gt;</button>
+            <button class="pause-play-btn" id="pausePlayBtn" onclick="toggleAutoSlide()">⏸️ Pause</button>
         </div>
 
-        <!-- Case Study 2 -->
-        <div class="carousel-card">
-          <div class="carousel-content">
-            <h3>Community Food Bank</h3>
-            <p>Needed to demonstrate impact to funders and optimize volunteer scheduling during peak donation periods.</p>
-          </div>
-          <div class="section-image">
-            <img src="Assets/printed_analytics.jpg" alt="Printed analytics reports for community organization">
-          </div>
-          <div style="background: var(--background); padding: 2rem; border-radius: 12px; margin-top: 1rem;">
-            <h4 style="color: var(--secondary); margin-bottom: 1rem;">Results After 1 Week:</h4>
-            <ul style="color: var(--text-muted); line-height: 1.8;">
-              <li>📋 Created compelling impact dashboard showing 2,000+ families served</li>
-              <li>📅 Identified donation patterns: 60% higher volumes after payday weekends</li>
-              <li>👥 Optimized volunteer shifts, reducing wait times by 35%</li>
-              <li>💰 Secured additional £15,000 funding using professional impact reports</li>
-              <li>🏆 Dashboard now used as template by regional food bank network</li>
-            </ul>
-          </div>
+        <div class="carousel-indicators">
+            <span class="indicator active" onclick="goToSlide(0)"></span>
+            <span class="indicator" onclick="goToSlide(1)"></span>
+            <span class="indicator" onclick="goToSlide(2)"></span>
         </div>
+    </section>
 
-        <!-- Case Study 3 -->
-        <div class="carousel-card">
-          <div class="carousel-content">
-            <h3>Independent Bookstore</h3>
-            <p>Online and in-store sales tracking was manual and inconsistent. Needed to understand which events and promotions actually drove revenue.</p>
-          </div>
-          <div class="section-image">
-            <img src="Assets/dashboard_on_screen.jpg" alt="Bookstore analytics dashboard">
-          </div>
-          <div style="background: var(--background); padding: 2rem; border-radius: 12px; margin-top: 1rem;">
-            <h4 style="color: var(--secondary); margin-bottom: 1rem;">Results After 3 Weeks:</h4>
-            <ul style="color: var(--text-muted); line-height: 1.8;">
-              <li>📚 Discovered author events generated 3x ROI compared to general promotions</li>
-              <li>🌐 Integrated online and offline sales into single dashboard</li>
-              <li>📊 Identified best-selling genres by season and customer demographic</li>
-              <li>📈 Increased event attendance by 45% through data-driven promotion timing</li>
-              <li>💡 Now confidently plans inventory 3 months ahead based on trends</li>
-            </ul>
-          </div>
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 3;
+        let autoSlideInterval;
+        let isAutoSliding = true;
+        const autoSlideDelay = 5000; // 5 seconds
+
+        const carouselTrack = document.getElementById('carouselTrack');
+        const indicators = document.querySelectorAll('.indicator');
+        const pausePlayBtn = document.getElementById('pausePlayBtn');
+
+        function updateCarousel() {
+            const translateX = -currentSlide * (100 / totalSlides);
+            carouselTrack.style.transform = `translateX(${translateX}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        function toggleAutoSlide() {
+            if (isAutoSliding) {
+                stopAutoSlide();
+                pausePlayBtn.innerHTML = '▶️ Play';
+                isAutoSliding = false;
+            } else {
+                startAutoSlide();
+                pausePlayBtn.innerHTML = '⏸️ Pause';
+                isAutoSliding = true;
+            }
+        }
+
+        // Pause auto-slide when user hovers over carousel
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', () => {
+            if (isAutoSliding) {
+                stopAutoSlide();
+            }
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            if (isAutoSliding) {
+                startAutoSlide();
+            }
+        });
+
+        // Pause auto-slide when user clicks navigation buttons
+        document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+            if (isAutoSliding) {
+                stopAutoSlide();
+                setTimeout(() => {
+                    if (isAutoSliding) startAutoSlide();
+                }, 2000); // Resume after 2 seconds
+            }
+        });
+
+        document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+            if (isAutoSliding) {
+                stopAutoSlide();
+                setTimeout(() => {
+                    if (isAutoSliding) startAutoSlide();
+                }, 2000); // Resume after 2 seconds
+            }
+        });
+
+        // Initialize auto-slide
+        startAutoSlide();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === ' ') {
+                e.preventDefault();
+                toggleAutoSlide();
+            }
+        });
+    </script>
+
+   <!-- PACKAGES -->
+    <section id="packages">
+        <h2 class="section-heading">Choose Your Analytics Package</h2>
+        <div class="section-image">
         </div>
-      </div>
-      <button class="carousel-btn prev" onclick="prevSlide()">&lt;</button>
-      <button class="carousel-btn next" onclick="nextSlide()">&gt;</button>
-    </div>
-  </section>
-
-  <!-- PACKAGES -->
-  <section id="packages">
-    <h2 class="section-heading">Choose Your Analytics Package</h2>
-    <div class="section-image">
-      <img src="Assets/multi_screen_dashboard.jpg" alt="Multiple dashboard screens showing different analytics packages">
-    </div>
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Package</th>
-            <th>Quick Wins<br><span style="font-weight: 400; font-size: 0.9rem;">(£100)</span></th>
-            <th>Growth Insights<br><span style="font-weight: 400; font-size: 0.9rem;">(£350)</span></th>
-            <th>Full Transformation<br><span style="font-weight: 400; font-size: 0.9rem;">(£750)</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Timeline</strong></td>
-            <td class="center">3-5 days</td>
-            <td class="center">1-2 weeks</td>
-            <td class="center">2-4 weeks</td>
-          </tr>
-          <tr>
-            <td><strong>Data Sources</strong></t
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Deliverable</th>
+                        <th>Quick Wins<br><span style="font-weight: 400; font-size: 0.9rem;">(£100)</span></th>
+                        <th>Insight Builder<br><span style="font-weight: 400; font-size: 0.9rem;">(£250)</span></th>
+                        <th>Growth Tracker<br><span style="font-weight: 400; font-size: 0.9rem;">(£400)</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-name">Timeline</td>
+                        <td class="center">3-5 days</td>
+                        <td class="center">1-2 weeks</td>
+                        <td class="center">2-4 weeks</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Custom Dashboard</td>
+                        <td class="center check">✅</td>
+                        <td class="center check">✅</td>
+                        <td class="center check">✅</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Insight Summary (PDF)</td>
+                        <td class="center check">✅</td>
+                        <td class="center check">✅</td>
+                        <td class="center check">✅</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Full Insight Report (3-5 pages)</td>
+                        <td class="center cross">—</td>
+                        <td class="center check">✅</td>
+                        <td class="center check">✅</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Interactive Filters</td>
+                        <td class="center cross">—</td>
+                        <td class="center check">✅</td>
+                        <td class="center check">✅</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Spreadsheet Clean-up</td>
+                        <td class="center cross">—</td>
+                        <td class="center check">✅</td>
+                        <td class="center check">✅</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Forecasting Tool</td>
+                        <td class="center cross">—</td>
+                        <td class="center cross">—</td>
+                        <td class="center check">✅</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Grant / Pitch Visuals</td>
+                        <td class="center cross">—</td>
+                        <td class="center cross">—</td>
+                        <td class="center check">✅</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Multiple Data Sources</td>
+                        <td class="center cross">—</td>
+                        <td class="center cross">—</td>
+                        <td class="center check">✅</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Walk-through Call</td>
+                        <td class="center">30 min</td>
+                        <td class="center">1 hr</td>
+                        <td class="center">1 hr + 3-mo check-ins</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name price-highlight">Price</td>
+                        <td class="center price-highlight">£100</td>
+                        <td class="center price-highlight">£250</td>
+                        <td class="center price-highlight">£400</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
