@@ -22,15 +22,19 @@
     * {
       box-sizing: border-box;
       margin: 0;
-      padding: 40px;
-   
-}
+      padding: 0;
+
+@media (max-width: 768px) {
+    body {
+        padding: 40px 20px; /* Reasonable on mobile */
+    }
+  }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--background);
       color: var(--text-light);
       line-height: 1.7;
- 
+      padding: 80px 120px; /* Much larger margins */
     }
 
     /* NAVIGATION */
@@ -675,7 +679,7 @@
   <section class="hero" id="hero">
     <div class="hero-content">
       <h1>Data Analytics for Real People</h1>
-      <p>I help small businesses, charities, and community groups turn their everyday data into clear insights and actionable decisions.</p>
+      <p>From cluttered spreadsheets to crystal-clear insights. I help small businesses find hidden opportunities, cut costs, and boost profits using the data they already have.</p>
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
         <a href="#packages" class="btn btn-primary">Browse Packages</a>
         <a href="#community" class="btn btn-secondary">Free Community Offer</a>
@@ -689,8 +693,9 @@
     <div class="section-image">
      
     </div>
-    <p style="max-width:800px;margin:auto;text-align:center;font-size:1.1rem">Small teams deserve the same insights that big companies pay thousands for. I founded Elemental Insights to democratize data analytics — helping local shops, charities, and community projects turn spreadsheets into strategy. No jargon, no complexity, just clear answers to help you grow.</p>
-  </section>
+    <p style="max-width:800px;margin:auto;text-align:center;font-size:1.1rem">Here are some improved versions of your about section:
+Option 1 - More personal and story-driven:
+html<p>Every small business has data that could transform their future—but most never unlock it. While big corporations spend thousands on analytics teams, I believe every local café, charity, and small business deserves those same powerful insights. That's why I founded Elemental Insights: to level the playing field. I take your everyday spreadsheets and turn them into clear strategies that actually work. No consultant-speak — just honest answers that help you make confident decisions and grow.</p>
 
   <!-- COMMUNITY FOCUS -->
   <section id="community">
