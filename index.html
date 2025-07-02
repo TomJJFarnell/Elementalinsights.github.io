@@ -649,6 +649,78 @@
         font-size: 0.85rem;
       }
     }
+
+      /* Contact Form Styles */
+#contact {
+    max-width: 800px;
+    margin: 4rem auto 2rem;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+#contact .section-heading {
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    background: var(--background);
+    margin-top: 2rem;
+}
   </style>
 </head>
 
@@ -980,6 +1052,17 @@ html<p>Every small business has data that could transform their future—but mos
                 toggleAutoSlide();
             }
         });
+      // Package selection function
+function selectPackage(packageType) {
+    // Wait for page to scroll to contact section
+    setTimeout(() => {
+        const packageSelect = document.getElementById('package-select');
+        if (packageSelect) {
+            packageSelect.value = packageType;
+            packageSelect.focus();
+        }
+    }, 500);
+}
     </script>
 
    <!-- PACKAGES -->
@@ -1068,5 +1151,25 @@ html<p>Every small business has data that could transform their future—but mos
             </table>
         </div>
     </section>
+   
+    <!-- CONTACT -->
+<section id="contact">
+    <h2 class="section-heading">Get in Touch</h2>
+    <form action="https://formspree.io/f/mnqepjwp" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <select name="package" id="package-select" required>
+            <option value="">Select a package...</option>
+            <option value="quick-wins">Quick Wins - £100</option>
+            <option value="insight-builder">Insight Builder - £250</option>
+            <option value="growth-tracker">Growth Tracker - £400</option>
+            <option value="consultation">Just want to chat first</option>
+        </select>
+        <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+    <p style="text-align:center;margin-top:1rem">Prefer email? <a href="mailto:tom@elementalinsights.co.uk" style="color: var(--primary);">tom@elementalinsights.co.uk</a></p>
+</section>
+
 </body>
 </html>
