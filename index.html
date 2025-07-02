@@ -7,11 +7,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --brand: #0a2540;
-      --accent: #4f9ee5;
-      --light: #faf8f5; /* Changed to cream color */
+      --brand: #1a365d;
+      --accent: #3182ce;
+      --secondary: #4299e1;
+      --light: #2d3748;
       --white: #ffffff;
-      --hover-accent: #3a8bd1;
+      --hover-accent: #2c5282;
+      --background: #1a202c;
+      --card-bg: #2d3748;
+      --text-light: #e2e8f0;
+      --text-muted: #a0aec0;
     }
 
     * {
@@ -22,8 +27,8 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--light);
-      color: #333;
+      background: var(--background);
+      color: var(--text-light);
       line-height: 1.7;
     }
 
@@ -33,8 +38,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: var(--white);
-      box-shadow: 0 2px 6px rgba(0,0,0,.05);
+      background: var(--card-bg);
+      box-shadow: 0 4px 12px rgba(0,0,0,.3);
       position: sticky;
       top: 0;
       z-index: 999;
@@ -46,24 +51,25 @@
       gap: 0.6rem;
       font-weight: 700;
       font-size: 1.4rem;
-      color: var(--brand);
+      color: var(--secondary);
     }
 
     .logo img {
-      height: 80px;
-      width: 160px;
+      height: 60px;
+      width: 240px;
+      object-fit: contain;
     }
 
     nav a {
       margin-left: 1.4rem;
-      color: var(--brand);
+      color: var(--text-light);
       text-decoration: none;
       font-weight: 600;
       transition: color 0.2s ease;
     }
 
     nav a:hover {
-      color: var(--accent);
+      color: var(--secondary);
     }
 
     /* HERO SECTION */
@@ -75,27 +81,40 @@
       align-items: center;
       text-align: center;
       padding: 120px 40px;
-      background: linear-gradient(135deg, #f5f2ed 0%, #ede8e1 100%); /* Changed to cream gradient */
-      background-image: url('Assets/Hero');
-      background-size: cover;
-      background-position: center;
-      color: white;
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234299e1;stop-opacity:0.15" /><stop offset="100%" style="stop-color:%233182ce;stop-opacity:0.05" /></linearGradient></defs><rect x="200" y="100" width="200" height="120" rx="15" fill="url(%23grad1)"/><rect x="450" y="150" width="180" height="100" rx="12" fill="url(%23grad1)"/><rect x="700" y="80" width="160" height="140" rx="18" fill="url(%23grad1)"/><circle cx="150" cy="400" r="80" fill="url(%23grad1)"/><circle cx="1000" cy="300" r="100" fill="url(%23grad1)"/><polygon points="300,500 400,500 350,600" fill="url(%23grad1)"/><rect x="800" y="450" width="150" height="80" rx="10" fill="url(%23grad1)"/><text x="600" y="400" text-anchor="middle" fill="url(%23grad1)" font-family="Arial" font-size="40" font-weight="bold">DATA</text></svg>') center/cover;
+      opacity: 0.4;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 700;
-      color: white;
+      color: var(--white);
       margin-bottom: 1rem;
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       max-width: 700px;
       margin-bottom: 2rem;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      color: var(--text-muted);
     }
 
     /* BUTTONS */
@@ -117,23 +136,23 @@
     .btn-primary {
       background: var(--accent);
       color: var(--white);
-      box-shadow: 0 4px 12px rgba(79, 158, 229, 0.3);
+      box-shadow: 0 4px 12px rgba(49, 130, 206, 0.4);
     }
 
     .btn-primary:hover {
       background: var(--hover-accent);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(79, 158, 229, 0.4);
+      box-shadow: 0 6px 16px rgba(49, 130, 206, 0.5);
     }
 
     .btn-secondary {
       background: transparent;
-      color: var(--brand);
-      border: 2px solid var(--brand);
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
     }
 
     .btn-secondary:hover {
-      background: var(--brand);
+      background: var(--secondary);
       color: var(--white);
       transform: translateY(-2px);
     }
@@ -141,15 +160,16 @@
     /* SECTIONS */
     section {
       padding: 4rem 1rem;
-      max-width: 1050px;
+      max-width: 1200px;
       margin: auto;
     }
 
     .section-heading {
       text-align: center;
       margin-bottom: 2.5rem;
-      font-size: 2rem;
-      color: var(--brand);
+      font-size: 2.2rem;
+      color: var(--secondary);
+      font-weight: 700;
     }
 
     /* GRIDS */
@@ -164,88 +184,150 @@
 
     /* CARDS */
     .card {
-      background: var(--white);
+      background: var(--card-bg);
       padding: 1.8rem;
       border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.06);
-      transition: transform 0.2s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(66, 153, 225, 0.1);
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.4);
+    }
+
+    /* COMMUNITY FOCUS SECTION */
+    .community-focus {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+      text-align: center;
+      border: 2px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .community-focus::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(49, 130, 206, 0.05) 0%, rgba(66, 153, 225, 0.1) 100%);
+    }
+
+    .community-focus-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .community-focus h3 {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    .community-focus .highlight {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 1rem 0;
     }
 
     /* HELP SECTION */
     .help-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       margin-top: 2rem;
     }
 
     .help-card {
-      background: #fefefe; /* Slightly warmer white */
-      border-left: 6px solid var(--brand);
-      padding: 1.2rem 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: var(--card-bg);
+      border-left: 6px solid var(--accent);
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .help-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(45deg, var(--accent), var(--secondary));
+      opacity: 0.1;
+      border-radius: 0 12px 0 60px;
     }
 
     .help-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
     }
 
     .help-card h4 {
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-      color: #333;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: var(--text-light);
+      font-weight: 600;
     }
 
     .help-card p {
       margin: 0;
-      color: #555;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
     /* MYTHS SECTION */
     .myth-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       margin-top: 2rem;
     }
 
     .myth-card {
-      background: #f7f5f2; /* Cream-tinted card background */
-      border-left: 6px solid var(--accent);
-      padding: 1.2rem 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: var(--card-bg);
+      border-left: 6px solid var(--secondary);
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .myth-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
     }
 
     .myth-card h4 {
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-      color: #333;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: var(--text-light);
+      font-weight: 600;
     }
 
     .myth-card p {
       margin: 0;
-      color: #555;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
     /* CAROUSEL */
     .carousel-container {
       position: relative;
       overflow: hidden;
-      margin-top: 2rem;
+      margin-top: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
     }
 
     .carousel-track {
@@ -256,113 +338,160 @@
     .carousel-card {
       min-width: 100%;
       box-sizing: border-box;
-      padding: 1rem;
+      padding: 2rem;
+      background: var(--card-bg);
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .carousel-card iframe {
-      flex: 1 1 55%;
-      height: 360px;
-      border: none;
-      border-radius: 8px;
+      flex-direction: column;
+      gap: 2rem;
     }
 
     .carousel-content {
-      flex: 1 1 40%;
+      text-align: center;
+      margin-bottom: 2rem;
     }
 
     .carousel-content h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      color: var(--brand);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .carousel-content p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .carousel-card iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
     .carousel-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: var(--accent);
+      background: rgba(49, 130, 206, 0.2);
       color: white;
       border: none;
-      font-size: 1.5rem;
-      padding: 12px 16px;
+      font-size: 0.9rem;
+      padding: 6px 10px;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 4px;
       z-index: 10;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(79, 158, 229, 0.3);
+      backdrop-filter: blur(10px);
+      opacity: 0.4;
+      font-weight: bold;
     }
 
     .carousel-btn.prev {
-      left: 10px;
+      left: 15px;
     }
 
     .carousel-btn.next {
-      right: 10px;
+      right: 15px;
     }
 
     .carousel-btn:hover {
-      background: var(--hover-accent);
-      transform: translateY(-50%) scale(1.05);
-      box-shadow: 0 6px 16px rgba(79, 158, 229, 0.4);
+      background: rgba(49, 130, 206, 0.4);
+      opacity: 0.8;
+      transform: translateY(-50%) scale(1.1);
     }
 
     /* TABLES */
+    .table-container {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+      margin-top: 2rem;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.9rem;
-      margin-top: 1.5rem;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      font-size: 0.95rem;
+      background: var(--white);
     }
 
     th, td {
-      padding: 0.8rem 1rem;
-      border: 1px solid #d7e2ef;
-      text-align: left;
+      padding: 1rem 1.2rem;
+      border: 1px solid #e2e8f0;
+      text-align: center;
     }
 
     th {
       background: var(--brand);
       color: var(--white);
       font-weight: 600;
+      font-size: 1rem;
+    }
+
+    td {
+      color: #2d3748;
+    }
+
+    th:first-child, td:first-child {
+      text-align: left;
     }
 
     td.center {
       text-align: center;
+      font-weight: 600;
     }
 
     /* FORMS */
     form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.5rem;
       max-width: 600px;
       margin: auto;
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
     }
 
     input, textarea, select {
-      padding: 12px 16px;
-      border: 2px solid #ccd7e6;
+      padding: 14px 18px;
+      border: 2px solid #4a5568;
       border-radius: 8px;
       font-family: inherit;
       font-size: 1rem;
       transition: border-color 0.3s ease;
-      background: white;
+      background: var(--background);
+      color: var(--text-light);
     }
 
     input:focus, textarea:focus, select:focus {
       outline: none;
       border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
     }
 
     select {
       cursor: pointer;
+    }
+
+    /* IMAGES */
+    .section-image {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .section-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
     /* FOOTER */
@@ -370,15 +499,15 @@
       background: var(--brand);
       color: var(--white);
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.85rem;
+      padding: 3rem 1rem;
+      font-size: 0.9rem;
       margin-top: 4rem;
     }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
       }
 
       .hero p {
@@ -390,13 +519,29 @@
         padding: 14px 24px;
       }
 
-      .carousel-card {
-        flex-direction: column;
+      .carousel-card iframe {
+        height: 500px;
       }
 
-      .carousel-card iframe {
-        width: 100%;
-        height: 280px;
+      .logo img {
+        width: 180px;
+        height: 45px;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      nav a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      th, td {
+        padding: 0.7rem;
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -420,237 +565,132 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <h1>Data Analytics Isn't Just for Big Business Anymore</h1>
-    <p>From spreadsheets to strategy — I build tools to help small teams see what's really going on.</p>
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
-      <a href="#packages" class="btn btn-primary">Browse Packages</a>
+    <div class="hero-content">
+      <h1>Data Analytics for Real People</h1>
+      <p>I help small businesses, charities, and community groups turn their everyday data into clear insights and actionable decisions.</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
+        <a href="#packages" class="btn btn-primary">Browse Packages</a>
+        <a href="#community" class="btn btn-secondary">Free Community Offer</a>
+      </div>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <h2 class="section-heading">About</h2>
-    <p style="max-width:720px;margin:auto;text-align:center">Small teams deserve the same insight big companies pay thousands for. I founded Elemental Insights to help local shops, charities and community projects turn everyday data into clear dashboards, smart decisions and practical plans.</p>
+    <h2 class="section-heading">About Elemental Insights</h2>
+    <div class="section-image">
+      <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect width='800' height='400' fill='%232d3748'/><rect x='50' y='50' width='700' height='300' rx='20' fill='%234a5568'/><rect x='100' y='100' width='150' height='120' rx='10' fill='%234299e1'/><rect x='300' y='120' width='200' height='80' rx='10' fill='%233182ce'/><rect x='550' y='80' width='120' height='160' rx='10' fill='%234299e1'/><circle cx='180' cy='250' r='40' fill='%2348bb78'/><circle cx='620' cy='280' r='30' fill='%23ed8936'/><text x='400' y='350' text-anchor='middle' fill='%23e2e8f0' font-family='Arial' font-size='24' font-weight='bold'>Your Data, Simplified</text></svg>" alt="Data visualization illustration">
+    </div>
+    <p style="max-width:800px;margin:auto;text-align:center;font-size:1.1rem">Small teams deserve the same insights that big companies pay thousands for. I founded Elemental Insights to democratize data analytics — helping local shops, charities, and community projects turn spreadsheets into strategy. No jargon, no complexity, just clear answers to help you grow.</p>
+  </section>
+
+  <!-- COMMUNITY FOCUS -->
+  <section id="community">
+    <div class="community-focus">
+      <div class="community-focus-content">
+        <h3>🏘️ Supporting Our Community</h3>
+        <p class="highlight">FREE Quick Wins Package for Local Charities & Community Groups</p>
+        <div class="section-image" style="margin: 2rem 0;">
+          <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300'><rect width='600' height='300' fill='%232d3748'/><circle cx='150' cy='150' r='80' fill='%2348bb78' opacity='0.3'/><circle cx='300' cy='150' r='80' fill='%234299e1' opacity='0.3'/><circle cx='450' cy='150' r='80' fill='%23ed8936' opacity='0.3'/><path d='M 150 100 L 170 140 L 130 140 Z' fill='%23e2e8f0'/><rect x='280' y='130' width='40' height='40' fill='%23e2e8f0'/><circle cx='450' cy='150' r='20' fill='%23e2e8f0'/><text x='300' y='250' text-anchor='middle' fill='%23e2e8f0' font-family='Arial' font-size='20' font-weight='bold'>Community First</text></svg>" alt="Community support illustration">
+        </div>
+        <p>I believe in supporting the organizations that make our communities stronger. If you're a registered charity, community group, local food bank, or non-profit serving your neighborhood, I'm offering my Quick Wins package (normally £100) completely free.</p>
+        <p style="margin-top: 1rem; font-weight: 600;">What you get: Custom dashboard, insight summary, and 30-minute walkthrough call — all at no cost.</p>
+        <div style="margin-top: 2rem;">
+          <a href="#contact" class="btn btn-primary" onclick="selectPackage('community-free')">Claim Your Free Package</a>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+          Limited to 5 organizations per month. Must provide charity registration or community group documentation.
+        </p>
+      </div>
+    </div>
   </section>
 
   <!-- HOW I HELP -->
   <section id="help">
-    <h2 class="section-heading">How Can Data Analytics Help Your Business?</h2>
+    <h2 class="section-heading">How Data Analytics Transforms Your Business</h2>
+    <div class="section-image">
+      <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300'><rect width='800' height='300' fill='%232d3748'/><rect x='50' y='50' width='150' height='200' rx='10' fill='%234299e1' opacity='0.3'/><rect x='250' y='80' width='150' height='170' rx='10' fill='%233182ce' opacity='0.3'/><rect x='450' y='40' width='150' height='220' rx='10' fill='%234299e1' opacity='0.3'/><rect x='650' y='70' width='120' height='180' rx='10' fill='%2348bb78' opacity='0.3'/><text x='400' y='280' text-anchor='middle' fill='%23e2e8f0' font-family='Arial' font-size='18' font-weight='bold'>From Chaos to Clarity</text></svg>" alt="Business transformation illustration">
+    </div>
     <div class="help-grid">
       <div class="help-card">
-        <h4>📈 See What's Making Money</h4>
-        <p>Spot your most profitable products and cut the ones losing money.</p>
+        <h4>📈 Identify What's Actually Profitable</h4>
+        <p>Stop guessing which products, services, or campaigns drive real revenue. See exactly what's making money and what's draining resources with clear profit breakdowns.</p>
       </div>
 
       <div class="help-card">
-        <h4>📦 Fix Stock Headaches</h4>
-        <p>Track what's running low or sitting unsold — and restock smarter.</p>
+        <h4>📦 Smart Inventory Management</h4>
+        <p>Never run out of popular items or get stuck with dead stock again. Intelligent forecasting keeps your shelves balanced and your cash flow healthy.</p>
       </div>
 
       <div class="help-card">
-        <h4>📣 Stop Wasting Marketing Budget</h4>
-        <p>Find out which ads or social posts bring customers — and which don't.</p>
+        <h4>📣 Maximize Marketing ROI</h4>
+        <p>Track which channels actually bring customers through your door. Stop wasting money on ads that don't work and double down on what does.</p>
       </div>
 
       <div class="help-card">
-        <h4>📅 Plan for Busy Periods</h4>
-        <p>Use past data to predict spikes around holidays or seasonal demand.</p>
+        <h4>📅 Predict Seasonal Patterns</h4>
+        <p>Use historical data to prepare for busy periods, staff appropriately, and capitalize on seasonal opportunities before your competition.</p>
       </div>
 
       <div class="help-card">
-        <h4>⏱ Save Time Every Week</h4>
-        <p>Automate weekly reports and dashboards so you're not stuck in spreadsheets.</p>
+        <h4>⏱ Eliminate Manual Reporting</h4>
+        <p>Replace hours of manual spreadsheet work with automated dashboards that update themselves. Get your weekends back.</p>
       </div>
 
       <div class="help-card">
-        <h4>📊 Impress Funders & Partners</h4>
-        <p>Turn messy numbers into clean reports and dashboards for stakeholders.</p>
+        <h4>📊 Professional Stakeholder Reports</h4>
+        <p>Impress funders, partners, and board members with clear, compelling visualizations that tell your success story.</p>
       </div>
     </div>
   </section>
 
   <!-- MYTHS -->
   <section id="myths">
-    <h2 class="section-heading">Data Myths — Busted</h2>
+    <h2 class="section-heading">Common Data Myths — Debunked</h2>
+    <div class="section-image">
+      <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300'><rect width='800' height='300' fill='%232d3748'/><circle cx='200' cy='150' r='80' fill='%23e53e3e' opacity='0.3'/><line x1='160' y1='110' x2='240' y2='190' stroke='%23e53e3e' stroke-width='8'/><circle cx='600' cy='150' r='80' fill='%2348bb78' opacity='0.3'/><polyline points='570,150 590,170 630,130' fill='none' stroke='%2348bb78' stroke-width='8'/><text x='400' y='50' text-anchor='middle' fill='%23e2e8f0' font-family='Arial' font-size='24' font-weight='bold'>MYTH vs REALITY</text><text x='400' y='270' text-anchor='middle' fill='%23e2e8f0' font-family='Arial' font-size='16'>Separating Facts from Fiction</text></svg>" alt="Myth busting illustration">
+    </div>
     <div class="myth-grid">
       <div class="myth-card">
-        <h4>🧱 Myth: "Analytics is only for big companies."</h4>
-        <p><strong>Truth:</strong> If you track sales, stock, or appointments — you've got usable data.</p>
+        <h4>🏢 Myth: "Analytics is only for big corporations"</h4>
+        <p><strong>Reality:</strong> If you track sales, appointments, inventory, or even volunteer hours — you already have valuable data waiting to be analyzed. Size doesn't matter.</p>
       </div>
 
       <div class="myth-card">
-        <h4>🪣 Myth: "Our data is too messy."</h4>
-        <p><strong>Truth:</strong> Cleaning messy data is part of the job — it's often where insights begin.</p>
+        <h4>🗂️ Myth: "Our data is too messy to be useful"</h4>
+        <p><strong>Reality:</strong> Data cleaning is part of every project. In fact, messy data often reveals the most valuable insights once properly organized and understood.</p>
       </div>
 
       <div class="myth-card">
-        <h4>🧠 Myth: "I'm not a numbers person."</h4>
-        <p><strong>Truth:</strong> That's my job — I turn data into clear advice without jargon.</p>
+        <h4>🧮 Myth: "I'm not good with numbers or tech"</h4>
+        <p><strong>Reality:</strong> You don't need to be. I translate complex data into plain English recommendations you can act on immediately. No math degree required.</p>
       </div>
 
       <div class="myth-card">
-        <h4>💸 Myth: "It's too expensive."</h4>
-        <p><strong>Truth:</strong> Starter packages begin at £100 — many pay for themselves fast.</p>
+        <h4>💰 Myth: "Professional analytics costs thousands"</h4>
+        <p><strong>Reality:</strong> My packages start at £100, and most clients see measurable returns within weeks. Many projects pay for themselves in the first month.</p>
       </div>
 
       <div class="myth-card">
-        <h4>⏰ Myth: "It takes too long to see results."</h4>
-        <p><strong>Truth:</strong> Most dashboards are ready within a week, and insights appear immediately.</p>
+        <h4>⏰ Myth: "Results take months to see"</h4>
+        <p><strong>Reality:</strong> Most dashboards are live within a week, with immediate actionable insights available from day one. Quick wins are part of the process.</p>
       </div>
 
       <div class="myth-card">
-        <h4>🔒 Myth: "Our data isn't secure enough."</h4>
-        <p><strong>Truth:</strong> I work with your existing systems and follow strict data protection protocols.</p>
+        <h4>🔐 Myth: "Small business data isn't secure enough"</h4>
+        <p><strong>Reality:</strong> I work within your existing systems using industry-standard security protocols. Your data never leaves your control.</p>
       </div>
     </div>
   </section>
 
   <!-- CASE STUDIES -->
   <section id="cases">
-    <h2 class="section-heading">Case Studies</h2>
+    <h2 class="section-heading">Real Results for Real Businesses</h2>
+    <div class="section-image">
+      <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300'><rect width='800' height='300' fill='%232d3748'/><rect x='100' y='50' width='250' height='180' rx='15' fill='%234299e1' opacity='0.3'/><rect x='450' y='80' width='250' height='150' rx='15' fill='%233182ce' opacity='0.3'/><text x='225' y='150' text-anchor='middle' fill='%23e2e8f0' font-family='Arial' font-size='16' font-weight='bold'>BEFORE</text><text x='575' y='150' text-anchor='middle' fill='%23e2e8f0' font-family='Arial' font-size='16' font-weight='bold'>AFTER</text><path d='M 370 140 L 420 140' stroke='%2348bb78' stroke-width='4' marker-end='url(%23arrowhead)'/><defs><marker id='arrowhead' markerWidth='10' markerHeight='7' refX='9' refY='3.5' orient='auto'><polygon points='0 0, 10 3.5, 0 7' fill='%2348bb78' /></marker></defs><text x='400' y='270' text-anchor='middle' fill='%23e2e8f0' font-family='Arial' font-size='18' font-weight='bold'>Transformation Stories</text></svg>" alt="Success stories illustration">
+    </div>
     <div class="carousel-container">
       <div class="carousel-track">
         <!-- Case Study 1 -->
         <div class="carousel-card">
-          <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYzFiYWEyMzMtNzY1OC00MTQxLWE0MWEtOTQzMTczNWI5MTFmIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0"></iframe>
           <div class="carousel-content">
-            <h3>Food Bank Demand Dashboard</h3>
-            <p>Helped volunteers forecast parcel demand and avoid shortages.</p>
-          </div>
-        </div>
-
-        <!-- Case Study 2 -->
-        <div class="carousel-card">
-          <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ2MTUwNDgtYzBmMC00NTk0LTkzZDMtOTM4NWY5NTJlOTllIiwidCI6Ijg1Y2E1ZWE3LTFiNjQtNGIxNi1iNGYxLTMxNjAzODEzMWJiMSJ9" frameborder="0"></iframe>
-          <div class="carousel-content">
-            <h3>Chemical Inventory Tracker</h3>
-            <p>Reduced stock checks by 60% and passed safety audit hassle‑free.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Navigation -->
-      <button class="carousel-btn prev">&#8592;</button>
-      <button class="carousel-btn next">&#8594;</button>
-    </div>
-  </section>
-  
-  <!-- PACKAGES -->
-  <section id="packages">
-    <h2 class="section-heading">Packages</h2>
-    <table>
-      <tr>
-        <th>Deliverable</th>
-        <th class="center">Quick Wins</th>
-        <th class="center">Insight Builder</th>
-        <th class="center">Growth Tracker</th>
-      </tr>
-      <tr><td>Custom Dashboard</td><td class="center">✅</td><td class="center">✅</td><td class="center">✅</td></tr>
-      <tr><td>Insight Summary (PDF)</td><td class="center">✅</td><td class="center">✅</td><td class="center">✅</td></tr>
-      <tr><td>Full Insight Report (3-5 pages)</td><td class="center">—</td><td class="center">✅</td><td class="center">✅</td></tr>
-      <tr><td>Interactive Filters</td><td class="center">—</td><td class="center">✅</td><td class="center">✅</td></tr>
-      <tr><td>Spreadsheet Clean-up</td><td class="center">—</td><td class="center">✅</td><td class="center">✅</td></tr>
-      <tr><td>Forecasting Tool</td><td class="center">—</td><td class="center">—</td><td class="center">✅</td></tr>
-      <tr><td>Grant / Pitch Visuals</td><td class="center">—</td><td class="center">—</td><td class="center">✅</td></tr>
-      <tr><td>Multiple Data Sources</td><td class="center">—</td><td class="center">—</td><td class="center">✅</td></tr>
-      <tr><td>Walk-through Call</td><td class="center">30 min</td><td class="center">1 hr</td><td class="center">1 hr + 3-mo check-ins</td></tr>
-      <tr><td><strong>Price</strong></td><td class="center"><strong>£100</strong></td><td class="center"><strong>£250</strong></td><td class="center"><strong>£400</strong></td></tr>
-    </table>
-    
-    <div style="text-align: center; margin-top: 2rem;">
-      <a href="#contact" class="btn btn-primary" onclick="selectPackage('growth-tracker')">Choose Your Package</a>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2 class="section-heading">Get in Touch</h2>
-    <form action="https://formspree.io/f/mnqepjwp" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <select name="package" id="package-select" required>
-        <option value="">Select a package...</option>
-        <option value="quick-wins">Quick Wins - £100</option>
-        <option value="insight-builder">Insight Builder - £250</option>
-        <option value="growth-tracker">Growth Tracker - £400</option>
-        <option value="consultation">Just want to chat first</option>
-      </select>
-      <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-      <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
-    <p style="text-align:center;margin-top:1rem">Prefer email? <a href="mailto:tom@elementalinsights.co.uk" style="color: var(--accent);">tom@elementalinsights.co.uk</a></p>
-  </section>
-
-  <footer>
-    © 2025 Elemental Insights | Built with Power BI & Formspree
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const track = document.querySelector(".carousel-track");
-      const slides = Array.from(track.children);
-      const nextBtn = document.querySelector(".carousel-btn.next");
-      const prevBtn = document.querySelector(".carousel-btn.prev");
-
-      let currentSlide = 0;
-
-      function updateSlide(position) {
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        track.style.transform = `translateX(-${position * slideWidth}px)`;
-      }
-
-      nextBtn.addEventListener("click", () => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        updateSlide(currentSlide);
-      });
-
-      prevBtn.addEventListener("click", () => {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        updateSlide(currentSlide);
-      });
-
-      // Resize fix
-      window.addEventListener("resize", () => updateSlide(currentSlide));
-    });
-
-    // Package selection function
-    function selectPackage(packageType) {
-      // Wait for page to scroll to contact section
-      setTimeout(() => {
-        const packageSelect = document.getElementById('package-select');
-        if (packageSelect) {
-          packageSelect.value = packageType;
-          packageSelect.focus();
-        }
-      }, 500);
-    }
-
-    // Add click handlers to individual package table cells
-    document.addEventListener("DOMContentLoaded", function() {
-      // You can add individual package selection buttons if needed
-      const table = document.querySelector('table');
-      if (table) {
-        // Add click handlers to package columns
-        const headers = table.querySelectorAll('th');
-        headers.forEach((header, index) => {
-          if (index > 0) { // Skip first column (Deliverable)
-            header.style.cursor = 'pointer';
-            header.addEventListener('click', () => {
-              let packageType = '';
-              switch(index) {
-                case 1: packageType = 'quick-wins'; break;
-                case 2: packageType = 'insight-builder'; break;
-                case 3: packageType = 'growth-tracker'; break;
-              }
-              if (packageType) {
-                window.location.href = '#contact';
-                selectPackage(packageType);
-              }
-            });
-          }
-        });
-      }
-    });
-  </script>
-</body>
-</html>
