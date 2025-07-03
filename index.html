@@ -326,49 +326,48 @@
     }
 
     /* CAROUSEL */
-    .carousel-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
+   /* CAROUSEL */
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
 
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 300%; /* 3 slides = 300% */
-        }
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 300%; /* 3 slides = 300% */
+}
 
-        
 .carousel-card {
-  flex: 0 0 33.333%;
-  background: var(--card-bg); /* ✅ use your dark card colour */
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  min-height: 450px;
-  color: var(--text-light); /* ✅ make all text default to light on dark */
+    flex: 0 0 33.333%;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+    color: var(--text-light);
 }
 
 .carousel-content h3 {
-  font-size: 1.8rem;
-  color: var(--text-light); /* ✅ light colour for title on dark card */
-  margin-bottom: 1rem;
-  font-weight: 600;
-  text-align: center;
+    font-size: 1.8rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-align: center;
 }
-    
- .carousel-content p {
+
+.carousel-content p {
     font-size: 1.1rem;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
     line-height: 1.6;
-    font-style: italic;  /* Make text italic */
-    text-align: center;  /* Optional: center the description too */
+    font-style: italic;
+    text-align: center;
 }
-
 
         .section-image {
             margin: 1rem 0;
@@ -921,119 +920,100 @@ footer {
     </section>
 
     <script>
-        let currentSlide = 0;
-        const totalSlides = 3;
-        let autoSlideInterval;
-        let isAutoSliding = true;
-        const autoSlideDelay = 5000; // 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+    let currentSlide = 0;
+    const totalSlides = 3;
+    let autoSlideInterval;
+    let isAutoSliding = true;
+    const autoSlideDelay = 5000;
 
-        const carouselTrack = document.getElementById('carouselTrack');
-        const indicators = document.querySelectorAll('.indicator');
-        const pausePlayBtn = document.getElementById('pausePlayBtn');
+    const carouselTrack = document.getElementById('carouselTrack');
+    const indicators = document.querySelectorAll('.indicator');
+    const pausePlayBtn = document.getElementById('pausePlayBtn');
 
-      function updateCarousel() {
-    const translateX = -currentSlide * 100; // Changed this line
-    carouselTrack.style.transform = `translateX(${translateX}%)`;
-    
-    // Update indicators
-    indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentSlide);
-    });
-}
+    if (!carouselTrack) {
+        console.error('Carousel track not found');
+        return;
+    }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
+    function updateCarousel() {
+        const translateX = -currentSlide * 33.333; // Move by 33.333% for each slide
+        carouselTrack.style.transform = `translateX(${translateX}%)`;
+        
+        // Update indicators
+        if (indicators.length > 0) {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
         }
+    }
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+
+    // Make functions global for onclick handlers
+    window.goToSlide = function(index) {
+        currentSlide = index;
+        updateCarousel();
+    }
+
+    window.nextSlide = nextSlide;
+    window.prevSlide = prevSlide;
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    window.toggleAutoSlide = function() {
+        if (isAutoSliding) {
+            stopAutoSlide();
+            if (pausePlayBtn) pausePlayBtn.innerHTML = '▶️ Play';
+            isAutoSliding = false;
+        } else {
+            startAutoSlide();
+            if (pausePlayBtn) pausePlayBtn.innerHTML = '⏸️ Pause';
+            isAutoSliding = true;
         }
+    }
 
-        function goToSlide(index) {
-            currentSlide = index;
-            updateCarousel();
-        }
-
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
-        }
-
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
-
-        function toggleAutoSlide() {
-            if (isAutoSliding) {
-                stopAutoSlide();
-                pausePlayBtn.innerHTML = '▶️ Play';
-                isAutoSliding = false;
-            } else {
-                startAutoSlide();
-                pausePlayBtn.innerHTML = '⏸️ Pause';
-                isAutoSliding = true;
-            }
-        }
-
-        // Pause auto-slide when user hovers over carousel
-        const carouselContainer = document.querySelector('.carousel-container');
+    // Event listeners
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
         carouselContainer.addEventListener('mouseenter', () => {
-            if (isAutoSliding) {
-                stopAutoSlide();
-            }
+            if (isAutoSliding) stopAutoSlide();
         });
 
         carouselContainer.addEventListener('mouseleave', () => {
-            if (isAutoSliding) {
-                startAutoSlide();
-            }
+            if (isAutoSliding) startAutoSlide();
         });
+    }
 
-        // Pause auto-slide when user clicks navigation buttons
-        document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
-            if (isAutoSliding) {
-                stopAutoSlide();
-                setTimeout(() => {
-                    if (isAutoSliding) startAutoSlide();
-                }, 2000); // Resume after 2 seconds
+    // Initialize
+    updateCarousel();
+    startAutoSlide();
+
+    // Package selection function
+    window.selectPackage = function(packageType) {
+        setTimeout(() => {
+            const packageSelect = document.getElementById('package-select');
+            if (packageSelect) {
+                packageSelect.value = packageType;
+                packageSelect.focus();
             }
-        });
-
-        document.querySelector('.carousel-btn.next').addEventListener('click', () => {
-            if (isAutoSliding) {
-                stopAutoSlide();
-                setTimeout(() => {
-                    if (isAutoSliding) startAutoSlide();
-                }, 2000); // Resume after 2 seconds
-            }
-        });
-
-        // Initialize auto-slide
-        startAutoSlide();
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
-            } else if (e.key === ' ') {
-                e.preventDefault();
-                toggleAutoSlide();
-            }
-        });
-      // Package selection function
-function selectPackage(packageType) {
-    // Wait for page to scroll to contact section
-    setTimeout(() => {
-        const packageSelect = document.getElementById('package-select');
-        if (packageSelect) {
-            packageSelect.value = packageType;
-            packageSelect.focus();
-        }
-    }, 500);
-}
+        }, 500);
+    }
+});
     </script>
 
    <!-- PACKAGES -->
