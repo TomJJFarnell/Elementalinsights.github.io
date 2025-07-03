@@ -342,28 +342,29 @@
             width: 300%; /* 3 slides = 300% */
         }
 
-        .carousel-card {
-            flex: 0 0 33.333%;
-            background: var(--white);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            min-height: 600px;
+       .carousel-card {
+    flex: 0 0 33.333%;
+    background: var(--text-dark);
+    padding: 1.5rem;  /* Reduced from 2rem */
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;  /* Reduced from 600px */
         }
 
         .carousel-content h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
+    font-size: 1.8rem;
+     color: var(--text-dark);  /* Change to dark color, or use any color you want */
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-align: center;  /* Center the title */
+}
 
-        .carousel-content p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
+      .carousel-content p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
 
         .section-image {
             margin: 1rem 0;
