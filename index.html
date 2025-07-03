@@ -500,12 +500,28 @@
                 font-size: 1rem;
             }
 
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
+          .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(49, 130, 206, 0.9); /* Use solid color instead of var(--primary) */
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white; /* Use white instead of variable */
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+.carousel-btn:hover {
+  background: #2c5282; /* Use solid color instead of var(--primary) */
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
             .carousel-btn.prev {
                 left: 10px;
             }
@@ -938,8 +954,8 @@ footer {
         return;
     }
 
-   function updateCarousel() {
-    const translateX = -currentSlide * 33.333; // This should move by full card width
+ function updateCarousel() {
+    const translateX = -currentSlide * 33.333;
     carouselTrack.style.transform = `translateX(${translateX}%)`;
     
     // Update indicators
@@ -950,7 +966,6 @@ footer {
     }
 }
   
-
     function nextSlide() {
     currentSlide = (currentSlide + 1) % totalSlides;
     updateCarousel();
@@ -961,11 +976,12 @@ function prevSlide() {
     updateCarousel();
 }
 
-    // Make functions global for onclick handlers
-    window.goToSlide = function(index) {
+   window.goToSlide = function(index) {
+    if (index >= 0 && index < totalSlides) { // Add bounds checking
         currentSlide = index;
         updateCarousel();
     }
+}
 
     window.nextSlide = nextSlide;
     window.prevSlide = prevSlide;
