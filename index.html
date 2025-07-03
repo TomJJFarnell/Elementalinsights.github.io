@@ -327,7 +327,6 @@
     }
 
     /* CAROUSEL */
-   /* CAROUSEL */
 .carousel-container {
     position: relative;
     max-width: 800px;
@@ -924,12 +923,14 @@ footer {
           </ul>
        </div>
       </div>
-
-            <button class="carousel-btn prev" onclick="prevSlide()">&lt;</button>
-            <button class="carousel-btn next" onclick="nextSlide()">&gt;</button>
-            <button class="pause-play-btn" id="pausePlayBtn" onclick="toggleAutoSlide()">⏸️ Pause</button>
-        </div>
-
+</div> <!-- This closes carousel-track -->
+    
+    <!-- Move the buttons HERE - after carousel-track closes but before carousel-container closes -->
+    <button class="carousel-btn prev" onclick="prevSlide()">&lt;</button>
+    <button class="carousel-btn next" onclick="nextSlide()">&gt;</button>
+    <button class="pause-play-btn" id="pausePlayBtn" onclick="toggleAutoSlide()">⏸️ Pause</button>
+        
+  </div> <!-- This closes carousel-container -->
         <div class="carousel-indicators">
             <span class="indicator active" onclick="goToSlide(0)"></span>
             <span class="indicator" onclick="goToSlide(1)"></span>
