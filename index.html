@@ -122,42 +122,44 @@
       color: var(--text-light);
     }
 
-    /* BUTTONS */
-    .btn {
-      display: inline-block;
-      padding: 16px 32px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: inherit;
-      min-width: 180px;
-      text-align: center;
-    }
+   /* BUTTONS */
+.btn {
+  display: inline-block;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  min-width: 180px;
+  text-align: center;
+}
+
 /* Browse Packages Button */
-   .btn-primary {
+.btn-primary {
   background: transparent;
-  color: var(--accent);
-  border: 2px solid var(--accent);
+  color: #3182ce;
+  border: 2px solid #3182ce;
   box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2);
 }
 .btn-primary:hover {
-  background: var(--accent);
+  background: #3182ce;
   color: var(--white);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(49, 130, 206, 0.5);
 }
-/* free offer Button */
+
+/* Free Offer Button */
 .btn-secondary {
   background: transparent;
-  color: var(--accent);
-  border: 2px solid var(--accent);
+  color: #3182ce;
+  border: 2px solid #3182ce;
 }
 .btn-secondary:hover {
-  background: var(--accent);
+  background: #3182ce;
   color: var(--white);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(49, 130, 206, 0.5);
@@ -731,7 +733,6 @@ footer {
       <p>From cluttered spreadsheets to crystal-clear insights.</p>
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
         <a href="#packages" class="btn btn-primary">Browse Packages</a>
-        <a href="#community" class="btn btn-secondary">Free Community Offer</a>
       </div>
     </div>
   </section>
@@ -757,7 +758,7 @@ footer {
         <p>I believe in supporting the organizations that make our communities stronger. If you're a registered charity, community group, local food bank, or non-profit serving your neighborhood, I'm offering my Quick Wins package (normally £100) completely free.</p>
         <p style="margin-top: 1rem; font-weight: 600;">What you get: Custom dashboard, insight summary, and 30-minute walkthrough call — all at no cost.</p>
         <div style="margin-top: 2rem;">
-          <a href="#contact" class="btn btn-primary" onclick="selectPackage('community-free')">Claim Your Free Package</a>
+          <a href="#contact" class="btn btn-secondary" onclick="selectPackage('community-free')">Claim Your Free Package</a>
         </div>
         <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
           Limited to 5 organizations per month. Must provide charity registration or community group documentation.
@@ -1140,7 +1141,7 @@ function selectPackage(packageType) {
             <option value="consultation">Just want to chat first</option>
         </select>
         <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-        <button type="submit" class="btn btn-primary">Send Message</button>
+        <button type="submit" class="btn btn-secondary">Send Message</button>
     </form>
     <p style="text-align:center;margin-top:1rem">Prefer email? <a href="mailto:tom@elementalinsights.co.uk" style="color: var(--primary);">tom@elementalinsights.co.uk</a></p>
 </section>
