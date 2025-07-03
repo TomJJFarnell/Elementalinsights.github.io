@@ -342,14 +342,31 @@
             width: 300%; /* 3 slides = 300% */
         }
 
-       .carousel-card {
-    flex: 0 0 33.333%;
-    background: var(--text-dark);
-    padding: 1.5rem;  /* Reduced from 2rem */
-    display: flex;
-    flex-direction: column;
-    min-height: 450px;  /* Reduced from 600px */
         }
+.carousel-card {
+  flex: 0 0 33.333%;
+  background: var(--card-bg); /* ✅ use your dark card colour */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 450px;
+  color: var(--text-light); /* ✅ make all text default to light on dark */
+}
+
+.carousel-content h3 {
+  font-size: 1.8rem;
+  color: var(--text-light); /* ✅ light colour for title on dark card */
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.carousel-content p {
+  font-size: 1.1rem;
+  color: var(--text-muted); /* ✅ muted text for goal/description */
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
 
         .carousel-content h3 {
     font-size: 1.8rem;
