@@ -339,11 +339,11 @@
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 300%; /* 3 slides = 300% */
+    width: 100%; /* Changed from 300% */
 }
-
+    
 .carousel-card {
-    flex: 0 0 33.333%;
+    flex: 0 0 100%; /* Changed from 33.333% */
     background: var(--card-bg);
     padding: 1.5rem;
     display: flex;
@@ -740,7 +740,8 @@ footer {
     </div>
     <p style="max-width:800px;margin:auto;text-align:center;font-size:1.1rem">
 <p>Every small business has data that could transform their future—but most never unlock it. While big corporations spend thousands on analytics teams, I believe every local café, charity, and small business deserves those same powerful insights. That's why I founded Elemental Insights: to level the playing field. I take your everyday spreadsheets and turn them into clear strategies that actually work. No consultant-speak — just honest answers that help you make confident decisions and grow.</p>
-
+</section>
+  
   <!-- COMMUNITY FOCUS -->
   <section id="community">
     <div class="community-focus">
@@ -937,16 +938,17 @@ footer {
     }
 
     function updateCarousel() {
-        const translateX = -currentSlide * 100; // Move by 100% for each slide
-        carouselTrack.style.transform = `translateX(${translateX}%)`;
-        
-        // Update indicators
-        if (indicators.length > 0) {
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-        }
+    const translateX = -currentSlide * (100 / totalSlides); // Fixed calculation
+    carouselTrack.style.transform = `translateX(${translateX}%)`;
+    
+    // Update indicators
+    if (indicators.length > 0) {
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+        });
     }
+}
+  
 
     function nextSlide() {
         currentSlide = (currentSlide + 1) % totalSlides;
