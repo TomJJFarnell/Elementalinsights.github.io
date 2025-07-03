@@ -339,11 +339,11 @@
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 100%; /* Changed from 300% */
+    width: 300%; /* Changed from 300% */
 }
     
 .carousel-card {
-    flex: 0 0 100%; /* Changed from 33.333% */
+    flex: 0 0 33.333%; /* Changed from 33.333% */
     background: var(--card-bg);
     padding: 1.5rem;
     display: flex;
@@ -937,8 +937,8 @@ footer {
         return;
     }
 
-    function updateCarousel() {
-    const translateX = -currentSlide * (100 / totalSlides); // Fixed calculation
+   function updateCarousel() {
+    const translateX = -currentSlide * 33.333; /* Change to 33.333 to move one full card each time */
     carouselTrack.style.transform = `translateX(${translateX}%)`;
     
     // Update indicators
