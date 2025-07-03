@@ -6,37 +6,36 @@
   <title>Elemental Insights</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-   :root {
-  --brand: #1a365d;
-  --accent: #3182ce;
-  --secondary: #4299e1;
-  --light: #2d3748;
-  --white: #ffffff;
-  --hover-accent: #2c5282;
-  --background: #1a202c;
-  --card-bg: #2d3748;
-  --text-light: #e2e8f0;
-  --text-muted: #b5c0d0;
-}
+    :root {
+      --brand: #1a365d;
+      --accent: #3182ce;
+      --secondary: #4299e1;
+      --light: #2d3748;
+      --white: #ffffff;
+      --hover-accent: #2c5282;
+      --background: #1a202c;
+      --card-bg: #2d3748;
+      --text-light: #e2e8f0;
+      --text-muted: #b5c0d0;
+    }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
 }
-      @media (max-width: 768px) {
+@media (max-width: 768px) {
     body {
-        padding: 20px 15px;
+        padding: 20px 20px; /* Reasonable on mobile */
     }
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--background);
-  color: var(--text-light);
-  line-height: 1.7;
-  padding: 40px 180px;
-}
+  }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--background);
+      color: var(--text-light);
+      line-height: 1.7;
+      padding: 40px 180px; /* Much larger margins */
+    }
 
     /* NAVIGATION */
     header {
@@ -501,36 +500,19 @@ body {
             }
 
             .carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--brand); /* Changed from var(--primary) to var(--brand) */
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-            .carousel-btn.prev {
-  left: 10px; /* Changed from 20px to 10px for better visibility */
-}
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
 
-.carousel-btn.next {
-  right: 10px; /* Changed from 20px to 10px for better visibility */
-}
-        
-    .carousel-btn:hover {
-  background: var(--brand); /* Changed from var(--primary) to var(--brand) */
-  color: white;
-  transform: translateY(-50%) scale(1.1);
-}
-    
+            .carousel-btn.prev {
+                left: 10px;
+            }
+
+            .carousel-btn.next {
+                right: 10px;
+            }
+        }
 
     /* TABLES */
     .table-container {
@@ -742,7 +724,7 @@ footer {
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-content">
-      <h1>Data Analytics 3 for Real People</h1>
+      <h1>Data Analytics for Real People</h1>
       <p>From cluttered spreadsheets to crystal-clear insights.</p>
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
         <a href="#packages" class="btn btn-secondary">Browse Packages</a>
