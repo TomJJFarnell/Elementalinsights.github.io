@@ -23,7 +23,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-
+}
 @media (max-width: 768px) {
     body {
         padding: 20px 20px; /* Reasonable on mobile */
@@ -382,103 +382,103 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .results-container {
-            background: var(--background);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 1rem;
-            flex-grow: 1;
-        }
+       .results-container {
+  background: var(--background); /* Was cut off at "backgroun" */
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  flex-grow: 1;
+}
 
-        .results-container h4 {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
+.results-container h4 {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
 
-        .results-container ul {
-            list-style: none;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
+.results-container ul {
+  list-style: none;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
 
-        .results-container li {
-            margin-bottom: 0.8rem;
-            padding-left: 0.5rem;
-        }
+.results-container li {
+  margin-bottom: 0.8rem;
+  padding-left: 0.5rem;
+}
 
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
 
-        .carousel-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-50%) scale(1.1);
-        }
+.carousel-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
 
-        .carousel-btn.prev {
-            left: 20px;
-        }
+.carousel-btn.prev {
+  left: 20px;
+}
 
-        .carousel-btn.next {
-            right: 20px;
-        }
+.carousel-btn.next {
+  right: 20px;
+}
 
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 2rem;
-        }
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 2rem;
+}
 
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ddd;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-        .indicator.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
+.indicator.active {
+  background: var(--primary);
+  transform: scale(1.2);
+}
 
-        .pause-play-btn {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 25px;
-            padding: 8px 15px;
-            font-size: 0.9rem;
-            color: var(--primary);
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
+.pause-play-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 25px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  color: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
 
-        .pause-play-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
+.pause-play-btn:hover {
+  background: var(--primary);
+  color: white;
+}
 
         @media (max-width: 768px) {
             .section-heading {
@@ -1103,24 +1103,24 @@ footer {
         </div>
     </section>
    
-    <!-- CONTACT -->
-<section id="contact">
-    <h2 class="section-heading">Get in Touch</h2>
-    <form action="https://formspree.io/f/mnqepjwp" method="POST">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <select name="package" id="package-select" required>
-            <option value="">Select a package...</option>
-            <option value="quick-wins">Quick Wins - £100</option>
-            <option value="insight-builder">Insight Builder - £250</option>
-            <option value="growth-tracker">Growth Tracker - £400</option>
-            <option value="consultation">Just want to chat first</option>
-        </select>
-        <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-        <button type="submit" class="btn btn-secondary">Send Message</button>
-    </form>
-    <p style="text-align:center;margin-top:1rem">Prefer email? <a href="mailto:tom@elementalinsights.co.uk" style="color: var(--primary);">tom@elementalinsights.co.uk</a></p>
-</section>
+       <!-- CONTACT -->
+    <section id="contact">
+        <h2 class="section-heading">Get in Touch</h2>
+        <form action="https://formspree.io/f/mnqepjwp" method="POST">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <select name="package" id="package-select" required>
+                <option value="">Select a package...</option>
+                <option value="quick-wins">Quick Wins - £100</option>
+                <option value="insight-builder">Insight Builder - £250</option>
+                <option value="growth-tracker">Growth Tracker - £400</option>
+                <option value="consultation">Just want to chat first</option>
+            </select>
+            <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+            <button type="submit" class="btn btn-secondary">Send Message</button>
+        </form>
+        <p style="text-align:center;margin-top:1rem">Prefer email? <a href="mailto:tom@elementalinsights.co.uk" style="color: var(--primary);">tom@elementalinsights.co.uk</a></p>
+    </section>
 
 </body>
 </html>
