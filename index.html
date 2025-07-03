@@ -938,7 +938,7 @@ footer {
     }
 
    function updateCarousel() {
-    const translateX = -currentSlide * 33.333; /* Change to 33.333 to move one full card each time */
+    const translateX = -currentSlide * 33.333; // This should move by full card width
     carouselTrack.style.transform = `translateX(${translateX}%)`;
     
     // Update indicators
@@ -951,14 +951,14 @@ footer {
   
 
     function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
-    }
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+}
 
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateCarousel();
-    }
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+}
 
     // Make functions global for onclick handlers
     window.goToSlide = function(index) {
