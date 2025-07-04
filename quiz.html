@@ -566,32 +566,76 @@
   </div>
 
 <script>
-// DEAD SIMPLE validation
+// DEAD SIMPLE validation with debugging
 function checkForm() {
   const form = document.getElementById('quizForm');
   const btn = document.getElementById('submitBtn');
+  
+  console.log('Checking form...'); // Debug
   
   // Count answered questions
   let count = 0;
   
   // Check radio questions (7 total)
-  ['q1','q2','q4','q5','q6','q7','q8'].forEach(q => {
-    if (form.querySelector(`input[name="${q}"]:checked`)) count++;
+  const radioQuestions = ['q1','q2','q4','q5','q6','q7','q8'];
+  radioQuestions.forEach(q => {
+    const checked = form.querySelector(`input[name="${q}"]:checked`);
+    if (checked) {
+      count++;
+      console.log(`${q}: ${checked.value}`); // Debug
+    } else {
+      console.log(`${q}: not answered`); // Debug
+    }
   });
   
   // Check checkbox question (1 total)
-  if (form.querySelectorAll('input[name="q3"]:checked').length > 0) count++;
+  const checkboxes = form.querySelectorAll('input[name="q3"]:checked');
+  if (checkboxes.length > 0) {
+    count++;
+    console.log(`q3: ${checkboxes.length} selected`); // Debug
+  } else {
+    console.log('q3: not answered'); // Debug
+  }
+  
+  console.log(`Total answered: ${count}/8`); // Debug
   
   // Enable if all 8 answered
-  btn.disabled = (count < 8);
+  const shouldEnable = (count >= 8);
+  btn.disabled = !shouldEnable;
+  
+  console.log(`Button disabled: ${btn.disabled}`); // Debug
+  
+  // Visual feedback
+  if (shouldEnable) {
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+    btn.textContent = 'Get My BI Readiness Score';
+  } else {
+    btn.style.opacity = '0.6';
+    btn.style.cursor = 'not-allowed';
+    btn.textContent = `Answer All Questions (${count}/8 completed)`;
+  }
 }
 
-// Add listeners
+// Add listeners with multiple triggers
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('input').forEach(input => {
-    input.addEventListener('change', checkForm);
+  console.log('Page loaded, setting up quiz...'); // Debug
+  
+  // Add listeners to all inputs
+  document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(input => {
+    input.addEventListener('change', function() {
+      console.log('Input changed:', this.name, this.value, this.checked); // Debug
+      checkForm();
+    });
+    // Also listen for clicks
+    input.addEventListener('click', checkForm);
   });
-  checkForm(); // Initial check
+  
+  // Initial check
+  checkForm();
+  
+  // Backup: check every 2 seconds
+  setInterval(checkForm, 2000);
 });
 
 // Form submission
