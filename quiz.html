@@ -713,9 +713,7 @@ footer {
 
 
 
-
-    
-    /* Quiz-specific styles - ADD THESE TO YOUR EXISTING CSS */
+/* Quiz-specific styles - ADD THESE TO YOUR EXISTING CSS */
 .quiz-container {
   max-width: 900px;
   margin: 0 auto;
@@ -802,14 +800,15 @@ footer {
 }
 
 .option {
-  display: flex;
-  align-items: flex-start;
+  display: block;
   padding: 1rem;
   background: var(--background);
-  border: 2px solid transparent;
+  border: 2px solid rgba(66, 153, 225, 0.3);
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-bottom: 0.8rem;
+  position: relative;
 }
 
 .option:hover {
@@ -818,10 +817,7 @@ footer {
 }
 
 .option input[type="radio"] {
-  margin-right: 1rem;
-  margin-top: 0.2rem;
-  transform: scale(1.2);
-  accent-color: var(--accent);
+  display: none; /* Hide the radio button completely */
 }
 
 .option label {
@@ -830,12 +826,25 @@ footer {
   line-height: 1.5;
   font-size: 1rem;
   margin: 0;
-  flex: 1;
+  display: block;
+  width: 100%;
 }
 
 .option.selected {
   border-color: var(--accent);
   background: rgba(66, 153, 225, 0.1);
+  position: relative;
+}
+
+.option.selected::after {
+  content: "✓";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .option.selected label {
@@ -1030,22 +1039,33 @@ footer {
 
   
 <body>
-  <!-- NAVIGATION -->
+    <!-- NAVIGATION-->
+  <header>
+  <div class="logo">
+    <img src="Assets/logo.png" alt="Elemental Insights Logo">
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+
+<!-- Your existing header with navigation goes here -->
   <header>
     <div class="logo">
-      <img src="Assets/logo.png" alt="Elemental Insights Logo">
+      <img src="your-logo.png" alt="Elemental Insights">
     </div>
     <nav>
-      <a href="#about">About</a>
-      <a href="#help">How I Help</a>
+      <a href="index.html">Home</a>
       <a href="blog.html">Blog</a>
       <a href="quiz.html">Quiz</a>
-      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-
-<main class="quiz-container">
+  <main class="quiz-container">
     <div class="quiz-header">
       <h1>Data Audit Readiness Quiz</h1>
       <p>Discover how prepared your organization is for a comprehensive data audit and get personalized recommendations for improvement</p>
@@ -1225,8 +1245,12 @@ footer {
     </div>
   </main>
 
-// quiz javascript
-<script>
+  <!-- Your existing footer goes here -->
+  <footer>
+    <p>&copy; 2025 Elemental Insights. All rights reserved.</p>
+  </footer>
+
+  <script>
     // Add visual feedback for selected options
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
       radio.addEventListener('change', function() {
@@ -1236,6 +1260,17 @@ footer {
         
         // Add selected class to chosen option
         this.closest('.option').classList.add('selected');
+      });
+    });
+
+    // Also add click handler for the entire option box
+    document.querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', function() {
+        const radio = this.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+          radio.dispatchEvent(new Event('change'));
+        }
       });
     });
 
@@ -1353,30 +1388,6 @@ footer {
       document.querySelector('.quiz-header').scrollIntoView({ behavior: 'smooth' });
     }
   </script>
-
-
-  
-
-
-  
-       <!-- CONTACT -->
-    <section id="contact">
-        <h2 class="section-heading">Get in Touch</h2>
-        <form action="https://formspree.io/f/mnqepjwp" method="POST">
-            <input type="text" name="name" placeholder="Your name" required>
-            <input type="email" name="email" placeholder="Your email" required>
-            <select name="package" id="package-select" required>
-                <option value="">Select a package...</option>
-                <option value="quick-wins">Quick Wins - £100</option>
-                <option value="insight-builder">Insight Builder - £250</option>
-                <option value="growth-tracker">Growth Tracker - £400</option>
-                <option value="consultation">Just want to chat first</option>
-            </select>
-            <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-            <button type="submit" class="btn btn-secondary">Send Message</button>
-        </form>
-        <p style="text-align:center;margin-top:1rem">Prefer email? <a href="mailto:tom@elementalinsights.co.uk" style="color: var(--primary);">tom@elementalinsights.co.uk</a></p>
-    </section>
 
 </body>
 </html>
