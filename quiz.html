@@ -341,17 +341,28 @@
       background-color: rgba(0,0,0,0.8);
     }
 
-    .modal-content {
-      background-color: var(--card-bg);
-      margin: 15% auto;
-      padding: 2rem;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 500px;
-      position: relative;
-      color: var(--text-light);
-    }
-
+   /* Fix modal positioning */
+.modal-content {
+  background-color: var(--card-bg);
+  margin: 5% auto; /* Changed from 15% to 5% */
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  color: var(--text-light);
+  max-height: 90vh; /* Add max height */
+  overflow-y: auto; /* Add scroll if needed */
+}
+    
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .modal-content { 
+    margin: 2% auto; /* Even closer to top on mobile */
+    width: 95%; 
+    max-height: 95vh;
+  }
+}
     .close {
       color: var(--text-muted);
       float: right;
@@ -608,10 +619,6 @@
         <div class="form-group">
           <label for="consultEmail">Email *</label>
           <input type="email" id="consultEmail" required>
-        </div>
-        <div class="form-group">
-          <label for="consultPhone">Phone Number</label>
-          <input type="tel" id="consultPhone">
         </div>
         <div class="form-group">
           <label for="consultCompany">Company Name</label>
