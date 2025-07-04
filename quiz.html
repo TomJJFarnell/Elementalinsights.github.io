@@ -425,9 +425,25 @@
       .cta-buttons { flex-direction: column; align-items: center; }
       .modal-content { margin: 10% auto; width: 95%; }
     }
+    #kit-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+      
   </style>
 </head>
 
+
+
+
+
+
+
+
+
+
+
+  
 <body>
    <!-- NAVIGATION-->
   <header>
@@ -611,25 +627,11 @@
     <div class="modal-content">
       <span class="close" id="closeConsultation">&times;</span>
       <h2>Schedule Your Free BI Consultation</h2>
-      <form id="consultationForm">
-        <div class="form-group">
-          <label for="consultName">Full Name *</label>
-          <input type="text" id="consultName" required>
-        </div>
-        <div class="form-group">
-          <label for="consultEmail">Email *</label>
-          <input type="email" id="consultEmail" required>
-        </div>
-        <div class="form-group">
-          <label for="consultCompany">Company Name</label>
-          <input type="text" id="consultCompany">
-        </div>
-        <div class="form-group">
-          <label for="consultMessage">What challenges are you facing with your business data?</label>
-          <textarea id="consultMessage" rows="3"></textarea>
-        </div>
-        <button type="submit" class="form-submit">Schedule Consultation</button>
-      </form>
+      // kit form embedding
+      <div id="kit-form-container">
+  <script async data-uid="2ac0a83bab" src="https://elemental-insights-data-consultancy.kit.com/2ac0a83bab/index.js"></script>
+</div>
+        
     </div>
   </div>
 
