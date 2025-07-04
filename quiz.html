@@ -712,7 +712,6 @@ footer {
 }
 
 
-
 /* Quiz-specific styles - ADD THESE TO YOUR EXISTING CSS */
 .quiz-container {
   max-width: 900px;
@@ -1018,7 +1017,7 @@ footer {
   
   .score-display {
     font-size: 2rem;
-  }
+ }
 }
   </style>
 </head>
@@ -1052,415 +1051,327 @@ footer {
   </nav>
 </header>
 
-<div class="quiz-container">
-    <div class="header">
-        <h1>Business Intelligence Readiness Assessment</h1>
-        <p>Discover how data analytics and business intelligence can transform your business operations, regardless of your current data maturity level</p>
+<main class="quiz-container">
+    <div class="quiz-header">
+      <h1>Data Audit Readiness Quiz</h1>
+      <p>Discover how prepared your organization is for a comprehensive data audit and get personalized recommendations for improvement</p>
     </div>
-    
-    <form id="quizForm">
-        <div class="question">
-            <h3>1. How do you currently make important business decisions?</h3>
-            <div class="options">
-                <label class="option">
-                    <input type="radio" name="q1" value="4">
-                    <span>Based on gut feeling and experience</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q1" value="3">
-                    <span>Mix of experience and basic reports (sales totals, etc.)</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q1" value="2">
-                    <span>Regular reports with some analysis of trends</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q1" value="1">
-                    <span>Data-driven insights with predictive analytics</span>
-                </label>
-            </div>
-        </div>
 
-        <div class="question">
-            <h3>2. How often do you wonder "What's really driving our revenue/costs/customer satisfaction?"</h3>
-            <div class="options">
-                <label class="option">
-                    <input type="radio" name="q2" value="4">
-                    <span>Daily - I wish I had better insights</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q2" value="3">
-                    <span>Weekly - I get some reports but want deeper understanding</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q2" value="2">
-                    <span>Monthly - I have decent visibility but could be better</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q2" value="1">
-                    <span>Rarely - I have clear insights into business drivers</span>
-                </label>
-            </div>
-        </div>
+    <div class="quiz-intro">
+      <h3>Test Your Data Management Knowledge</h3>
+      <p>This quiz will assess your understanding of data audit principles, compliance requirements, and best practices. </p>
+      <p class="highlight">Take 5-10 minutes to evaluate your data readiness</p>
+    </div>
 
-        <div class="question">
-            <h3>3. What business data do you currently collect? (Select all that apply)</h3>
-            <div class="options">
-                <label class="option">
-                    <input type="checkbox" name="q3" value="sales">
-                    <span>Sales transactions and revenue</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" name="q3" value="customers">
-                    <span>Customer information and interactions</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" name="q3" value="inventory">
-                    <span>Inventory or service delivery data</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" name="q3" value="financial">
-                    <span>Financial and accounting data</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" name="q3" value="marketing">
-                    <span>Marketing and website analytics</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" name="q3" value="operations">
-                    <span>Operational metrics (time, efficiency, quality)</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" name="q3" value="minimal">
-                    <span>Very little - mostly basic bookkeeping</span>
-                </label>
-            </div>
+    <form class="quiz-form" id="dataAuditQuiz">
+      
+      <div class="question">
+        <h3><span class="question-number">1.</span> What is the primary purpose of conducting a data audit?</h3>
+        <div class="options">
+          <div class="option">
+            <input type="radio" name="q1" value="a" id="q1a">
+            <label for="q1a">To reduce data storage costs by deleting old files</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q1" value="b" id="q1b">
+            <label for="q1b">To assess data quality, accuracy, compliance, and governance practices</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q1" value="c" id="q1c">
+            <label for="q1c">To create backup copies of all organizational data</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q1" value="d" id="q1d">
+            <label for="q1d">To install new data management software</label>
+          </div>
         </div>
+      </div>
 
-        <div class="question">
-            <h3>4. How much time do you spend manually creating reports or looking up information?</h3>
-            <div class="options">
-                <label class="option">
-                    <input type="radio" name="q4" value="4">
-                    <span>Hours every week - it's a major time drain</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q4" value="3">
-                    <span>A few hours monthly - somewhat tedious</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q4" value="2">
-                    <span>Occasional time when needed - manageable</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q4" value="1">
-                    <span>Very little - most reporting is automated</span>
-                </label>
-            </div>
+      <div class="question">
+        <h3><span class="question-number">2.</span> Which of these is NOT a key dimension of data quality?</h3>
+        <div class="options">
+          <div class="option">
+            <input type="radio" name="q2" value="a" id="q2a">
+            <label for="q2a">Accuracy - data correctly represents real-world values</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q2" value="b" id="q2b">
+            <label for="q2b">Completeness - all required data fields contain values</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q2" value="c" id="q2c">
+            <label for="q2c">Popularity - how frequently data is accessed by users</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q2" value="d" id="q2d">
+            <label for="q2d">Timeliness - data is current and up-to-date</label>
+          </div>
         </div>
+      </div>
 
-        <div class="question">
-            <h3>5. What's your biggest challenge in understanding your business performance?</h3>
-            <div class="options">
-                <label class="option">
-                    <input type="radio" name="q5" value="4">
-                    <span>I don't know what data I have or how to use it</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q5" value="3">
-                    <span>Data is scattered across different systems</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q5" value="2">
-                    <span>I have data but lack the tools to analyze it effectively</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q5" value="1">
-                    <span>I need more advanced analytics and predictive insights</span>
-                </label>
-            </div>
+      <div class="question">
+        <h3><span class="question-number">3.</span> What is data lineage and why is it important for audits?</h3>
+        <div class="options">
+          <div class="option">
+            <input type="radio" name="q3" value="a" id="q3a">
+            <label for="q3a">The age of data files in your system</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q3" value="b" id="q3b">
+            <label for="q3b">The total storage space used by data</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q3" value="c" id="q3c">
+            <label for="q3c">The path data takes from source to destination, including transformations</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q3" value="d" id="q3d">
+            <label for="q3d">The number of people who have access to specific data</label>
+          </div>
         </div>
+      </div>
 
-        <div class="question">
-            <h3>6. How confident are you in the business decisions you make?</h3>
-            <div class="options">
-                <label class="option">
-                    <input type="radio" name="q6" value="4">
-                    <span>Often uncertain - I'm making educated guesses</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q6" value="3">
-                    <span>Somewhat confident but wish I had better information</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q6" value="2">
-                    <span>Generally confident with good supporting data</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q6" value="1">
-                    <span>Very confident - decisions are backed by solid analytics</span>
-                </label>
-            </div>
+      <div class="question">
+        <h3><span class="question-number">4.</span> How often should comprehensive data audits be performed?</h3>
+        <div class="options">
+          <div class="option">
+            <input type="radio" name="q4" value="a" id="q4a">
+            <label for="q4a">Only when data problems are discovered</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q4" value="b" id="q4b">
+            <label for="q4b">Regularly, based on business needs, compliance requirements, and risk assessment</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q4" value="c" id="q4c">
+            <label for="q4c">Once every 10 years to avoid disrupting operations</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q4" value="d" id="q4d">
+            <label for="q4d">Data audits are unnecessary if you have good backup systems</label>
+          </div>
         </div>
+      </div>
 
-        <div class="question">
-            <h3>7. What would have the biggest impact on your business if you could achieve it?</h3>
-            <div class="options">
-                <label class="option">
-                    <input type="radio" name="q7" value="4">
-                    <span>Understanding which customers/products are most profitable</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q7" value="3">
-                    <span>Identifying trends and patterns in my business data</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q7" value="2">
-                    <span>Automating reports and getting real-time dashboards</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q7" value="1">
-                    <span>Predicting future performance and market opportunities</span>
-                </label>
-            </div>
+      <div class="question">
+        <h3><span class="question-number">5.</span> Which compliance framework specifically addresses data protection and privacy?</h3>
+        <div class="options">
+          <div class="option">
+            <input type="radio" name="q5" value="a" id="q5a">
+            <label for="q5a">SOX (Sarbanes-Oxley Act)</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q5" value="b" id="q5b">
+            <label for="q5b">GDPR (General Data Protection Regulation)</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q5" value="c" id="q5c">
+            <label for="q5c">ISO 9001 (Quality Management)</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q5" value="d" id="q5d">
+            <label for="q5d">ITIL (Information Technology Infrastructure Library)</label>
+          </div>
         </div>
+      </div>
 
-        <div class="question">
-            <h3>8. What's your annual revenue range?</h3>
-            <div class="options">
-                <label class="option">
-                    <input type="radio" name="q8" value="1">
-                    <span>Under $100K</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q8" value="2">
-                    <span>$100K - $500K</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q8" value="3">
-                    <span>$500K - $2M</span>
-                </label>
-                <label class="option">
-                    <input type="radio" name="q8" value="4">
-                    <span>Over $2M</span>
-                </label>
-            </div>
+      <div class="question">
+        <h3><span class="question-number">6.</span> What should be the first step in preparing for a data audit?</h3>
+        <div class="options">
+          <div class="option">
+            <input type="radio" name="q6" value="a" id="q6a">
+            <label for="q6a">Purchase expensive data auditing software</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q6" value="b" id="q6b">
+            <label for="q6b">Create a comprehensive data inventory and mapping</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q6" value="c" id="q6c">
+            <label for="q6c">Hire external consultants immediately</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q6" value="d" id="q6d">
+            <label for="q6d">Delete all unnecessary data to reduce scope</label>
+          </div>
         </div>
+      </div>
 
-        <button type="submit" class="submit-btn">Get My Business Intelligence Readiness Score</button>
+      <div class="question">
+        <h3><span class="question-number">7.</span> Which tool category is most essential for ongoing data quality monitoring?</h3>
+        <div class="options">
+          <div class="option">
+            <input type="radio" name="q7" value="a" id="q7a">
+            <label for="q7a">Social media management platforms</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q7" value="b" id="q7b">
+            <label for="q7b">Data profiling and quality assessment tools</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q7" value="c" id="q7c">
+            <label for="q7c">Graphic design software</label>
+          </div>
+          <div class="option">
+            <input type="radio" name="q7" value="d" id="q7d">
+            <label for="q7d">Email marketing platforms</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-section">
+        <button type="button" class="quiz-btn" onclick="calculateQuizScore()">Get My Results</button>
+      </div>
     </form>
 
-    <div id="results" class="results">
-        <div class="score-section">
-            <h2>Your Business Intelligence Readiness Score</h2>
-            <div class="score" id="scoreDisplay"></div>
-            <div class="score-description" id="scoreDescription"></div>
-        </div>
-        
-        <div class="recommendations" id="recommendations"></div>
-        
-        <div class="next-steps">
-            <h3>Ready to Get Started?</h3>
-            <p>Based on your assessment, you have significant opportunities to improve your business performance through data analytics and business intelligence. Even if you think you "don't have enough data," you likely have more valuable information than you realize.</p>
-            <div class="cta-buttons">
-                <button class="cta-primary">Schedule Free Consultation</button>
-                <button class="cta-secondary">Download BI Readiness Guide</button>
-            </div>
-        </div>
+    <div id="quizResults" class="results">
+      <div id="scoreDisplay" class="score-display"></div>
+      <div id="feedback" class="feedback"></div>
+      <button class="retake-btn" onclick="retakeQuiz()">Retake Quiz</button>
     </div>
-</div>
+  </main>
 
-<script>
-document.getElementById('quizForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    let totalScore = 0;
-    let dataTypes = [];
-    
-    // Calculate basic score
-    for (let i = 1; i <= 8; i++) {
-        if (i === 3) continue; // Skip checkbox question
-        const value = formData.get(`q${i}`);
-        if (value) totalScore += parseInt(value);
-    }
-    
-    // Handle checkbox question
-    const q3Values = formData.getAll('q3');
-    dataTypes = q3Values;
-    
-    // Adjust score based on data types
-    if (q3Values.includes('minimal')) {
-        totalScore += 2;
-    } else if (q3Values.length >= 4) {
-        totalScore += 1;
-    }
-    
-    displayResults(totalScore, dataTypes);
-});
+  <!-- Your existing footer goes here -->
+  <footer>
+    <p>&copy; 2025 Elemental Insights. All rights reserved.</p>
+  </footer>
 
-function displayResults(score, dataTypes) {
-    const resultsDiv = document.getElementById('results');
-    const scoreDisplay = document.getElementById('scoreDisplay');
-    const scoreDescription = document.getElementById('scoreDescription');
-    const recommendations = document.getElementById('recommendations');
-    
-    let category, description, recs;
-    
-    if (score >= 24) {
-        category = "High Opportunity";
-        description = "You have significant untapped potential for business intelligence! Your current decision-making process could be dramatically improved with the right data insights.";
-        recs = generateHighOpportunityRecs(dataTypes);
-    } else if (score >= 18) {
-        category = "Good Candidate";
-        description = "You're collecting some data but missing key insights. Business intelligence can help you make better decisions and save time.";
-        recs = generateGoodCandidateRecs(dataTypes);
-    } else if (score >= 12) {
-        category = "Advanced Ready";
-        description = "You have good data practices but could benefit from more sophisticated analytics and automation.";
-        recs = generateAdvancedRecs(dataTypes);
-    } else {
-        category = "Data Mature";
-        description = "You're already data-driven! Focus on advanced analytics and predictive insights.";
-        recs = generateMatureRecs(dataTypes);
-    }
-    
-    scoreDisplay.textContent = category;
-    scoreDescription.textContent = description;
-    recommendations.innerHTML = recs;
-    
-    resultsDiv.style.display = 'block';
-    resultsDiv.scrollIntoView({ behavior: 'smooth' });
-}
-
-function generateHighOpportunityRecs(dataTypes) {
-    const hasMinimal = dataTypes.includes('minimal');
-    
-    return `
-        <div class="recommendation">
-            <h4>🎯 Your Biggest Win: Customer & Revenue Insights</h4>
-            <p>Even with basic sales data, we can help you identify your most profitable customers, products, and time periods. This alone typically increases profits by 15-25%.</p>
-        </div>
+  <script>
+    // Add visual feedback for selected options
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        // Remove selected class from all options in this question
+        const questionOptions = this.closest('.question').querySelectorAll('.option');
+        questionOptions.forEach(option => option.classList.remove('selected'));
         
-        <div class="recommendation">
-            <h4>💡 Myth Buster: "I Don't Have Enough Data"</h4>
-            <p>You likely have more valuable data than you think! Sales records, customer interactions, and financial data contain goldmines of insights. We specialize in working with businesses at your stage.</p>
-        </div>
-        
-        <div class="recommendation">
-            <h4>⚡ Quick Wins Available</h4>
-            <ul>
-                <li>Automated monthly performance dashboards</li>
-                <li>Customer profitability analysis</li>
-                <li>Sales trend identification</li>
-                <li>Simple forecasting models</li>
-            </ul>
-        </div>
-        
-        <div class="recommendation">
-            <h4>🚀 Expected ROI: 300-500%</h4>
-            <p>Businesses at your stage typically see the highest returns from BI investments because the improvements are so dramatic compared to gut-feel decision making.</p>
-        </div>
-    `;
-}
-
-function generateGoodCandidateRecs(dataTypes) {
-    return `
-        <div class="recommendation">
-            <h4>🔗 Your Focus: Connect the Dots</h4>
-            <p>You're collecting good data but it's probably scattered. We'll help you see the complete picture of your business performance.</p>
-        </div>
-        
-        <div class="recommendation">
-            <h4>📊 Perfect Timing for BI</h4>
-            <p>You have enough data to generate meaningful insights but aren't overwhelmed by complexity. This is the sweet spot for implementing business intelligence.</p>
-        </div>
-        
-        <div class="recommendation">
-            <h4>🎯 Priority Areas</h4>
-            <ul>
-                <li>Unified reporting across all data sources</li>
-                <li>Advanced customer segmentation</li>
-                <li>Operational efficiency analysis</li>
-                <li>Predictive trend analysis</li>
-            </ul>
-        </div>
-    `;
-}
-
-function generateAdvancedRecs(dataTypes) {
-    return `
-        <div class="recommendation">
-            <h4>🚀 Ready for Advanced Analytics</h4>
-            <p>You have solid data foundations. Focus on sophisticated analytics, automation, and predictive modeling to gain competitive advantages.</p>
-        </div>
-        
-        <div class="recommendation">
-            <h4>🎯 Strategic Focus Areas</h4>
-            <ul>
-                <li>Machine learning for customer behavior prediction</li>
-                <li>Advanced forecasting models</li>
-                <li>Real-time performance monitoring</li>
-                <li>Competitive intelligence integration</li>
-            </ul>
-        </div>
-    `;
-}
-
-function generateMatureRecs(dataTypes) {
-    return `
-        <div class="recommendation">
-            <h4>🎯 Next Level: AI & Predictive Analytics</h4>
-            <p>You're already data-driven. Focus on AI-powered insights, predictive modeling, and advanced automation to stay ahead of the competition.</p>
-        </div>
-        
-        <div class="recommendation">
-            <h4>🚀 Strategic Opportunities</h4>
-            <ul>
-                <li>AI-powered demand forecasting</li>
-                <li>Automated anomaly detection</li>
-                <li>Advanced customer lifetime value modeling</li>
-                <li>Market opportunity identification</li>
-            </ul>
-        </div>
-    `;
-}
-
-// email quiz results to me t
-function submitQuizResults(formData, score, recommendations) {
-    // Send to webhook service
-    fetch('https://hook.eu1.make.com/your-webhook-url', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            timestamp: new Date().toISOString(),
-            score: score,
-            responses: Object.fromEntries(formData),
-            recommendations: recommendations
-        })
+        // Add selected class to chosen option
+        this.closest('.option').classList.add('selected');
+      });
     });
-}
-</script>
- 
-  <!-- Replace your CTA buttons with -->
-<div class="cta-buttons">
-    <button onclick="showConsultationForm()" class="cta-primary">
-        Schedule Free Consultation
-    </button>
-    <button onclick="showDownloadForm()" class="cta-secondary">
-        Download BI Readiness Guide
-    </button>
-</div>
 
-<!-- Hidden forms that appear on click -->
-<div id="downloadForm" style="display:none;">
-    <form action="https://your-convertkit-form-url" method="post">
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <input type="hidden" name="quiz_score" id="hiddenScore">
-        <input type="hidden" name="recommendations" id="hiddenRecs">
-        <button type="submit">Get My Free Guide</button>
-    </form>
-</div>
-  
-</body>
+    // Also add click handler for the entire option box
+    document.querySelectorAll('.option').forEach(option => {
+      option.addEventListener('click', function() {
+        const radio = this.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+          radio.dispatchEvent(new Event('change'));
+        }
+      });
+    });
+
+    function calculateQuizScore() {
+      const answers = {
+        q1: 'b', // Data audit purpose
+        q2: 'c', // Data quality dimensions
+        q3: 'c', // Data lineage
+        q4: 'b', // Audit frequency
+        q5: 'b', // GDPR compliance
+        q6: 'b', // First step preparation
+        q7: 'b'  // Essential tools
+      };
+
+      let score = 0;
+      const totalQuestions = Object.keys(answers).length;
+      let unanswered = [];
+
+      // Check each answer
+      for (let question in answers) {
+        const selected = document.querySelector(`input[name="${question}"]:checked`);
+        if (selected) {
+          if (selected.value === answers[question]) {
+            score++;
+          }
+        } else {
+          unanswered.push(question);
+        }
+      }
+
+      // Check if all questions are answered
+      if (unanswered.length > 0) {
+        alert(`Please answer all questions before submitting. Missing: ${unanswered.length} question(s)`);
+        return;
+      }
+
+      // Calculate percentage
+      const percentage = Math.round((score / totalQuestions) * 100);
+      
+      // Display results
+      displayResults(score, totalQuestions, percentage);
+    }
+
+    function displayResults(score, total, percentage) {
+      const resultsDiv = document.getElementById('quizResults');
+      const scoreDisplay = document.getElementById('scoreDisplay');
+      const feedback = document.getElementById('feedback');
+      
+      // Set score with color coding
+      scoreDisplay.textContent = `${score}/${total} (${percentage}%)`;
+      
+      if (percentage >= 85) {
+        scoreDisplay.className = 'score-display score-excellent';
+        feedback.innerHTML = `
+          <h3>🎉 Excellent! You're Data Audit Ready</h3>
+          <p>You have a strong understanding of data audit principles and best practices. Your organization is likely well-prepared for a comprehensive data audit.</p>
+          <div class="recommendations">
+            <h4>Next Steps:</h4>
+            <ul>
+              <li>Consider implementing advanced data lineage tracking</li>
+              <li>Explore automated data quality monitoring tools</li>
+              <li>Develop a formal data governance framework</li>
+              <li>Train your team on emerging compliance requirements</li>
+            </ul>
+          </div>
+        `;
+      } else if (percentage >= 70) {
+        scoreDisplay.className = 'score-display score-good';
+        feedback.innerHTML = `
+          <h3>👍 Good Foundation - Ready for Next Level</h3>
+          <p>You have solid knowledge of data audit fundamentals. With some focused improvements, your organization can achieve audit excellence.</p>
+          <div class="recommendations">
+            <h4>Recommended Actions:</h4>
+            <ul>
+              <li>Review data quality dimensions and measurement techniques</li>
+              <li>Strengthen your data inventory and mapping processes</li>
+              <li>Implement regular data quality monitoring</li>
+              <li>Consider compliance training for your team</li>
+            </ul>
+          </div>
+        `;
+      } else {
+        scoreDisplay.className = 'score-display score-needs-improvement';
+        feedback.innerHTML = `
+          <h3>📚 Learning Opportunity - Let's Build Your Foundation</h3>
+          <p>There's significant room for improvement in your data audit readiness. Focus on building fundamental knowledge and processes.</p>
+          <div class="recommendations">
+            <h4>Priority Actions:</h4>
+            <ul>
+              <li>Start with a comprehensive data inventory</li>
+              <li>Learn about data quality frameworks and best practices</li>
+              <li>Research relevant compliance requirements for your industry</li>
+              <li>Consider partnering with data management experts</li>
+              <li>Implement basic data governance policies</li>
+            </ul>
+          </div>
+        `;
+      }
+      
+      resultsDiv.classList.add('show');
+      resultsDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function retakeQuiz() {
+      // Reset all radio buttons
+      document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.checked = false;
+        radio.closest('.option').classList.remove('selected');
+      });
+      
+      // Hide results
+      document.getElementById('quizResults').classList.remove('show');
+      
+      // Scroll to top of quiz
+      document.querySelector('.quiz-header').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </html>
