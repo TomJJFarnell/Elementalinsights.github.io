@@ -30,6 +30,52 @@
       background: var(--background);
       color: var(--text-light);
       line-height: 1.7;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* NAVIGATION */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--card-bg);
+      box-shadow: 0 4px 12px rgba(0,0,0,.3);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--secondary);
+    }
+
+    .logo img {
+      height: 60px;
+      width: 240px;
+      object-fit: contain;
+    }
+
+    nav a {
+      margin-left: 1.4rem;
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    /* Main content spacing */
+    .main-content {
       padding: 20px;
     }
 
@@ -63,7 +109,51 @@
       font-size: 1.2rem;
     }
 
-    /* SIMPLE WORKING RADIO/CHECKBOX STYLES */
+    /* Hide actual radio buttons and checkboxes */
+    .question input[type="radio"],
+    .question input[type="checkbox"] {
+      display: none;
+    }
+
+    /* Checkbox options styling */
+    .checkbox-option {
+      display: block;
+      padding: 12px 15px;
+      margin: 8px 0;
+      background: var(--card-bg);
+      border: 2px solid rgba(66, 153, 225, 0.3);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      color: var(--text-muted);
+      position: relative;
+      user-select: none;
+    }
+
+    .checkbox-option:hover {
+      border-color: var(--accent);
+      background: rgba(66, 153, 225, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .checkbox-option.selected {
+      border-color: var(--accent);
+      background: rgba(66, 153, 225, 0.15);
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .checkbox-option.selected::after {
+      content: "✓";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
     .question label {
       display: block;
       padding: 12px 15px;
@@ -76,32 +166,23 @@
       font-size: 1rem;
       color: var(--text-muted);
       position: relative;
+      user-select: none;
     }
 
     .question label:hover {
       border-color: var(--accent);
       background: rgba(66, 153, 225, 0.1);
+      transform: translateY(-1px);
     }
 
-    /* Hide the ugly checkboxes and radio buttons */
-    .question input[type="radio"],
-    .question input[type="checkbox"] {
-      position: absolute;
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    /* Selected state styling */
-    .question label:has(input:checked) {
+    .question label.selected {
       border-color: var(--accent);
       background: rgba(66, 153, 225, 0.15);
       color: var(--text-light);
       font-weight: 500;
     }
 
-    /* Add checkmark arrow for selected options */
-    .question label:has(input:checked)::after {
+    .question label.selected::after {
       content: "✓";
       position: absolute;
       right: 15px;
@@ -156,20 +237,8 @@
     }
 
     @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .score-section h2 {
-      color: var(--secondary);
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .score {
@@ -217,46 +286,6 @@
       margin-bottom: 1rem;
     }
 
-    .recommendation ul {
-      list-style: none;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .recommendation li {
-      margin-bottom: 0.5rem;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .recommendation li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: bold;
-    }
-
-    .next-steps {
-      margin-top: 2rem;
-      padding: 2rem;
-      background: rgba(66, 153, 225, 0.05);
-      border-radius: 12px;
-      border: 1px solid rgba(66, 153, 225, 0.2);
-    }
-
-    .next-steps h3 {
-      color: var(--secondary);
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
-
-    .next-steps p {
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
     .cta-buttons {
       display: flex;
       gap: 1.5rem;
@@ -294,373 +323,505 @@
     .cta-secondary {
       background: transparent;
       color: var(--accent);
-      border: 2px solid var(--accent);
     }
 
     .cta-secondary:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(49, 130, 206, 0.3);
+      background: rgba(66, 153, 225, 0.1);
+      transform: translateY(-1px);
     }
 
-    .hidden-form {
+    .modal {
       display: none;
-      margin-top: 2rem;
-      padding: 2.5rem;
-      background: var(--card-bg);
-      border-radius: 16px;
-      border: 2px solid var(--accent);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      animation: slideUp 0.4s ease-out;
-    }
-
-    .hidden-form.show {
-      display: block;
-    }
-
-    .hidden-form h4 {
-      color: var(--secondary);
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-      text-align: center;
-    }
-
-    .hidden-form p {
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .hidden-form input, .hidden-form textarea, .hidden-form select {
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
       width: 100%;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      border: 2px solid rgba(66, 153, 225, 0.3);
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+      background-color: var(--card-bg);
+      margin: 15% auto;
+      padding: 2rem;
       border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      color: var(--text-light);
+    }
+
+    .close {
+      color: var(--text-muted);
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: var(--accent);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid rgba(66, 153, 225, 0.3);
+      border-radius: 8px;
       background: var(--background);
       color: var(--text-light);
       font-family: inherit;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
     }
 
-    .hidden-form input:focus, .hidden-form textarea:focus, .hidden-form select:focus {
+    .form-group input:focus,
+    .form-group textarea:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
     }
 
-    .hidden-form input::placeholder, .hidden-form textarea::placeholder {
-      color: var(--text-muted);
-    }
-
-    .hidden-form button {
-      width: 100%;
+    .form-submit {
       background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
       color: white;
       border: none;
-      padding: 1.2rem 2rem;
-      border-radius: 12px;
+      padding: 1rem 2rem;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
-      font-size: 1.1rem;
       transition: all 0.3s ease;
-      font-family: inherit;
-      box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
     }
 
-    .hidden-form button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4);
-    }
-
-    .download-success {
-      text-align: center;
-      padding: 2rem;
-      background: rgba(16, 185, 129, 0.1);
-      border-radius: 12px;
-      border: 2px solid #10B981;
-    }
-
-    .download-success h4 {
-      color: #10B981;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
-
-    .download-success p {
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 0.5rem;
-    }
-
-    .download-success .small-text {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    /* Kit form styling override */
-    #kitFormContainer .formkit-form {
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-
-    #kitFormContainer .formkit-input {
-      background: var(--background) !important;
-      border: 2px solid rgba(66, 153, 225, 0.3) !important;
-      border-radius: 12px !important;
-      color: var(--text-light) !important;
-      padding: 1rem !important;
-      margin-bottom: 1.5rem !important;
-    }
-
-    #kitFormContainer .formkit-submit {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%) !important;
-      border: none !important;
-      border-radius: 12px !important;
-      padding: 1.2rem 2rem !important;
-      font-weight: 600 !important;
-      transition: all 0.3s ease !important;
+    .form-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(49, 130, 206, 0.4);
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 1.5rem;
-      }
-      
-      h1 {
-        font-size: 2rem;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
+      .container { padding: 1.5rem; }
+      h1 { font-size: 2rem; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .modal-content { margin: 10% auto; width: 95%; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+   <!-- NAVIGATION-->
+  <header>
+  <div class="logo">
+    <img src="Assets/logo.png" alt="Elemental Insights Logo">
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+  <div class="main-content">
+    <div class="container">
     <h1>Business Intelligence Readiness Assessment</h1>
     
-    <form id="quizForm">
+    <div id="quizSection">
       <div class="question">
         <h3>1. How do you currently make important business decisions?</h3>
-        <label><input type="radio" name="q1" value="4"> Based on gut feeling and experience</label>
-        <label><input type="radio" name="q1" value="3"> Mix of experience and basic reports (sales totals, etc.)</label>
-        <label><input type="radio" name="q1" value="2"> Regular reports with some analysis of trends</label>
-        <label><input type="radio" name="q1" value="1"> Data-driven insights with predictive analytics</label>
+        <label data-question="q1" data-value="4">
+          <input type="radio" name="q1" value="4"> Based on gut feeling and experience
+        </label>
+        <label data-question="q1" data-value="3">
+          <input type="radio" name="q1" value="3"> Mix of experience and basic reports (sales totals, etc.)
+        </label>
+        <label data-question="q1" data-value="2">
+          <input type="radio" name="q1" value="2"> Regular reports with some analysis of trends
+        </label>
+        <label data-question="q1" data-value="1">
+          <input type="radio" name="q1" value="1"> Data-driven insights with predictive analytics
+        </label>
       </div>
 
       <div class="question">
         <h3>2. How often do you wonder "What's really driving our revenue/costs/customer satisfaction?"</h3>
-        <label><input type="radio" name="q2" value="4"> Daily - I wish I had better insights</label>
-        <label><input type="radio" name="q2" value="3"> Weekly - I get some reports but want deeper understanding</label>
-        <label><input type="radio" name="q2" value="2"> Monthly - I have decent visibility but could be better</label>
-        <label><input type="radio" name="q2" value="1"> Rarely - I have clear insights into business drivers</label>
+        <label data-question="q2" data-value="4">
+          <input type="radio" name="q2" value="4"> Daily - I wish I had better insights
+        </label>
+        <label data-question="q2" data-value="3">
+          <input type="radio" name="q2" value="3"> Weekly - I get some reports but want deeper understanding
+        </label>
+        <label data-question="q2" data-value="2">
+          <input type="radio" name="q2" value="2"> Monthly - I have decent visibility but could be better
+        </label>
+        <label data-question="q2" data-value="1">
+          <input type="radio" name="q2" value="1"> Rarely - I have clear insights into business drivers
+        </label>
       </div>
 
       <div class="question">
         <h3>3. What business data do you currently collect? (Select all that apply)</h3>
-        <label><input type="checkbox" name="q3" value="sales"> Sales transactions and revenue</label>
-        <label><input type="checkbox" name="q3" value="customers"> Customer information and interactions</label>
-        <label><input type="checkbox" name="q3" value="inventory"> Inventory or service delivery data</label>
-        <label><input type="checkbox" name="q3" value="financial"> Financial and accounting data</label>
-        <label><input type="checkbox" name="q3" value="marketing"> Marketing and website analytics</label>
-        <label><input type="checkbox" name="q3" value="operations"> Operational metrics (time, efficiency, quality)</label>
-        <label><input type="checkbox" name="q3" value="minimal"> Very little - mostly basic bookkeeping</label>
+        <div class="checkbox-option" onclick="toggleQ3('sales')">
+          <span class="checkbox-text">Sales transactions and revenue</span>
+        </div>
+        <div class="checkbox-option" onclick="toggleQ3('customers')">
+          <span class="checkbox-text">Customer information and interactions</span>
+        </div>
+        <div class="checkbox-option" onclick="toggleQ3('inventory')">
+          <span class="checkbox-text">Inventory or service delivery data</span>
+        </div>
+        <div class="checkbox-option" onclick="toggleQ3('financial')">
+          <span class="checkbox-text">Financial and accounting data</span>
+        </div>
+        <div class="checkbox-option" onclick="toggleQ3('marketing')">
+          <span class="checkbox-text">Marketing and website analytics</span>
+        </div>
+        <div class="checkbox-option" onclick="toggleQ3('operations')">
+          <span class="checkbox-text">Operational metrics (time, efficiency, quality)</span>
+        </div>
+        <div class="checkbox-option" onclick="toggleQ3('minimal')">
+          <span class="checkbox-text">Very little - mostly basic bookkeeping</span>
+        </div>
       </div>
 
       <div class="question">
         <h3>4. How much time do you spend manually creating reports or looking up information?</h3>
-        <label><input type="radio" name="q4" value="4"> Hours every week - it's a major time drain</label>
-        <label><input type="radio" name="q4" value="3"> A few hours monthly - somewhat tedious</label>
-        <label><input type="radio" name="q4" value="2"> Occasional time when needed - manageable</label>
-        <label><input type="radio" name="q4" value="1"> Very little - most reporting is automated</label>
+        <label data-question="q4" data-value="4">
+          <input type="radio" name="q4" value="4"> Hours every week - it's a major time drain
+        </label>
+        <label data-question="q4" data-value="3">
+          <input type="radio" name="q4" value="3"> A few hours monthly - somewhat tedious
+        </label>
+        <label data-question="q4" data-value="2">
+          <input type="radio" name="q4" value="2"> Occasional time when needed - manageable
+        </label>
+        <label data-question="q4" data-value="1">
+          <input type="radio" name="q4" value="1"> Very little - most reporting is automated
+        </label>
       </div>
 
       <div class="question">
         <h3>5. What's your biggest challenge in understanding your business performance?</h3>
-        <label><input type="radio" name="q5" value="4"> I don't know what data I have or how to use it</label>
-        <label><input type="radio" name="q5" value="3"> Data is scattered across different systems</label>
-        <label><input type="radio" name="q5" value="2"> I have data but lack the tools to analyze it effectively</label>
-        <label><input type="radio" name="q5" value="1"> I need more advanced analytics and predictive insights</label>
+        <label data-question="q5" data-value="4">
+          <input type="radio" name="q5" value="4"> I don't know what data I have or how to use it
+        </label>
+        <label data-question="q5" data-value="3">
+          <input type="radio" name="q5" value="3"> Data is scattered across different systems
+        </label>
+        <label data-question="q5" data-value="2">
+          <input type="radio" name="q5" value="2"> I have data but lack the tools to analyze it effectively
+        </label>
+        <label data-question="q5" data-value="1">
+          <input type="radio" name="q5" value="1"> I need more advanced analytics and predictive insights
+        </label>
       </div>
 
       <div class="question">
         <h3>6. How confident are you in the business decisions you make?</h3>
-        <label><input type="radio" name="q6" value="4"> Often uncertain - I'm making educated guesses</label>
-        <label><input type="radio" name="q6" value="3"> Somewhat confident but wish I had better information</label>
-        <label><input type="radio" name="q6" value="2"> Generally confident with good supporting data</label>
-        <label><input type="radio" name="q6" value="1"> Very confident - decisions are backed by solid analytics</label>
+        <label data-question="q6" data-value="4">
+          <input type="radio" name="q6" value="4"> Often uncertain - I'm making educated guesses
+        </label>
+        <label data-question="q6" data-value="3">
+          <input type="radio" name="q6" value="3"> Somewhat confident but wish I had better information
+        </label>
+        <label data-question="q6" data-value="2">
+          <input type="radio" name="q6" value="2"> Generally confident with good supporting data
+        </label>
+        <label data-question="q6" data-value="1">
+          <input type="radio" name="q6" value="1"> Very confident - decisions are backed by solid analytics
+        </label>
       </div>
 
       <div class="question">
         <h3>7. What would have the biggest impact on your business if you could achieve it?</h3>
-        <label><input type="radio" name="q7" value="4"> Understanding which customers/products are most profitable</label>
-        <label><input type="radio" name="q7" value="3"> Identifying trends and patterns in my business data</label>
-        <label><input type="radio" name="q7" value="2"> Automating reports and getting real-time dashboards</label>
-        <label><input type="radio" name="q7" value="1"> Predicting future performance and market opportunities</label>
+        <label data-question="q7" data-value="4">
+          <input type="radio" name="q7" value="4"> Understanding which customers/products are most profitable
+        </label>
+        <label data-question="q7" data-value="3">
+          <input type="radio" name="q7" value="3"> Identifying trends and patterns in my business data
+        </label>
+        <label data-question="q7" data-value="2">
+          <input type="radio" name="q7" value="2"> Automating reports and getting real-time dashboards
+        </label>
+        <label data-question="q7" data-value="1">
+          <input type="radio" name="q7" value="1"> Predicting future performance and market opportunities
+        </label>
       </div>
 
       <div class="question">
         <h3>8. What's your annual revenue range?</h3>
-        <label><input type="radio" name="q8" value="1"> Under $100K</label>
-        <label><input type="radio" name="q8" value="2"> $100K - $500K</label>
-        <label><input type="radio" name="q8" value="3"> $500K - $2M</label>
-        <label><input type="radio" name="q8" value="4"> Over $2M</label>
+        <label data-question="q8" data-value="1">
+          <input type="radio" name="q8" value="1"> Under $100K
+        </label>
+        <label data-question="q8" data-value="2">
+          <input type="radio" name="q8" value="2"> $100K - $500K
+        </label>
+        <label data-question="q8" data-value="3">
+          <input type="radio" name="q8" value="3"> $500K - $2M
+        </label>
+        <label data-question="q8" data-value="4">
+          <input type="radio" name="q8" value="4"> Over $2M
+        </label>
       </div>
 
-      <button type="submit" class="submit-btn" id="submitBtn" disabled>
-        Get My BI Readiness Score
+      <button class="submit-btn" id="submitBtn" disabled>
+        Answer All Questions to Continue
       </button>
-    </form>
+    </div>
 
     <div id="results" class="results">
-      <div class="score-section">
-        <h2>Your Business Intelligence Readiness Score</h2>
-        <div class="score" id="scoreDisplay"></div>
-        <div class="score-description" id="scoreDescription"></div>
-      </div>
-      
+      <h2>Your Business Intelligence Readiness Score</h2>
+      <div class="score" id="scoreDisplay"></div>
+      <div class="score-description" id="scoreDescription"></div>
       <div class="recommendations" id="recommendations"></div>
       
-      <div class="next-steps">
-        <h3>Ready to Get Started?</h3>
-        <p>Based on your assessment, you have significant opportunities to improve your business performance through data analytics and business intelligence. Even if you think you "don't have enough data," you likely have more valuable information than you realize.</p>
-        <div class="cta-buttons">
-          <button class="cta-primary" onclick="showConsultationForm()">
-            📅 Schedule Free Consultation
-          </button>
-          <button class="cta-secondary" onclick="showDownloadForm()">
-            📊 Download BI Readiness Guide
-          </button>
-        </div>
-      </div>
-
-      <div id="consultationForm" class="hidden-form">
-        <h4>📅 Schedule Your Free Consultation</h4>
-        <p>Let's discuss how business intelligence can transform your specific situation. We'll analyze your quiz results and create a personalized roadmap for your business.</p>
-        
-        <!-- Kit form will be inserted here -->
-        <div id="kitFormContainer"></div>
-      </div>
-
-      <div id="downloadForm" class="hidden-form">
-        <h4>📊 Download Your BI Readiness Guide</h4>
-        <p>Get your personalized guide with actionable insights based on your assessment results.</p>
-        
-        <form onsubmit="handleDownload(event)">
-          <input type="email" name="email" placeholder="Enter your email address" required>
-          <input type="text" name="first_name" placeholder="First Name (optional)">
-          <input type="hidden" name="quiz_score" id="hiddenScore2">
-          <input type="hidden" name="quiz_category" id="hiddenCategory2">
-          <button type="submit">📥 Get My Free BI Guide</button>
-        </form>
+      <div class="cta-buttons">
+        <button class="cta-primary" id="consultationBtn">
+          📅 Schedule Free Consultation
+        </button>
+        <button class="cta-secondary" id="downloadBtn">
+          📊 Download BI Readiness Guide
+        </button>
       </div>
     </div>
   </div>
 
+  <!-- Consultation Modal -->
+  <div id="consultationModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeConsultation">&times;</span>
+      <h2>Schedule Your Free BI Consultation</h2>
+      <form id="consultationForm">
+        <div class="form-group">
+          <label for="consultName">Full Name *</label>
+          <input type="text" id="consultName" required>
+        </div>
+        <div class="form-group">
+          <label for="consultEmail">Email *</label>
+          <input type="email" id="consultEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="consultPhone">Phone Number</label>
+          <input type="tel" id="consultPhone">
+        </div>
+        <div class="form-group">
+          <label for="consultCompany">Company Name</label>
+          <input type="text" id="consultCompany">
+        </div>
+        <div class="form-group">
+          <label for="consultMessage">What challenges are you facing with your business data?</label>
+          <textarea id="consultMessage" rows="3"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Schedule Consultation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Download Modal -->
+  <div id="downloadModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeDownload">&times;</span>
+      <h2>Download Your BI Readiness Guide</h2>
+      <p>Enter your email to receive your personalized Business Intelligence Readiness Guide.</p>
+      <form id="downloadForm">
+        <div class="form-group">
+          <label for="downloadName">Full Name *</label>
+          <input type="text" id="downloadName" required>
+        </div>
+        <div class="form-group">
+          <label for="downloadEmail">Email *</label>
+          <input type="email" id="downloadEmail" required>
+        </div>
+        <button type="submit" class="form-submit">Download Guide</button>
+      </form>
+    </div>
+    </div>
+  </div>
+
 <script>
-// DEAD SIMPLE validation with debugging
-function checkForm() {
-  const form = document.getElementById('quizForm');
-  const btn = document.getElementById('submitBtn');
+let answers = {
+  q1: null, 
+  q2: null, 
+  q3: [], // Make sure this starts as an empty array
+  q4: null, 
+  q5: null, 
+  q6: null, 
+  q7: null, 
+  q8: null
+};
+
+// SIMPLE CHECKBOX FUNCTION
+function toggleQ3(value) {
+  console.log('Q3 TOGGLE:', value);
   
-  console.log('Checking form...'); // Debug
+  // Find the clicked element
+  const elements = document.querySelectorAll('.checkbox-option');
+  let clickedElement = null;
   
-  // Count answered questions
-  let count = 0;
-  
-  // Check radio questions (7 total)
-  const radioQuestions = ['q1','q2','q4','q5','q6','q7','q8'];
-  radioQuestions.forEach(q => {
-    const checked = form.querySelector(`input[name="${q}"]:checked`);
-    if (checked) {
-      count++;
-      console.log(`${q}: ${checked.value}`); // Debug
-    } else {
-      console.log(`${q}: not answered`); // Debug
+  elements.forEach(el => {
+    if (el.onclick.toString().includes(value)) {
+      clickedElement = el;
     }
   });
   
-  // Check checkbox question (1 total)
-  const checkboxes = form.querySelectorAll('input[name="q3"]:checked');
-  if (checkboxes.length > 0) {
-    count++;
-    console.log(`q3: ${checkboxes.length} selected`); // Debug
-  } else {
-    console.log('q3: not answered'); // Debug
+  if (!clickedElement) {
+    console.log('ELEMENT NOT FOUND');
+    return;
   }
   
-  console.log(`Total answered: ${count}/8`); // Debug
+  // Initialize q3 if needed
+  if (!Array.isArray(answers.q3)) {
+    answers.q3 = [];
+  }
   
-  // Enable if all 8 answered
-  const shouldEnable = (count >= 8);
-  btn.disabled = !shouldEnable;
-  
-  console.log(`Button disabled: ${btn.disabled}`); // Debug
-  
-  // Visual feedback
-  if (shouldEnable) {
-    btn.style.opacity = '1';
-    btn.style.cursor = 'pointer';
-    btn.textContent = 'Get My BI Readiness Score';
+  // Toggle
+  if (clickedElement.classList.contains('selected')) {
+    clickedElement.classList.remove('selected');
+    answers.q3 = answers.q3.filter(v => v !== value);
+    console.log('REMOVED:', value);
   } else {
-    btn.style.opacity = '0.6';
-    btn.style.cursor = 'not-allowed';
-    btn.textContent = `Answer All Questions (${count}/8 completed)`;
+    clickedElement.classList.add('selected');
+    answers.q3.push(value);
+    console.log('ADDED:', value);
+  }
+  
+  console.log('Q3 ARRAY:', answers.q3);
+  checkComplete();
+}
+
+// Specific handler for checkboxes
+function handleCheckbox(label, question, value) {
+  console.log('CHECKBOX CLICKED:', question, value);
+  
+  // Make sure q3 is an array
+  if (!Array.isArray(answers.q3)) {
+    answers.q3 = [];
+  }
+  
+  // Toggle selection
+  if (label.classList.contains('selected')) {
+    console.log('REMOVING:', value);
+    label.classList.remove('selected');
+    answers.q3 = answers.q3.filter(v => v !== value);
+  } else {
+    console.log('ADDING:', value);
+    label.classList.add('selected');
+    if (!answers.q3.includes(value)) {
+      answers.q3.push(value);
+    }
+  }
+  
+  console.log('Q3 NOW:', answers.q3);
+  checkComplete();
+}
+
+// Simple, direct click handling
+function handleLabelClick(event) {
+  const label = event.currentTarget;
+  const question = label.getAttribute('data-question');
+  const value = label.getAttribute('data-value');
+  const input = label.querySelector('input');
+  
+  console.log('Label clicked:', question, value, input ? input.type : 'NO INPUT FOUND');
+  
+  if (!input) {
+    console.error('No input found in label!');
+    return;
+  }
+  
+  if (input.type === 'radio') {
+    // Clear all radio options for this question
+    document.querySelectorAll(`label[data-question="${question}"]`).forEach(l => {
+      l.classList.remove('selected');
+    });
+    
+    // Select this option
+    label.classList.add('selected');
+    answers[question] = value;
+    console.log('Radio selected:', question, '=', value);
+    
+  } else if (input.type === 'checkbox') {
+    // Initialize array if needed
+    if (!Array.isArray(answers[question])) {
+      answers[question] = [];
+      console.log('Initialized array for', question);
+    }
+    
+    console.log('Before toggle:', answers[question]);
+    
+    // Toggle checkbox
+    if (label.classList.contains('selected')) {
+      console.log('Deselecting checkbox');
+      label.classList.remove('selected');
+      answers[question] = answers[question].filter(v => v !== value);
+    } else {
+      console.log('Selecting checkbox');
+      label.classList.add('selected');
+      if (!answers[question].includes(value)) {
+        answers[question].push(value);
+      }
+    }
+    
+    console.log('After toggle:', answers[question]);
+  }
+  
+  console.log('All current answers:', answers);
+  checkComplete();
+}
+
+function checkComplete() {
+  const complete = 
+    answers.q1 !== null &&
+    answers.q2 !== null &&
+    answers.q3.length > 0 &&
+    answers.q4 !== null &&
+    answers.q5 !== null &&
+    answers.q6 !== null &&
+    answers.q7 !== null &&
+    answers.q8 !== null;
+  
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = !complete;
+  
+  if (complete) {
+    btn.textContent = 'Get My BI Readiness Score ✨';
+  } else {
+    btn.textContent = 'Answer All Questions to Continue';
   }
 }
 
-// Add listeners with multiple triggers
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('Page loaded, setting up quiz...'); // Debug
-  
-  // Add listeners to all inputs
-  document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(input => {
-    input.addEventListener('change', function() {
-      console.log('Input changed:', this.name, this.value, this.checked); // Debug
-      checkForm();
-    });
-    // Also listen for clicks
-    input.addEventListener('click', checkForm);
-  });
-  
-  // Initial check
-  checkForm();
-  
-  // Backup: check every 2 seconds
-  setInterval(checkForm, 2000);
-});
-
-// Form submission
-document.getElementById('quizForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const formData = new FormData(this);
+function calculateScore() {
   let score = 0;
   
-  // Calculate score
-  for (let i = 1; i <= 8; i++) {
-    if (i === 3) continue;
-    const value = formData.get(`q${i}`);
-    if (value) score += parseInt(value);
-  }
+  score += parseInt(answers.q1) || 0;
+  score += parseInt(answers.q2) || 0;
+  score += parseInt(answers.q4) || 0;
+  score += parseInt(answers.q5) || 0;
+  score += parseInt(answers.q6) || 0;
+  score += parseInt(answers.q7) || 0;
+  score += parseInt(answers.q8) || 0;
   
-  const q3Values = formData.getAll('q3');
-  if (q3Values.includes('minimal')) {
-    score += 2;
-  } else if (q3Values.length >= 4) {
+  if (answers.q3.includes('minimal')) {
+    score += 4;
+  } else if (answers.q3.length >= 4) {
     score += 1;
+  } else if (answers.q3.length >= 2) {
+    score += 2;
+  } else {
+    score += 3;
   }
   
   showResults(score);
-});
+}
 
 function showResults(score) {
   let category, description, recs;
@@ -673,25 +834,13 @@ function showResults(score) {
         <h4>🎯 Your Biggest Win: Customer & Revenue Insights</h4>
         <p>Even with basic sales data, we can help you identify your most profitable customers, products, and time periods. This alone typically increases profits by 15-25%.</p>
       </div>
-      
       <div class="recommendation">
         <h4>💡 Myth Buster: "I Don't Have Enough Data"</h4>
-        <p>You likely have more valuable data than you think! Sales records, customer interactions, and financial data contain goldmines of insights. We specialize in working with businesses at your stage.</p>
+        <p>You likely have more valuable data than you think! Sales records, customer interactions, and financial data contain goldmines of insights.</p>
       </div>
-      
-      <div class="recommendation">
-        <h4>⚡ Quick Wins Available</h4>
-        <ul>
-          <li>Automated monthly performance dashboards</li>
-          <li>Customer profitability analysis</li>
-          <li>Sales trend identification</li>
-          <li>Simple forecasting models</li>
-        </ul>
-      </div>
-      
       <div class="recommendation">
         <h4>🚀 Expected ROI: 300-500%</h4>
-        <p>Businesses at your stage typically see the highest returns from BI investments because the improvements are so dramatic compared to gut-feel decision making.</p>
+        <p>Businesses at your stage typically see the highest returns from BI investments because the improvements are so dramatic.</p>
       </div>
     `;
   } else if (score >= 18) {
@@ -702,20 +851,9 @@ function showResults(score) {
         <h4>🔗 Your Focus: Connect the Dots</h4>
         <p>You're collecting good data but it's probably scattered. We'll help you see the complete picture of your business performance.</p>
       </div>
-      
       <div class="recommendation">
         <h4>📊 Perfect Timing for BI</h4>
         <p>You have enough data to generate meaningful insights but aren't overwhelmed by complexity. This is the sweet spot for implementing business intelligence.</p>
-      </div>
-      
-      <div class="recommendation">
-        <h4>🎯 Priority Areas</h4>
-        <ul>
-          <li>Unified reporting across all data sources</li>
-          <li>Advanced customer segmentation</li>
-          <li>Operational efficiency analysis</li>
-          <li>Predictive trend analysis</li>
-        </ul>
       </div>
     `;
   } else if (score >= 12) {
@@ -726,16 +864,6 @@ function showResults(score) {
         <h4>🚀 Ready for Advanced Analytics</h4>
         <p>You have solid data foundations. Focus on sophisticated analytics, automation, and predictive modeling to gain competitive advantages.</p>
       </div>
-      
-      <div class="recommendation">
-        <h4>🎯 Strategic Focus Areas</h4>
-        <ul>
-          <li>Machine learning for customer behavior prediction</li>
-          <li>Advanced forecasting models</li>
-          <li>Real-time performance monitoring</li>
-          <li>Competitive intelligence integration</li>
-        </ul>
-      </div>
     `;
   } else {
     category = "Data Mature";
@@ -745,16 +873,6 @@ function showResults(score) {
         <h4>🎯 Next Level: AI & Predictive Analytics</h4>
         <p>You're already data-driven. Focus on AI-powered insights, predictive modeling, and advanced automation to stay ahead of the competition.</p>
       </div>
-      
-      <div class="recommendation">
-        <h4>🚀 Strategic Opportunities</h4>
-        <ul>
-          <li>AI-powered demand forecasting</li>
-          <li>Automated anomaly detection</li>
-          <li>Advanced customer lifetime value modeling</li>
-          <li>Market opportunity identification</li>
-        </ul>
-      </div>
     `;
   }
   
@@ -762,72 +880,66 @@ function showResults(score) {
   document.getElementById('scoreDescription').textContent = description;
   document.getElementById('recommendations').innerHTML = recs;
   
-  document.getElementById('hiddenScore1').value = score;
-  document.getElementById('hiddenScore2').value = score;
-  document.getElementById('hiddenCategory1').value = category;
-  document.getElementById('hiddenCategory2').value = category;
-  
+  document.getElementById('quizSection').style.display = 'none';
   document.getElementById('results').classList.add('show');
-  document.getElementById('results').scrollIntoView({behavior: 'smooth'});
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 }
 
-function showConsultationForm() {
-  const formContainer = document.getElementById('consultationForm');
-  formContainer.classList.add('show');
+// Set up everything when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Setting up quiz...');
   
-  // Load Kit form dynamically when shown
-  if (!document.getElementById('kitFormScript')) {
-    const script = document.createElement('script');
-    script.id = 'kitFormScript';
-    script.async = true;
-    script.setAttribute('data-uid', '2ac0a83bab');
-    script.src = 'https://elemental-insights-data-consultancy.kit.com/2ac0a83bab/index.js';
-    
-    // Insert the script and Kit form
-    document.getElementById('kitFormContainer').appendChild(script);
-  }
+  // Add click handlers to ALL labels
+  const labels = document.querySelectorAll('label[data-question]');
+  console.log('Found labels:', labels.length);
   
-  // Scroll to form
-  formContainer.scrollIntoView({ behavior: 'smooth' });
-}
-
-function showDownloadForm() {
-  document.getElementById('downloadForm').classList.add('show');
-}
-
-// Handle download with email collection
-function handleDownload(event) {
-  event.preventDefault();
-  
-  const form = event.target;
-  const email = form.email.value;
-  const firstName = form.first_name.value;
-  const quizScore = form.quiz_score.value;
-  const quizCategory = form.quiz_category.value;
-  
-  // Log the lead info (you can send this to your email or save it)
-  console.log('New BI Guide Download:', {
-    email: email,
-    firstName: firstName,
-    quizScore: quizScore,
-    quizCategory: quizCategory,
-    timestamp: new Date().toISOString()
+  labels.forEach((label, index) => {
+    console.log('Adding click to label', index, label.dataset.question, label.dataset.value);
+    label.addEventListener('click', handleLabelClick);
+    label.style.cursor = 'pointer'; // Force cursor
   });
   
-  // Start the download immediately
-  window.open('https://elementalinsights.github.io/Business_guide.docx', '_blank');
+  // Submit button
+  document.getElementById('submitBtn').addEventListener('click', calculateScore);
   
-  // Show professional thank you message
-  form.innerHTML = `
-    <div class="download-success">
-      <h4>🎉 Thank You!</h4>
-      <p><strong>Your BI Readiness Guide download has started.</strong></p>
-      <p>Check your downloads folder for the Business Intelligence guide.</p>
-      <p class="small-text">Based on your ${quizCategory} assessment, we'll be in touch soon with personalized insights to help you maximize your data potential.</p>
-    </div>
-  `;
-}
+  // Modal handlers
+  document.getElementById('consultationBtn').addEventListener('click', () => {
+    document.getElementById('consultationModal').style.display = 'block';
+  });
+  
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    document.getElementById('downloadModal').style.display = 'block';
+  });
+  
+  document.getElementById('closeConsultation').addEventListener('click', () => {
+    document.getElementById('consultationModal').style.display = 'none';
+  });
+  
+  document.getElementById('closeDownload').addEventListener('click', () => {
+    document.getElementById('downloadModal').style.display = 'none';
+  });
+  
+  // Form submissions
+  document.getElementById('consultationForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you! We\'ll contact you within 24 hours.');
+    document.getElementById('consultationModal').style.display = 'none';
+  });
+  
+  document.getElementById('downloadForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Guide download started! Check your downloads folder.');
+    document.getElementById('downloadModal').style.display = 'none';
+  });
+  
+  // Close modals on outside click
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) {
+      e.target.style.display = 'none';
+    }
+  });
+  
+  checkComplete();
+  console.log('Quiz setup complete!');
+});
 </script>
-
-</body>
-</html>
