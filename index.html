@@ -38,7 +38,7 @@ body {
   padding: 40px 10vw; /* 15% of viewport width on each side */
 }
 
-  /* NAVIGATION */
+ /* NAVIGATION */
 header {
   display: flex;
   justify-content: space-between;
@@ -46,15 +46,16 @@ header {
   padding: 1rem 2rem;
   background: var(--card-bg);
   box-shadow: 0 4px 12px rgba(0,0,0,.3);
-   position: fixed;
-  top: 0;  
+  position: sticky;
+  top: 0 !important;  
   z-index: 999;
   
   /* ADD THESE LINES to break out of body padding: */
   margin-left: -10vw;    /* Negative margin to counteract body padding */
   margin-right: -10vw;   /* Negative margin to counteract body padding */
-
+  margin-top: -5vw; //? 
   width: 100vw;          /* Full viewport width */
+
 }
 
     .logo {
