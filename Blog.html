@@ -710,6 +710,161 @@ footer {
     background: var(--background);
     margin-top: 2rem;
 }
+
+
+
+    
+    /* Blog-specific styles - ADD THESE TO YOUR EXISTING CSS */
+.blog-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.blog-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.blog-header h1 {
+  font-size: 2.8rem;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.blog-header p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.blog-post {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(66, 153, 225, 0.1);
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.4);
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.blog-date {
+  background: var(--accent);
+  color: var(--white);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.blog-category {
+  background: var(--background);
+  color: var(--secondary);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid var(--secondary);
+}
+
+.blog-post h2 {
+  font-size: 2rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.blog-post h3 {
+  font-size: 1.4rem;
+  color: var(--secondary);
+  margin: 2rem 0 1rem 0;
+  font-weight: 600;
+}
+
+.blog-post p {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.blog-post ul {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+  color: var(--text-muted);
+}
+
+.blog-post li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+.read-more {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: color 0.3s ease;
+}
+
+.read-more:hover {
+  color: var(--secondary);
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(66, 153, 225, 0.2);
+}
+
+.tag {
+  background: var(--background);
+  color: var(--text-muted);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(66, 153, 225, 0.3);
+}
+
+@media (max-width: 768px) {
+  .blog-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .blog-post {
+    padding: 1.5rem;
+  }
+  
+  .blog-post h2 {
+    font-size: 1.6rem;
+  }
+  
+  .blog-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
   </style>
 </head>
 
@@ -744,6 +899,88 @@ footer {
   </header>
 
   
+  <main class="blog-container">
+    <div class="blog-header">
+      <h1>Elemental Insights Blog</h1>
+      <p>Discover the latest trends, insights, and best practices in data analytics and business intelligence</p>
+    </div>
+
+    <!-- Blog Post 1 -->
+    <article class="blog-post">
+      <div class="blog-meta">
+        <span class="blog-date">Jan 15, 2025</span>
+        <span class="blog-category">Data Analytics</span>
+      </div>
+      
+      <h2>5 Essential Data Quality Metrics Every Business Should Track</h2>
+      
+      <p>In today's data-driven world, the quality of your data directly impacts the quality of your business decisions. Poor data quality costs organizations an average of $12.9 million annually, yet many businesses still lack proper data quality monitoring systems.</p>
+      
+      <h3>Why Data Quality Matters More Than Ever</h3>
+      <p>With the exponential growth of data sources—from IoT devices to social media platforms—organizations are collecting more data than ever before. However, volume doesn't equal value. Without proper quality controls, this data deluge can actually hinder decision-making rather than enhance it.</p>
+      
+      <h3>The 5 Critical Metrics to Monitor</h3>
+      <ul>
+        <li><strong>Completeness:</strong> Measure the percentage of required fields that contain data</li>
+        <li><strong>Accuracy:</strong> Track how often your data reflects real-world values</li>
+        <li><strong>Consistency:</strong> Monitor data uniformity across different systems</li>
+        <li><strong>Timeliness:</strong> Ensure data is current and up-to-date</li>
+        <li><strong>Validity:</strong> Verify data conforms to defined formats and business rules</li>
+      </ul>
+      
+      <p>Implementing these metrics isn't just about technology—it requires a cultural shift toward data stewardship. Organizations that successfully implement data quality programs see a 25% improvement in operational efficiency within the first year.</p>
+      
+      <p>Ready to transform your data quality? Start with a comprehensive data audit to establish your baseline measurements.</p>
+      
+      <div class="blog-tags">
+        <span class="tag">Data Quality</span>
+        <span class="tag">Analytics</span>
+        <span class="tag">Business Intelligence</span>
+        <span class="tag">Data Governance</span>
+      </div>
+    </article>
+
+    <!-- Blog Post 2 -->
+    <article class="blog-post">
+      <div class="blog-meta">
+        <span class="blog-date">Jan 8, 2025</span>
+        <span class="blog-category">Business Strategy</span>
+      </div>
+      
+      <h2>How Small Businesses Can Compete with Data Analytics (Without Breaking the Bank)</h2>
+      
+      <p>Think data analytics is only for Fortune 500 companies with massive IT budgets? Think again. Today's small businesses have access to powerful, affordable analytics tools that were once exclusive to enterprise organizations.</p>
+      
+      <h3>The Small Business Analytics Advantage</h3>
+      <p>Small businesses actually have several advantages over larger corporations when it comes to implementing analytics:</p>
+      
+      <ul>
+        <li><strong>Agility:</strong> Faster decision-making and implementation</li>
+        <li><strong>Focus:</strong> Clearer understanding of key business drivers</li>
+        <li><strong>Simplicity:</strong> Less complex data infrastructure to manage</li>
+        <li><strong>Direct Impact:</strong> Analytics insights directly influence strategy</li>
+      </ul>
+      
+      <h3>Getting Started: The 3-Step Approach</h3>
+      <p><strong>Step 1: Identify Your Key Questions</strong><br>
+      Don't start with the data—start with the questions you need answered. What decisions keep you up at night? Which metrics directly impact your bottom line?</p>
+      
+      <p><strong>Step 2: Start with Free Tools</strong><br>
+      Google Analytics, Google Sheets, and even basic CRM reports can provide powerful insights. Master these before investing in premium solutions.</p>
+      
+      <p><strong>Step 3: Focus on Actionable Metrics</strong><br>
+      Track metrics that you can actually influence. Customer acquisition cost, lifetime value, and conversion rates are far more valuable than vanity metrics like total page views.</p>
+      
+      <p>Remember: the goal isn't to become a data scientist overnight. It's to make better decisions with the information you already have. Start small, think big, and let data guide your growth.</p>
+      
+      <div class="blog-tags">
+        <span class="tag">Small Business</span>
+        <span class="tag">Getting Started</span>
+        <span class="tag">Cost-Effective</span>
+        <span class="tag">Strategy</span>
+      </div>
+    </article>
+  </main>
    
        <!-- CONTACT -->
     <section id="contact">
