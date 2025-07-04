@@ -101,16 +101,18 @@ header {
   position: relative;
   overflow: hidden;
 }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%234299e1;stop-opacity:0.15" /><stop offset="100%" style="stop-color:%233182ce;stop-opacity:0.05" /></linearGradient></defs><rect x="200" y="100" width="200" height="120" rx="15" fill="url(%23grad1)"/><rect x="450" y="150" width="180" height="100" rx="12" fill="url(%23grad1)"/><rect x="700" y="80" width="160" height="140" rx="18" fill="url(%23grad1)"/><circle cx="150" cy="400" r="80" fill="url(%23grad1)"/><circle cx="1000" cy="300" r="100" fill="url(%23grad1)"/><polygon points="300,500 400,500 350,600" fill="url(%23grad1)"/><rect x="800" y="450" width="150" height="80" rx="10" fill="url(%23grad1)"/><text x="600" y="400" text-anchor="middle" fill="url(%23grad1)" font-family="Arial" font-size="40" font-weight="bold">DATA</text></svg>') center/cover;
-      opacity: 0.7;
-    }
+    
+ .hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('Assets/pages.jpg') center/cover no-repeat;
+  opacity: 0.7;
+  z-index: 1; /* makes sure it sits behind your text */
+}
 
     .hero-content {
       position: relative;
