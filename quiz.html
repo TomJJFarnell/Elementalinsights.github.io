@@ -418,23 +418,17 @@
         </div>
       </div>
 
-      <!-- TODO: Replace these form action URLs with your actual endpoints -->
       <div id="consultationForm" class="hidden-form">
         <h4>Schedule Your Free Consultation</h4>
-        <form action="https://your-consultation-form-url-here" method="post">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="email" name="email" placeholder="Your Email" required>
-          <input type="tel" name="phone" placeholder="Phone Number">
-          <textarea name="message" placeholder="Tell us about your biggest BI challenge..." rows="3"></textarea>
-          <input type="hidden" name="quiz_score" id="hiddenScore1">
-          <input type="hidden" name="quiz_category" id="hiddenCategory1">
-          <button type="submit">Schedule Consultation</button>
-        </form>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Let's discuss how business intelligence can transform your specific situation.</p>
+        
+        <!-- Kit form will be inserted here -->
+        <div id="kitFormContainer"></div>
       </div>
 
       <div id="downloadForm" class="hidden-form">
         <h4>Download Your BI Readiness Guide</h4>
-        <form action="https://your-email-service-url-here" method="post">
+        <form onsubmit="handleDownload(event)">
           <input type="email" name="email" placeholder="Enter your email" required>
           <input type="text" name="first_name" placeholder="First Name">
           <input type="hidden" name="quiz_score" id="hiddenScore2">
@@ -608,11 +602,64 @@ function showResults(score) {
 }
 
 function showConsultationForm() {
-  document.getElementById('consultationForm').classList.add('show');
+  const formContainer = document.getElementById('consultationForm');
+  formContainer.classList.add('show');
+  
+  // Load Kit form dynamically when shown
+  if (!document.getElementById('kitFormScript')) {
+    const script = document.createElement('script');
+    script.id = 'kitFormScript';
+    script.async = true;
+    script.setAttribute('data-uid', '2ac0a83bab');
+    script.src = 'https://elemental-insights-data-consultancy.kit.com/2ac0a83bab/index.js';
+    
+    // Insert the script and Kit form
+    document.getElementById('kitFormContainer').appendChild(script);
+  }
+  
+  // Scroll to form
+  formContainer.scrollIntoView({ behavior: 'smooth' });
 }
 
 function showDownloadForm() {
   document.getElementById('downloadForm').classList.add('show');
+}
+
+// Handle download with email collection
+function handleDownload(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const email = form.email.value;
+  const firstName = form.first_name.value;
+  const quizScore = form.quiz_score.value;
+  const quizCategory = form.quiz_category.value;
+  
+  // Log the lead info (you can send this to your email or save it)
+  console.log('New BI Guide Download:', {
+    email: email,
+    firstName: firstName,
+    quizScore: quizScore,
+    quizCategory: quizCategory,
+    timestamp: new Date().toISOString()
+  });
+  
+  // You could email this data to yourself:
+  // Optional: Send email notification to yourself
+  // fetch('mailto:your-email@domain.com?subject=New BI Guide Download&body=' + 
+  //   encodeURIComponent(`New download from: ${firstName} (${email})\nQuiz Score: ${quizScore}\nCategory: ${quizCategory}`));
+  
+  // Start the download immediately
+  window.open('https://elementalinsights.github.io/Business_guide.docx', '_blank');
+  
+  // Show thank you message
+  form.innerHTML = `
+    <div style="text-align: center; padding: 2rem;">
+      <h4 style="color: var(--accent); margin-bottom: 1rem;">Thank You!</h4>
+      <p style="color: var(--text-muted);">Your BI Readiness Guide download has started. Check your downloads folder!</p>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">We'll be in touch soon with personalized insights based on your quiz results.</p>
+    </div>
+  `;
 }
 </script>
 
