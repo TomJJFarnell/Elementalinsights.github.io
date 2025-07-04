@@ -259,51 +259,171 @@
 
     .cta-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       justify-content: center;
       margin-top: 2rem;
       flex-wrap: wrap;
     }
 
     .cta-primary, .cta-secondary {
-      padding: 1rem 2rem;
-      border-radius: 8px;
+      padding: 1.2rem 2.5rem;
+      border-radius: 12px;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
       border: 2px solid var(--accent);
       font-family: inherit;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      min-width: 220px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .cta-primary {
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
       color: white;
+      border: none;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4);
     }
 
     .cta-secondary {
       background: transparent;
       color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+
+    .cta-secondary:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(49, 130, 206, 0.3);
     }
 
     .hidden-form {
       display: none;
-      margin-top: 1rem;
-      padding: 1.5rem;
+      margin-top: 2rem;
+      padding: 2.5rem;
       background: var(--card-bg);
-      border-radius: 8px;
+      border-radius: 16px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: slideUp 0.4s ease-out;
     }
 
     .hidden-form.show {
       display: block;
     }
 
-    .hidden-form input, .hidden-form textarea {
+    .hidden-form h4 {
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .hidden-form p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .hidden-form input, .hidden-form textarea, .hidden-form select {
       width: 100%;
-      padding: 10px;
-      margin: 5px 0 15px 0;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border: 2px solid rgba(66, 153, 225, 0.3);
+      border-radius: 12px;
+      background: var(--background);
+      color: var(--text-light);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .hidden-form input:focus, .hidden-form textarea:focus, .hidden-form select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+    }
+
+    .hidden-form input::placeholder, .hidden-form textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .hidden-form button {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+      color: white;
+      border: none;
+      padding: 1.2rem 2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
+    }
+
+    .hidden-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4);
+    }
+
+    .download-success {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 12px;
+      border: 2px solid #10B981;
+    }
+
+    .download-success h4 {
+      color: #10B981;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .download-success p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .download-success .small-text {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Kit form styling override */
+    #kitFormContainer .formkit-form {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    #kitFormContainer .formkit-input {
+      background: var(--background) !important;
+      border: 2px solid rgba(66, 153, 225, 0.3) !important;
+      border-radius: 12px !important;
+      color: var(--text-light) !important;
+      padding: 1rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+
+    #kitFormContainer .formkit-submit {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%) !important;
+      border: none !important;
+      border-radius: 12px !important;
+      padding: 1.2rem 2rem !important;
+      font-weight: 600 !important;
+      transition: all 0.3s ease !important;
     }
 
     @media (max-width: 768px) {
@@ -413,27 +533,33 @@
         <h3>Ready to Get Started?</h3>
         <p>Based on your assessment, you have significant opportunities to improve your business performance through data analytics and business intelligence. Even if you think you "don't have enough data," you likely have more valuable information than you realize.</p>
         <div class="cta-buttons">
-          <button class="cta-primary" onclick="showConsultationForm()">Schedule Free Consultation</button>
-          <button class="cta-secondary" onclick="showDownloadForm()">Download BI Readiness Guide</button>
+          <button class="cta-primary" onclick="showConsultationForm()">
+            📅 Schedule Free Consultation
+          </button>
+          <button class="cta-secondary" onclick="showDownloadForm()">
+            📊 Download BI Readiness Guide
+          </button>
         </div>
       </div>
 
       <div id="consultationForm" class="hidden-form">
-        <h4>Schedule Your Free Consultation</h4>
-        <p style="color: var(--text-muted); margin-bottom: 1rem;">Let's discuss how business intelligence can transform your specific situation.</p>
+        <h4>📅 Schedule Your Free Consultation</h4>
+        <p>Let's discuss how business intelligence can transform your specific situation. We'll analyze your quiz results and create a personalized roadmap for your business.</p>
         
         <!-- Kit form will be inserted here -->
         <div id="kitFormContainer"></div>
       </div>
 
       <div id="downloadForm" class="hidden-form">
-        <h4>Download Your BI Readiness Guide</h4>
+        <h4>📊 Download Your BI Readiness Guide</h4>
+        <p>Get your personalized guide with actionable insights based on your assessment results.</p>
+        
         <form onsubmit="handleDownload(event)">
-          <input type="email" name="email" placeholder="Enter your email" required>
-          <input type="text" name="first_name" placeholder="First Name">
+          <input type="email" name="email" placeholder="Enter your email address" required>
+          <input type="text" name="first_name" placeholder="First Name (optional)">
           <input type="hidden" name="quiz_score" id="hiddenScore2">
           <input type="hidden" name="quiz_category" id="hiddenCategory2">
-          <button type="submit">Get My Free Guide</button>
+          <button type="submit">📥 Get My Free BI Guide</button>
         </form>
       </div>
     </div>
@@ -644,20 +770,16 @@ function handleDownload(event) {
     timestamp: new Date().toISOString()
   });
   
-  // You could email this data to yourself:
-  // Optional: Send email notification to yourself
-  // fetch('mailto:your-email@domain.com?subject=New BI Guide Download&body=' + 
-  //   encodeURIComponent(`New download from: ${firstName} (${email})\nQuiz Score: ${quizScore}\nCategory: ${quizCategory}`));
-  
   // Start the download immediately
   window.open('https://elementalinsights.github.io/Business_guide.docx', '_blank');
   
-  // Show thank you message
+  // Show professional thank you message
   form.innerHTML = `
-    <div style="text-align: center; padding: 2rem;">
-      <h4 style="color: var(--accent); margin-bottom: 1rem;">Thank You!</h4>
-      <p style="color: var(--text-muted);">Your BI Readiness Guide download has started. Check your downloads folder!</p>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">We'll be in touch soon with personalized insights based on your quiz results.</p>
+    <div class="download-success">
+      <h4>🎉 Thank You!</h4>
+      <p><strong>Your BI Readiness Guide download has started.</strong></p>
+      <p>Check your downloads folder for the Business Intelligence guide.</p>
+      <p class="small-text">Based on your ${quizCategory} assessment, we'll be in touch soon with personalized insights to help you maximize your data potential.</p>
     </div>
   `;
 }
