@@ -1425,6 +1425,42 @@ function generateMatureRecs(dataTypes) {
         </div>
     `;
 }
+
+// email quiz results to me t
+function submitQuizResults(formData, score, recommendations) {
+    // Send to webhook service
+    fetch('https://hook.eu1.make.com/your-webhook-url', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            score: score,
+            responses: Object.fromEntries(formData),
+            recommendations: recommendations
+        })
+    });
+}
 </script>
+ 
+  <!-- Replace your CTA buttons with -->
+<div class="cta-buttons">
+    <button onclick="showConsultationForm()" class="cta-primary">
+        Schedule Free Consultation
+    </button>
+    <button onclick="showDownloadForm()" class="cta-secondary">
+        Download BI Readiness Guide
+    </button>
+</div>
+
+<!-- Hidden forms that appear on click -->
+<div id="downloadForm" style="display:none;">
+    <form action="https://your-convertkit-form-url" method="post">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <input type="hidden" name="quiz_score" id="hiddenScore">
+        <input type="hidden" name="recommendations" id="hiddenRecs">
+        <button type="submit">Get My Free Guide</button>
+    </form>
+</div>
+  
 </body>
 </html>
