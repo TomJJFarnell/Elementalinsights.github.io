@@ -1,14 +1,14 @@
-name: Test Primary Email
+name: Test Custom Domain Email
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-email:
+  test-custom-domain:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Test with primary email
+    - name: Test custom domain SMTP
       env:
         ZOHO_EMAIL: ${{ secrets.ZOHO_EMAIL }}
         ZOHO_PASSWORD: ${{ secrets.ZOHO_PASSWORD }}
@@ -21,22 +21,53 @@ jobs:
         email = os.getenv('ZOHO_EMAIL')
         password = os.getenv('ZOHO_PASSWORD')
         
-        print(f'Testing with primary email: {email}')
+        print(f'Testing custom domain: {email}')
+        print(f'Password length: {len(password) if password else 0}')
         
-        try:
-            with smtplib.SMTP('smtp.zoho.com', 587) as server:
-                server.starttls()
-                server.login(email, password)
+        # Test multiple SMTP servers for custom domains
+        smtp_configs = [
+            ('smtp.zoho.com', 587, 'Standard Zoho'),
+            ('smtp.zoho.eu', 587, 'Zoho EU'),
+            ('smtpauth.zoho.com', 587, 'Zoho Auth'),
+            ('smtp.zoho.com', 465, 'Zoho SSL')
+        ]
+        
+        for server, port, name in smtp_configs:
+            try:
+                print(f'\\nTrying {name} ({server}:{port})...')
                 
-                # Send test email
-                msg = MIMEText('Test email from GitHub Actions using primary account')
-                msg['Subject'] = 'Test - Primary Account'
-                msg['From'] = email
-                msg['To'] = email
-                
-                server.send_message(msg)
-                print('✅ Email sent successfully with primary account!')
-                
-        except Exception as e:
-            print(f'❌ Error: {e}')
+                if port == 465:
+                    # SSL connection
+                    import ssl
+                    context = ssl.create_default_context()
+                    with smtplib.SMTP_SSL(server, port, context=context) as smtp:
+                        smtp.login(email, password)
+                        
+                        msg = MIMEText('Test email from custom domain via SSL')
+                        msg['Subject'] = f'Test - {name}'
+                        msg['From'] = email
+                        msg['To'] = email
+                        
+                        smtp.send_message(msg)
+                        print(f'✅ SUCCESS with {name}!')
+                        break
+                else:
+                    # STARTTLS connection
+                    with smtplib.SMTP(server, port) as smtp:
+                        smtp.starttls()
+                        smtp.login(email, password)
+                        
+                        msg = MIMEText('Test email from custom domain via STARTTLS')
+                        msg['Subject'] = f'Test - {name}'
+                        msg['From'] = email
+                        msg['To'] = email
+                        
+                        smtp.send_message(msg)
+                        print(f'✅ SUCCESS with {name}!')
+                        break
+                        
+            except Exception as e:
+                print(f'❌ {name} failed: {e}')
+        else:
+            print('\\n❌ All SMTP servers failed!')
         "
