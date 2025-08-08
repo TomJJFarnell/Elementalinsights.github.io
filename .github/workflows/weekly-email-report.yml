@@ -1,4 +1,4 @@
-name: Simple Email Test
+name: Test Primary Email
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Test email sending
+    - name: Test with primary email
       env:
         ZOHO_EMAIL: ${{ secrets.ZOHO_EMAIL }}
         ZOHO_PASSWORD: ${{ secrets.ZOHO_PASSWORD }}
@@ -18,18 +18,25 @@ jobs:
         from email.mime.text import MIMEText
         import os
         
-        # Simple email test
-        msg = MIMEText('Test email from GitHub Actions')
-        msg['Subject'] = 'Test Email'
-        msg['From'] = os.getenv('ZOHO_EMAIL')
-        msg['To'] = 'tomfarnell@me.com'  # Replace with your email
+        email = os.getenv('ZOHO_EMAIL')
+        password = os.getenv('ZOHO_PASSWORD')
+        
+        print(f'Testing with primary email: {email}')
         
         try:
             with smtplib.SMTP('smtp.zoho.com', 587) as server:
                 server.starttls()
-                server.login(os.getenv('ZOHO_EMAIL'), os.getenv('ZOHO_PASSWORD'))
+                server.login(email, password)
+                
+                # Send test email
+                msg = MIMEText('Test email from GitHub Actions using primary account')
+                msg['Subject'] = 'Test - Primary Account'
+                msg['From'] = email
+                msg['To'] = email
+                
                 server.send_message(msg)
-                print('✅ Email sent successfully!')
+                print('✅ Email sent successfully with primary account!')
+                
         except Exception as e:
-            print('❌ Error:', str(e))
+            print(f'❌ Error: {e}')
         "
