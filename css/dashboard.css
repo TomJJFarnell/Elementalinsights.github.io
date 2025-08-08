@@ -130,7 +130,7 @@ body {
 /* Forecast Grid */
 .forecast-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
     gap: 15px;
     margin: 20px 0;
 }
@@ -223,7 +223,7 @@ body {
 /* Insights Grid */
 .insights-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
     gap: 20px;
 }
 
