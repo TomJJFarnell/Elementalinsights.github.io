@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Dashboard Demo - Elemental Insights</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <meta name="description" content="Interactive cafe performance dashboard demo showcasing real-time analytics and forecasting capabilities.">
+</head>
+<body>
+    <!-- Back to main site navigation -->
+    <div style="background: rgba(0,0,0,0.8); padding: 10px; text-align: center;">
+        <a href="../" style="color: white; text-decoration: none; font-size: 14px;">← Back to Elemental Insights</a>
+    </div>
+
+    <div class="dashboard-container">
+
+        <!-- Header Section -->
+        <div class="header-section">
+            <h1>☕ Cafe Performance Dashboard</h1>
+            <div class="subtitle">August 08, 2025 • Friday • Last Updated: 2:30 PM</div>
+            <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+                Live Demo - Part of Elemental Insights Analytics Suite
+            </div>
+        </div>
+
+        <!-- Key Metrics Overview -->
+        <div class="metrics-overview">
+
+            <!-- Revenue Forecast -->
+            <div class="metric-card revenue">
+                <div class="metric-title">Today's Revenue Forecast</div>
+                <div class="metric-value" style="color: #27ae60;">£1,247</div>
+                <div class="metric-subtitle">
+                    Weekly Total: £8,450
+                    <span class="trend-indicator trend-up">+12%</span>
+                </div>
+            </div>
+
+            <!-- Customer Experience -->
+            <div class="metric-card customers">
+                <div class="metric-title">Customer Experience</div>
+                <div class="metric-value" style="color: #3498db;">£8.35</div>
+                <div class="metric-subtitle">
+                    Avg Transaction • 2.3 items per customer
+                    <span class="trend-indicator trend-stable">Stable</span>
+                </div>
+            </div>
+
+            <!-- Peak Performance -->
+            <div class="metric-card efficiency">
+                <div class="metric-title">Peak Performance</div>
+                <div class="metric-value" style="color: #f39c12;">13:00</div>
+                <div class="metric-subtitle">
+                    Peak Hour • £165 average
+                    <span class="trend-indicator trend-up">Optimal</span>
+                </div>
+            </div>
+
+            <!-- Forecast Accuracy -->
+            <div class="metric-card performance">
+                <div class="metric-title">Forecast Accuracy</div>
+                <div class="metric-value" style="color: #9b59b6;">94%</div>
+                <div class="metric-subtitle">
+                    Model Performance • Excellent
+                    <span class="trend-indicator trend-up">Excellent</span>
+                </div>
+            </div>
+
+            <!-- Weather Impact -->
+            <div class="metric-card weather">
+                <div class="metric-title">Weather Impact</div>
+                <div class="metric-value" style="color: #16a085;">+18%</div>
+                <div class="metric-subtitle">
+                    Multiplier: 1.18 • 24.5°C
+                    <span class="trend-indicator trend-up">Good Conditions</span>
+                </div>
+            </div>
+
+            <!-- Staffing Outlook -->
+            <div class="metric-card staffing">
+                <div class="metric-title">Staffing Outlook</div>
+                <div class="metric-value" style="color: #e67e22;">On Target</div>
+                <div class="metric-subtitle">
+                    Staffing Levels • No changes recommended
+                    <span class="trend-indicator trend-stable">Balanced</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7-Day Forecast -->
+        <div class="dashboard-section">
+            <div class="section-title">📈 7-Day Revenue Forecast</div>
+            <div class="forecast-grid">
+                <div class="forecast-day today">
+                    <div class="day-name">Friday</div>
+                    <div class="day-date">Aug 08</div>
+                    <div class="day-forecast">£1,247</div>
+                    <div class="day-multiplier">× 1.00</div>
+                    <div class="day-details">Today</div>
+                </div>
+                <div class="forecast-day">
+                    <div class="day-name">Saturday</div>
+                    <div class="day-date">Aug 09</div>
+                    <div class="day-forecast">£1,396</div>
+                    <div class="day-multiplier">× 1.12</div>
+                    <div class="day-details">Good weather</div>
+                </div>
+                <div class="forecast-day">
+                    <div class="day-name">Sunday</div>
+                    <div class="day-date">Aug 10</div>
+                    <div class="day-forecast">£1,185</div>
+                    <div class="day-multiplier">× 0.95</div>
+                    <div class="day-details">Lunchtime boost</div>
+                </div>
+                <div class="forecast-day">
+                    <div class="day-name">Monday</div>
+                    <div class="day-date">Aug 11</div>
+                    <div class="day-forecast">£1,559</div>
+                    <div class="day-multiplier">× 1.25</div>
+                    <div class="day-details">Peak trade</div>
+                </div>
+                <div class="forecast-day">
+                    <div class="day-name">Tuesday</div>
+                    <div class="day-date">Aug 12</div>
+                    <div class="day-forecast">£1,471</div>
+                    <div class="day-multiplier">× 1.18</div>
+                    <div class="day-details">Warm weather</div>
+                </div>
+                <div class="forecast-day">
+                    <div class="day-name">Wednesday</div>
+                    <div class="day-date">Aug 13</div>
+                    <div class="day-forecast">£1,222</div>
+                    <div class="day-multiplier">× 0.98</div>
+                    <div class="day-details">Cooler day</div>
+                </div>
+                <div class="forecast-day">
+                    <div class="day-name">Thursday</div>
+                    <div class="day-date">Aug 14</div>
+                    <div class="day-forecast">£1,110</div>
+                    <div class="day-multiplier">× 0.89</div>
+                    <div class="day-details">Quiet day</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Mix Analysis -->
+        <div class="dashboard-section">
+            <div class="section-title">🍰 Product Performance Analysis</div>
+            <div class="product-mix">
+                <div class="product-category">
+                    <div class="category-name">Hot Drinks</div>
+                    <div class="category-percentage">38%</div>
+                    <div class="category-trend">Coffee, Tea, Hot Chocolate</div>
+                </div>
+                <div class="product-category">
+                    <div class="category-name">Cold Drinks</div>
+                    <div class="category-percentage">28%</div>
+                    <div class="category-trend">Iced Coffee, Smoothies, Cold Brew</div>
+                </div>
+                <div class="product-category">
+                    <div class="category-name">Food Items</div>
+                    <div class="category-percentage">34%</div>
+                    <div class="category-trend">Sandwiches, Pastries, Snacks</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Insights -->
+        <div class="dashboard-section">
+            <div class="section-title">💡 Key Business Insights</div>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-title">🌡️ Weather Impact</div>
+                    <div class="insight-content">
+                        Current temperature: <strong>24.5°C</strong><br>
+                        Weather multiplier: <strong>1.18x</strong><br>
+                        Warm weather is boosting cold drink sales – consider highlighting iced coffee and smoothies on the counter.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">🎓 School Holiday Effect</div>
+                    <div class="insight-content">
+                        School holiday status: <strong>Regular Term</strong><br>
+                        Impact multiplier: <strong>1.00x</strong><br>
+                        Regular school term – expect normal weekday patterns with office workers and students.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">⏰ Peak Hours Optimization</div>
+                    <div class="insight-content">
+                        Primary peak: <strong>13:00</strong> (£165 avg)<br>
+                        Staff recommendation: <strong>4-5 staff members</strong><br>
+                        Expect a strong lunch rush and post-lunch coffee orders; keep hot food stations prepped and extra tills ready.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">📊 Model Performance</div>
+                    <div class="insight-content">
+                        Forecast accuracy: <strong>94%</strong><br>
+                        Reliability: <strong>Excellent</strong><br>
+                        Current forecasts are highly reliable – daily planning and inventory decisions can confidently follow predictions.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="recommendation-section">
+            <div class="recommendation-title">🎯 Today's Operational Insights</div>
+            <div class="insight-content">
+                <strong>👥 Staffing:</strong> ✅ Traffic expected to be within normal range — standard staffing should suffice.<br>
+                <strong>🥤 Inventory:</strong> 🧊 Warm weather detected — boost stock of cold drinks and refreshing items.<br>
+                <strong>🌤️ Operations:</strong> ☀️ Good weather — set up outdoor seating and prepare for longer dwell times.<br>
+                <strong>📢 Promotions:</strong> 📚 Regular school term — target office workers and students with quick service options.
+            </div>
+        </div>
+
+        <!-- Demo Info Section -->
+        <div class="dashboard-section" style="border: 2px solid #3498db; background: linear-gradient(135deg, #ebf3fd 0%, #d6eaf8 100%);">
+            <div class="section-title" style="color: #2980b9;">🔬 About This Dashboard Demo</div>
+            <div class="insight-content" style="color: #2c3e50;">
+                <p><strong>This is a live demonstration</strong> of our cafe analytics dashboard, part of the Elemental Insights analytics suite.</p>
+                <br>
+                <p><strong>Features demonstrated:</strong></p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>Real-time revenue forecasting with 94% accuracy</li>
+                    <li>Weather impact analysis and recommendations</li>
+                    <li>Peak hour optimization and staffing insights</li>
+                    <li>Product mix analysis and trends</li>
+                    <li>Automated operational recommendations</li>
+                </ul>
+                <br>
+                <p><strong>Technology stack:</strong> Python analytics, machine learning forecasting, responsive web design</p>
+                <p><strong>Ideal for:</strong> Cafe owners, restaurant managers, retail analytics, hospitality businesses</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-info">
+            <div>Dashboard powered by Elemental Insights Analytics</div>
+            <div>Demo Version • <a href="../" style="color: white;">Visit Main Site</a> • Accuracy Rate: 94%</div>
+        </div>
+
+    </div>
+
+    <!-- Optional: Add some interactivity -->
+    <script>
+        // Simple demo interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to metric cards
+            const metricCards = document.querySelectorAll('.metric-card');
+            metricCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-5px) scale(1)';
+                });
+            });
+
+            // Update timestamp every minute for demo effect
+            setInterval(function() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                const subtitle = document.querySelector('.subtitle');
+                if (subtitle) {
+                    subtitle.innerHTML = subtitle.innerHTML.replace(/Last Updated: \d{1,2}:\d{2} [AP]M/, `Last Updated: ${timeString}`);
+                }
+            }, 60000);
+        });
+    </script>
+</body>
+</html>
