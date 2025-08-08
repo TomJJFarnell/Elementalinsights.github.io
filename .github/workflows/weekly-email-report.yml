@@ -1,32 +1,35 @@
-  - name: Send weekly report
+name: Simple Email Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-email:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Test email sending
       env:
         ZOHO_EMAIL: ${{ secrets.ZOHO_EMAIL }}
         ZOHO_PASSWORD: ${{ secrets.ZOHO_PASSWORD }}
-        ZOHO_SMTP_SERVER: 'smtp.zoho.com'
-        ZOHO_SMTP_PORT: '587'
-        SENDER_NAME: 'Foresight IQ Analytics'
       run: |
-        cd email-reports
         python -c "
+        import smtplib
+        from email.mime.text import MIMEText
         import os
-        print('=== DEBUG INFO ===')
-        print('Email:', os.getenv('ZOHO_EMAIL'))
-        print('Password length:', len(os.getenv('ZOHO_PASSWORD', '')) if os.getenv('ZOHO_PASSWORD') else 0)
-        print('SMTP Server:', os.getenv('ZOHO_SMTP_SERVER'))
-        print('SMTP Port:', os.getenv('ZOHO_SMTP_PORT'))
-        print('==================')
         
-        from weekly_email_report import WeeklyReportGenerator
-        
-        # Test with a simple recipient
-        recipients = ['tomfarnell@me.com']  # Replace with your email
+        # Simple email test
+        msg = MIMEText('Test email from GitHub Actions')
+        msg['Subject'] = 'Test Email'
+        msg['From'] = os.getenv('ZOHO_EMAIL')
+        msg['To'] = 'tomfarnell@me.com'  # Replace with your email
         
         try:
-            generator = WeeklyReportGenerator()
-            success = generator.generate_and_send_weekly_report(recipients, test_mode=True)
-            print('Success:', success)
+            with smtplib.SMTP('smtp.zoho.com', 587) as server:
+                server.starttls()
+                server.login(os.getenv('ZOHO_EMAIL'), os.getenv('ZOHO_PASSWORD'))
+                server.send_message(msg)
+                print('✅ Email sent successfully!')
         except Exception as e:
-            print('Error details:', str(e))
-            import traceback
-            traceback.print_exc()
+            print('❌ Error:', str(e))
         "
