@@ -1,73 +1,68 @@
-name: Test Custom Domain Email
+name: Weekly Cafe Report Email
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1'  # Every Monday at 9 AM UTC
+  workflow_dispatch:  # Manual trigger
 
 jobs:
-  test-custom-domain:
+  send-weekly-report:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Test custom domain SMTP
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas numpy python-dotenv
+    
+    - name: Send weekly report
       env:
         ZOHO_EMAIL: ${{ secrets.ZOHO_EMAIL }}
         ZOHO_PASSWORD: ${{ secrets.ZOHO_PASSWORD }}
+        ZOHO_SMTP_SERVER: 'smtp.zoho.eu'  # ← Changed to EU server
+        ZOHO_SMTP_PORT: '587'
+        SENDER_NAME: 'Foresight IQ Analytics'
       run: |
+        cd email-reports
         python -c "
-        import smtplib
-        from email.mime.text import MIMEText
         import os
+        from weekly_email_report import WeeklyReportGenerator
         
-        email = os.getenv('ZOHO_EMAIL')
-        password = os.getenv('ZOHO_PASSWORD')
+        # Configure email settings for EU server
+        email_config = {
+            'smtp_server': 'smtp.zoho.eu',
+            'smtp_port': 587,
+            'email': os.getenv('ZOHO_EMAIL'),
+            'password': os.getenv('ZOHO_PASSWORD'),
+            'sender_name': os.getenv('SENDER_NAME')
+        }
         
-        print(f'Testing custom domain: {email}')
-        print(f'Password length: {len(password) if password else 0}')
-        
-        # Test multiple SMTP servers for custom domains
-        smtp_configs = [
-            ('smtp.zoho.com', 587, 'Standard Zoho'),
-            ('smtp.zoho.eu', 587, 'Zoho EU'),
-            ('smtpauth.zoho.com', 587, 'Zoho Auth'),
-            ('smtp.zoho.com', 465, 'Zoho SSL')
+        # Recipients - update these with real email addresses
+        recipients = [
+            'tom@elementalinsights.co.uk',  # Your email
+            # 'manager@yourcafe.com',        # Add client emails here
+            # 'owner@yourcafe.com'
         ]
         
-        for server, port, name in smtp_configs:
-            try:
-                print(f'\\nTrying {name} ({server}:{port})...')
+        try:
+            generator = WeeklyReportGenerator(email_config)
+            success = generator.generate_and_send_weekly_report(recipients, test_mode=False)
+            
+            if success:
+                print(f'✅ Weekly report sent successfully to {len(recipients)} recipients!')
+            else:
+                print('❌ Failed to send weekly report')
                 
-                if port == 465:
-                    # SSL connection
-                    import ssl
-                    context = ssl.create_default_context()
-                    with smtplib.SMTP_SSL(server, port, context=context) as smtp:
-                        smtp.login(email, password)
-                        
-                        msg = MIMEText('Test email from custom domain via SSL')
-                        msg['Subject'] = f'Test - {name}'
-                        msg['From'] = email
-                        msg['To'] = email
-                        
-                        smtp.send_message(msg)
-                        print(f'✅ SUCCESS with {name}!')
-                        break
-                else:
-                    # STARTTLS connection
-                    with smtplib.SMTP(server, port) as smtp:
-                        smtp.starttls()
-                        smtp.login(email, password)
-                        
-                        msg = MIMEText('Test email from custom domain via STARTTLS')
-                        msg['Subject'] = f'Test - {name}'
-                        msg['From'] = email
-                        msg['To'] = email
-                        
-                        smtp.send_message(msg)
-                        print(f'✅ SUCCESS with {name}!')
-                        break
-                        
-            except Exception as e:
-                print(f'❌ {name} failed: {e}')
-        else:
-            print('\\n❌ All SMTP servers failed!')
+        except Exception as e:
+            print(f'❌ Error: {e}')
+            import traceback
+            traceback.print_exc()
         "
