@@ -19,7 +19,7 @@
         from weekly_email_report import WeeklyReportGenerator
         
         # Test with a simple recipient
-        recipients = ['your-test-email@gmail.com']  # Replace with your email
+        recipients = ['tomfarnell@me.com']  # Replace with your email
         
         try:
             generator = WeeklyReportGenerator()
