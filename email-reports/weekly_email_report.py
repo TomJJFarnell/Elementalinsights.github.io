@@ -30,17 +30,16 @@ class WeeklyReportGenerator:
         """Initialize with email configuration"""
         self.email_config = email_config or self.load_email_config()
         
-    def load_email_config(self):
-        """Load email configuration from environment variables or config file"""
-        
-        # Option 1: Use environment variables (recommended for security)
-        config = {
-            'smtp_server': os.getenv('ZOHO_SMTP_SERVER', 'smtp.zoho.com'),
-            'smtp_port': int(os.getenv('ZOHO_SMTP_PORT', '587')),
-            'email': os.getenv('ZOHO_EMAIL'),
-            'password': os.getenv('ZOHO_PASSWORD'),  # Use app password, not main password
-            'sender_name': os.getenv('SENDER_NAME', 'Foresight IQ Analytics')
-        }
+   def load_email_config(self):
+    """Load email configuration from environment variables or config file"""
+    
+    config = {
+        'smtp_server': os.getenv('ZOHO_SMTP_SERVER', 'smtp.zoho.eu'),  # ← Changed default
+        'smtp_port': int(os.getenv('ZOHO_SMTP_PORT', '587')),
+        'email': os.getenv('ZOHO_EMAIL'),
+        'password': os.getenv('ZOHO_PASSWORD'),
+        'sender_name': os.getenv('SENDER_NAME', 'Foresight IQ Analytics')
+    }
         
         # Option 2: Load from config file (less secure, but easier for testing)
         if not config['email']:
