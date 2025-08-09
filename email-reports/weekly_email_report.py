@@ -130,7 +130,7 @@ class WeeklyReportGenerator:
         
         return table
     
-  def generate_html_email(self, data):
+    def generate_html_email(self, data):
         """Generate HTML version of the email"""
         
         # Generate daily forecast table (HTML version)
