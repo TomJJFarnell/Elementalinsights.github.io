@@ -368,7 +368,84 @@ class WeeklyReportGenerator:
                     .footer {{
                         padding: 15px 10px !important;
                     }}
-                }}
+                    /* Forecast Cards - Mobile Alternative */
+                .mobile-forecast {
+                    display: none;
+                }
+                
+                .forecast-card {
+                    background: white;
+                    margin: 8px 0;
+                    padding: 12px;
+                    border-radius: 6px;
+                    border-left: 4px solid #3498db;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }
+                
+                .forecast-day {
+                    font-weight: bold;
+                    color: #2c3e50;
+                    font-size: 14px;
+                    margin-bottom: 6px;
+                }
+                
+                .forecast-details {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                }
+                
+                .forecast-revenue {
+                    font-weight: bold;
+                    color: #27ae60;
+                    font-size: 16px;
+                }
+                
+                .forecast-weather {
+                    background: #e3f2fd;
+                    color: #1976d2;
+                    padding: 2px 8px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                }
+                
+                .forecast-peak {
+                    background: #f3e5f5;
+                    color: #7b1fa2;
+                    padding: 2px 8px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                }
+                
+                /* Show/hide based on screen size */
+                @media only screen and (max-width: 600px) {
+                    .desktop-table {
+                        display: none !important;
+                    }
+                    
+                    .mobile-forecast {
+                        display: block !important;
+                    }
+                    
+                    .forecast-details {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 4px;
+                    }
+                }
+                
+                @media only screen and (max-width: 480px) {
+                    .forecast-card {
+                        padding: 10px;
+                        margin: 6px 0;
+                    }
+                    
+                    .forecast-revenue {
+                        font-size: 18px;
+                    }
+                }
                 
                 /* Extra small screens */
                 @media only screen and (max-width: 480px) {{
@@ -458,27 +535,42 @@ class WeeklyReportGenerator:
                     </ul>
                 </div>
                 
-                <!-- Daily Forecast Table -->
+                <!-- Daily Forecast - Mobile Optimized -->
                 <div class="section">
                     <h2>📅 7-Day Revenue Forecast</h2>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Revenue</th>
-                                    <th>Weather</th>
-                                    <th>Peak Hour</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {forecast_rows}
-                            </tbody>
-                        </table>
+                    
+                    <!-- Desktop Table -->
+                    <div class="desktop-table">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Revenue</th>
+                                        <th>Weather</th>
+                                        <th>Peak Hour</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {forecast_rows}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <p style="font-size: 12px; color: #666; margin-top: 10px;">
-                        💡 <em>Swipe left to see all columns on mobile</em>
-                    </p>
+                    
+                    <!-- Mobile Cards -->
+                    <div class="mobile-forecast">
+                        {''.join([f'''
+                        <div class="forecast-card">
+                            <div class="forecast-day">{forecast['day']}, {forecast['date']}</div>
+                            <div class="forecast-details">
+                                <span class="forecast-revenue">£{forecast['revenue']:,}</span>
+                                <span class="forecast-weather">{forecast['weather']}</span>
+                                <span class="forecast-peak">{forecast['peak_hour']}</span>
+                            </div>
+                        </div>
+                        ''' for forecast in data['daily_forecasts']])}
+                    </div>
                 </div>
                 
                 <!-- Recommendations -->
