@@ -30,7 +30,7 @@ class WeeklyReportGenerator:
         """Initialize with email configuration"""
         self.email_config = email_config or self.load_email_config()
         
-   def load_email_config(self):
+    def load_email_config(self):
     """Load email configuration from environment variables or config file"""
     
     config = {
