@@ -224,8 +224,24 @@ body {
 /* Insights Grid */
 .insights-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    max-width: 100%;
+}
+
+/* Force 2 columns on larger screens */
+@media (min-width: 768px) {
+    .insights-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Single column on mobile */
+@media (max-width: 767px) {
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+}
 }
 
 .insight-card {
