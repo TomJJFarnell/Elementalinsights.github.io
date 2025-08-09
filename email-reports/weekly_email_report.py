@@ -127,7 +127,7 @@ class WeeklyReportGenerator:
         
         return table
     
-    def generate_html_email(self, data):
+  def generate_html_email(self, data):
         """Generate HTML version of the email"""
         
         # Generate daily forecast table (HTML version)
@@ -146,20 +146,248 @@ class WeeklyReportGenerator:
         <html>
         <head>
             <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
-                body {{ font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; }}
-                .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
-                .header {{ background: linear-gradient(135deg, #2c3e50, #3498db); color: white; padding: 20px; border-radius: 8px; text-align: center; }}
-                .section {{ margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; }}
-                .metric {{ display: inline-block; margin: 10px; padding: 10px; background: white; border-radius: 5px; min-width: 120px; text-align: center; }}
-                .metric-value {{ font-size: 1.5em; font-weight: bold; color: #2c3e50; }}
-                .metric-label {{ font-size: 0.9em; color: #7f8c8d; }}
-                table {{ width: 100%; border-collapse: collapse; margin: 15px 0; }}
-                th {{ background: #3498db; color: white; padding: 10px; text-align: left; }}
-                td {{ padding: 8px; border: 1px solid #ddd; }}
-                tr:nth-child(even) {{ background: #f2f2f2; }}
-                .recommendations {{ background: #e8f5e8; border-left: 4px solid #27ae60; padding: 15px; }}
-                .footer {{ text-align: center; margin-top: 30px; padding: 20px; background: #34495e; color: white; border-radius: 8px; }}
+                /* Reset and base styles */
+                body, table, td, p, a, li, blockquote {{
+                    -webkit-text-size-adjust: 100%;
+                    -ms-text-size-adjust: 100%;
+                }}
+                
+                body {{
+                    font-family: 'Segoe UI', Arial, sans-serif;
+                    line-height: 1.6;
+                    color: #333;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f4f4f4;
+                }}
+                
+                /* Container */
+                .container {{
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 10px;
+                    background-color: #ffffff;
+                }}
+                
+                /* Header */
+                .header {{
+                    background: linear-gradient(135deg, #2c3e50, #3498db);
+                    color: white;
+                    padding: 20px 15px;
+                    border-radius: 8px;
+                    text-align: center;
+                    margin-bottom: 20px;
+                }}
+                
+                .header h1 {{
+                    margin: 0 0 10px 0;
+                    font-size: 24px;
+                    line-height: 1.2;
+                }}
+                
+                .header p {{
+                    margin: 5px 0;
+                    font-size: 14px;
+                }}
+                
+                /* Sections */
+                .section {{
+                    margin: 15px 0;
+                    padding: 15px;
+                    background: #f8f9fa;
+                    border-radius: 8px;
+                }}
+                
+                .section h2 {{
+                    margin: 0 0 15px 0;
+                    font-size: 18px;
+                    color: #2c3e50;
+                }}
+                
+                .section h3 {{
+                    margin: 15px 0 10px 0;
+                    font-size: 16px;
+                    color: #2c3e50;
+                }}
+                
+                /* Metrics - Stack on mobile */
+                .metrics-container {{
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                }}
+                
+                .metric {{
+                    display: inline-block;
+                    margin: 5px;
+                    padding: 15px 10px;
+                    background: white;
+                    border-radius: 5px;
+                    min-width: 120px;
+                    text-align: center;
+                    vertical-align: top;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }}
+                
+                .metric-value {{
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: #2c3e50;
+                    margin-bottom: 5px;
+                }}
+                
+                .metric-label {{
+                    font-size: 12px;
+                    color: #7f8c8d;
+                    line-height: 1.3;
+                }}
+                
+                /* Tables - Mobile responsive */
+                .table-container {{
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                    margin: 15px 0;
+                }}
+                
+                table {{
+                    width: 100%;
+                    min-width: 500px;
+                    border-collapse: collapse;
+                    background: white;
+                    border-radius: 5px;
+                    overflow: hidden;
+                }}
+                
+                th {{
+                    background: #3498db;
+                    color: white;
+                    padding: 12px 8px;
+                    text-align: left;
+                    font-size: 14px;
+                    font-weight: bold;
+                }}
+                
+                td {{
+                    padding: 10px 8px;
+                    border: 1px solid #ddd;
+                    font-size: 13px;
+                }}
+                
+                tr:nth-child(even) {{
+                    background: #f2f2f2;
+                }}
+                
+                /* Lists */
+                ul {{
+                    margin: 10px 0;
+                    padding-left: 20px;
+                }}
+                
+                li {{
+                    margin: 8px 0;
+                    font-size: 14px;
+                    line-height: 1.4;
+                }}
+                
+                /* Recommendations */
+                .recommendations {{
+                    background: #e8f5e8;
+                    border-left: 4px solid #27ae60;
+                    padding: 15px;
+                    margin: 15px 0;
+                    border-radius: 0 8px 8px 0;
+                }}
+                
+                .recommendations h2 {{
+                    color: #27ae60;
+                    margin-top: 0;
+                }}
+                
+                /* Footer */
+                .footer {{
+                    text-align: center;
+                    margin-top: 30px;
+                    padding: 20px 15px;
+                    background: #34495e;
+                    color: white;
+                    border-radius: 8px;
+                    font-size: 13px;
+                }}
+                
+                .footer a {{
+                    color: #3498db;
+                    text-decoration: none;
+                }}
+                
+                /* Mobile-specific styles */
+                @media only screen and (max-width: 600px) {{
+                    .container {{
+                        padding: 5px !important;
+                    }}
+                    
+                    .header {{
+                        padding: 15px 10px !important;
+                    }}
+                    
+                    .header h1 {{
+                        font-size: 20px !important;
+                    }}
+                    
+                    .section {{
+                        padding: 12px !important;
+                        margin: 10px 0 !important;
+                    }}
+                    
+                    .metric {{
+                        min-width: 100px !important;
+                        margin: 3px !important;
+                        padding: 10px 8px !important;
+                    }}
+                    
+                    .metric-value {{
+                        font-size: 16px !important;
+                    }}
+                    
+                    .metric-label {{
+                        font-size: 11px !important;
+                    }}
+                    
+                    table {{
+                        min-width: 450px !important;
+                        font-size: 12px !important;
+                    }}
+                    
+                    th, td {{
+                        padding: 8px 6px !important;
+                    }}
+                    
+                    .footer {{
+                        padding: 15px 10px !important;
+                    }}
+                }}
+                
+                /* Extra small screens */
+                @media only screen and (max-width: 480px) {{
+                    .header h1 {{
+                        font-size: 18px !important;
+                    }}
+                    
+                    .metric {{
+                        display: block !important;
+                        margin: 5px 0 !important;
+                        min-width: auto !important;
+                    }}
+                    
+                    table {{
+                        min-width: 400px !important;
+                        font-size: 11px !important;
+                    }}
+                    
+                    th, td {{
+                        padding: 6px 4px !important;
+                    }}
+                }}
             </style>
         </head>
         <body>
@@ -175,44 +403,53 @@ class WeeklyReportGenerator:
                 <!-- Forecast Summary -->
                 <div class="section">
                     <h2>🔮 Forecast Summary</h2>
-                    <div class="metric">
-                        <div class="metric-value">£{data['expected_weekly_revenue']:,.2f}</div>
-                        <div class="metric-label">Expected Weekly Revenue</div>
+                    <div class="metrics-container">
+                        <div class="metric">
+                            <div class="metric-value">£{data['expected_weekly_revenue']:,.0f}</div>
+                            <div class="metric-label">Expected Weekly Revenue</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">{data['forecast_accuracy']:.1f}%</div>
+                            <div class="metric-label">Forecast Accuracy</div>
+                        </div>
                     </div>
-                    <div class="metric">
-                        <div class="metric-value">{data['forecast_accuracy']:.1f}%</div>
-                        <div class="metric-label">Historic Forecast Accuracy</div>
-                    </div>
-                    <p><strong>Predicted Weather:</strong> {data['weather_summary']}</p>
+                    <p><strong>Weather Outlook:</strong> {data['weather_summary']}</p>
                 </div>
                 
                 <!-- Actual Performance -->
                 <div class="section">
-                    <h2>📈 Actual Performance</h2>
-                    <div class="metric">
-                        <div class="metric-value">£{data['last_week_revenue']:,.2f}</div>
-                        <div class="metric-label">Last Week's Revenue</div>
+                    <h2>📈 Last Week's Performance</h2>
+                    <div class="metrics-container">
+                        <div class="metric">
+                            <div class="metric-value">£{data['last_week_revenue']:,.0f}</div>
+                            <div class="metric-label">Actual Revenue</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">{data['peak_hour']}</div>
+                            <div class="metric-label">Peak Sales Hour</div>
+                        </div>
                     </div>
-                    <p><strong>Peak Sales Hour:</strong> {data['peak_hour']}</p>
                 </div>
                 
                 <!-- Product Mix -->
                 <div class="section">
-                    <h2>🍽️ Product Mix</h2>
-                    <div class="metric">
-                        <div class="metric-value">{data['product_mix']['hot_drinks']:.1f}%</div>
-                        <div class="metric-label">Hot Drinks</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{data['product_mix']['cold_drinks']:.1f}%</div>
-                        <div class="metric-label">Cold Drinks</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{data['product_mix']['food']:.1f}%</div>
-                        <div class="metric-label">Food</div>
+                    <h2>🍽️ Product Performance</h2>
+                    <div class="metrics-container">
+                        <div class="metric">
+                            <div class="metric-value">{data['product_mix']['hot_drinks']:.1f}%</div>
+                            <div class="metric-label">Hot Drinks</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">{data['product_mix']['cold_drinks']:.1f}%</div>
+                            <div class="metric-label">Cold Drinks</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">{data['product_mix']['food']:.1f}%</div>
+                            <div class="metric-label">Food Items</div>
+                        </div>
                     </div>
                     
-                    <h3>🔥 Top-Selling Items:</h3>
+                    <h3>🔥 Top Sellers:</h3>
                     <ul>
                         {' '.join([f'<li>{item}</li>' for item in data['top_items']])}
                     </ul>
@@ -220,38 +457,43 @@ class WeeklyReportGenerator:
                 
                 <!-- Daily Forecast Table -->
                 <div class="section">
-                    <h2>📅 Daily Forecast</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Forecasted Revenue (£)</th>
-                                <th>Expected Weather</th>
-                                <th>Peak Hour</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {forecast_rows}
-                        </tbody>
-                    </table>
+                    <h2>📅 7-Day Revenue Forecast</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Revenue</th>
+                                    <th>Weather</th>
+                                    <th>Peak Hour</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {forecast_rows}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size: 12px; color: #666; margin-top: 10px;">
+                        💡 <em>Swipe left to see all columns on mobile</em>
+                    </p>
                 </div>
                 
                 <!-- Recommendations -->
                 <div class="recommendations">
-                    <h2>💡 Recommendations</h2>
+                    <h2>💡 Key Recommendations</h2>
                     <ul>
-                        <li>☕ <strong>Stock up on high-demand hot drinks</strong> — Flat Whites and Cappuccinos are popular.</li>
-                        <li>🥗 <strong>Offer lunchtime meal deals</strong> targeting the 12–2 PM window.</li>
-                        <li>🌧️ <strong>Wednesday and Thursday may see lower footfall</strong> — consider indoor promotions.</li>
-                        <li>📊 <strong>Encourage multiple-item purchases</strong> — average per transaction is {data['avg_items_per_transaction']} items.</li>
+                        <li><strong>Hot Drinks:</strong> Stock up on Flat Whites and Cappuccinos</li>
+                        <li><strong>Lunch Rush:</strong> Prepare meal deals for 12-2 PM window</li>
+                        <li><strong>Weather Impact:</strong> Adjust inventory based on forecast</li>
+                        <li><strong>Upselling:</strong> Encourage multiple items per transaction</li>
                     </ul>
                 </div>
                 
                 <!-- Footer -->
                 <div class="footer">
-                    <p><strong>Powered by Elemental Insights Analytics</strong></p>
-                    <p>Automated report generated on {datetime.now().strftime('%B %d, %Y at %I:%M %p')}</p>
-                    <p>For questions, contact: <a href="mailto:analytics@elementalinsights.com" style="color: #3498db;">analytics@elementalinsights.com</a></p>
+                    <p><strong>Elemental Insights Analytics</strong></p>
+                    <p>Generated: {datetime.now().strftime('%d %b %Y at %I:%M %p')}</p>
+                    <p>Questions? <a href="mailto:tom@elementalinsights.co.uk">tom@elementalinsights.co.uk</a></p>
                 </div>
                 
             </div>
@@ -260,6 +502,7 @@ class WeeklyReportGenerator:
         """
         
         return html_content
+        
     
     def generate_text_email(self, data):
         """Generate plain text version of the email"""
