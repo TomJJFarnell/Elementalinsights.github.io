@@ -323,6 +323,61 @@ class WeeklyReportGenerator:
                     text-decoration: none;
                 }}
                 
+                /* Forecast Cards - Mobile Alternative */
+                .mobile-forecast {{
+                    display: none;
+                }}
+                
+                .forecast-card {{
+                    background: white;
+                    margin: 8px 0;
+                    padding: 12px;
+                    border-radius: 6px;
+                    border-left: 4px solid #3498db;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }}
+                
+                .forecast-day {{
+                    font-weight: bold;
+                    color: #2c3e50;
+                    font-size: 14px;
+                    margin-bottom: 6px;
+                }}
+                
+                .forecast-details {{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                }}
+                
+                .forecast-revenue {{
+                    font-weight: bold;
+                    color: #27ae60;
+                    font-size: 16px;
+                }}
+                
+                .forecast-weather {{
+                    background: #e3f2fd;
+                    color: #1976d2;
+                    padding: 2px 8px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                }}
+                
+                .forecast-peak {{
+                    background: #f3e5f5;
+                    color: #7b1fa2;
+                    padding: 2px 8px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                }}
+                
+                .desktop-table {{
+                    display: block;
+                }}
+                
                 /* Mobile-specific styles */
                 @media only screen and (max-width: 600px) {{
                     .container {{
@@ -368,84 +423,22 @@ class WeeklyReportGenerator:
                     .footer {{
                         padding: 15px 10px !important;
                     }}
-                    /* Forecast Cards - Mobile Alternative */
-                .mobile-forecast {
-                    display: none;
-                }
-                
-                .forecast-card {
-                    background: white;
-                    margin: 8px 0;
-                    padding: 12px;
-                    border-radius: 6px;
-                    border-left: 4px solid #3498db;
-                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                }
-                
-                .forecast-day {
-                    font-weight: bold;
-                    color: #2c3e50;
-                    font-size: 14px;
-                    margin-bottom: 6px;
-                }
-                
-                .forecast-details {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    flex-wrap: wrap;
-                    gap: 8px;
-                }
-                
-                .forecast-revenue {
-                    font-weight: bold;
-                    color: #27ae60;
-                    font-size: 16px;
-                }
-                
-                .forecast-weather {
-                    background: #e3f2fd;
-                    color: #1976d2;
-                    padding: 2px 8px;
-                    border-radius: 12px;
-                    font-size: 12px;
-                }
-                
-                .forecast-peak {
-                    background: #f3e5f5;
-                    color: #7b1fa2;
-                    padding: 2px 8px;
-                    border-radius: 12px;
-                    font-size: 12px;
-                }
-                
-                /* Show/hide based on screen size */
-                @media only screen and (max-width: 600px) {
-                    .desktop-table {
+                    
+                    /* Show/hide forecast layouts */
+                    .desktop-table {{
                         display: none !important;
-                    }
+                    }}
                     
-                    .mobile-forecast {
+                    .mobile-forecast {{
                         display: block !important;
-                    }
+                    }}
                     
-                    .forecast-details {
+                    .forecast-details {{
                         flex-direction: column;
                         align-items: flex-start;
                         gap: 4px;
-                    }
-                }
-                
-                @media only screen and (max-width: 480px) {
-                    .forecast-card {
-                        padding: 10px;
-                        margin: 6px 0;
-                    }
-                    
-                    .forecast-revenue {
-                        font-size: 18px;
-                    }
-                }
+                    }}
+                }}
                 
                 /* Extra small screens */
                 @media only screen and (max-width: 480px) {{
@@ -467,8 +460,17 @@ class WeeklyReportGenerator:
                     th, td {{
                         padding: 6px 4px !important;
                     }}
+                    
+                    .forecast-card {{
+                        padding: 10px;
+                        margin: 6px 0;
+                    }}
+                    
+                    .forecast-revenue {{
+                        font-size: 18px;
+                    }}
                 }}
-            </style>
+            </style>   
         </head>
         <body>
             <div class="container">
