@@ -221,7 +221,7 @@ body {
     color: #7f8c8d; 
 }
 
-/* Insights Grid */
+/* Insights Grid - Fixed */
 .insights-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -229,10 +229,11 @@ body {
     max-width: 100%;
 }
 
-/* Force 2 columns on larger screens */
+/* Force exactly 2 columns on larger screens */
 @media (min-width: 768px) {
     .insights-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
 }
 
@@ -240,8 +241,15 @@ body {
 @media (max-width: 767px) {
     .insights-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 }
+
+/* Ensure cards don't overflow */
+.insight-card {
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .insight-card {
