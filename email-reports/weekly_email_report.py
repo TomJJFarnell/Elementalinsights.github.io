@@ -16,6 +16,9 @@ from datetime import datetime, timedelta
 import logging
 import os
 
+
+
+
 # Configure logging
 logging.basicConfig(
     filename='email_reports.log',
