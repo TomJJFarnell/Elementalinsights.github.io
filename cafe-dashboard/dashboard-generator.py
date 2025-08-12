@@ -22,7 +22,7 @@ def generate_dashboard_html(data):
     current_temp = data.get('current_temp', 24.5)
     temp_effect = data.get('temp_effect', 1.15)
     school_effect = data.get('school_effect', 1.0)
-    is_school_holiday = data.get('is_school_holiday', False)
+    is_school_holiday = data.get('is_school_holiday',True)
     peak_hour = data.get('peak_hour', 13)
     peak_value = data.get('peak_value', 165)
     model_accuracy = data.get('model_accuracy', 92)
@@ -33,8 +33,8 @@ def generate_dashboard_html(data):
     current_time = datetime.now().strftime('%I:%M %p')
     
     # 7-day forecast
-    daily_multipliers = [1.00, 1.12, 0.95, 1.25, 1.18, 0.98, 0.89]
-    forecast_labels = ["Today", "Good weather", "Lunchtime boost", "Peak trade", "Warm weather", "Cooler day", "Quiet day"]
+    daily_multipliers = [0.95, 1.25, 1.18, 0.98, 0.89, 1.08, 1.24]
+    forecast_labels = ["Today", "Peak trade", "Warm weather", "Cooler day","Good weather", "Lunchtime boost" "Quiet day"]
     
     forecast_html = ""
     for i in range(7):
